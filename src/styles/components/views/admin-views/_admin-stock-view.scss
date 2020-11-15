@@ -1,0 +1,81 @@
+form{
+    font-size: 20px;
+    input{
+        width: 250px;
+        margin-bottom: 10px;
+        padding: $padding-general-inside;
+        margin-left: 5px;
+        border-radius: $border-radius-sm;
+        background-color: $color-white;
+        color: $font-color-black;
+        border-color: $color-white;
+        border-style: none;
+    }
+    button{
+        background-color: $color-secondary;
+        padding: $padding-general-inside;
+        color: $font-color-white;
+        width: fit-content;
+        height: 30px;
+        font-size: $font-sm;
+        border-radius: 10px;
+        border-style: none;
+        box-shadow: $btn-shadow;
+        cursor: pointer;
+    }
+}
+
+.admin-products-create{
+    margin: 10px;
+    padding: 20px;
+    background-color: $color-primary;
+    width: 300px;
+    height: 50vh;
+    border-radius: $border-radius-sm;
+}
+
+.stock-view-content{
+    padding: 40px;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: stretch;
+    justify-content: space-around;
+
+    .admin-stock{
+        flex-grow: 1;
+        margin: $margin-general;
+        padding: $padding-general-inside;
+        width: 500px;
+        height: 50vh;
+
+        .table{
+            margin-top: 20px;
+            background-color: $color-secondary-light;
+            width: stretch;
+            scroll-margin: auto;
+            border-radius: $border-radius-sm;
+            border: 3px solid $color-black;
+
+            thead{
+                margin: 20px;
+                background-color: $color-secondary;
+            }
+            a{
+                background-color: $color-warning;
+                color: $font-color-black;
+                text-decoration: none;
+                padding: 0px 5px 0px 5px;
+                border-radius: $border-radius-sm;
+                font-size: $font-sm;
+            }
+            button{
+                background-color: $color-error;
+                color: $font-color-white;
+                border-style: none;
+                padding: 0px 5px 0px 5px;
+                border-radius: $border-radius-sm;
+                font-size: $font-sm;
+            }
+        }
+    }
+}

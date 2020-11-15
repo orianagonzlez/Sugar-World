@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+//Reset CSS
+$no-margin: 0px;
+$no-padding: 0px;
+$box-sizing: border-box;
+
+//Layout Variables
+$max-width-layout: 1440px;
+$padding-general: 10px;
+$padding-general-inside: 5px;
+
+//WebPage Margin
+$margin-x-large: 140px;
+$margin-x-medium: 62px;
+$margin-x-small: 24px;
+
+$margin-general: .5rem;
+
+//Font:
+//Font Size
+$base-font-size: 1rem;
+$font-xxlg: 1.75rem;
+$font-xlg: 1.55rem;
+$font-lg: 1.35rem;
+$font-md: 1.2rem;
+$font-sm: 1.1rem;
+
+//Line Height
+$base-line-height: 1.5rem;
+$base-line-header: 1.25rem;
+
+//Font Family
+$font-family: 'Overpass', sans-serif;
+
+//Border Radius
+$border-radius-sm: 5px;
+$border-radius-lg: 10px;
+
+//Grey Scale
+$grey-scale: (
+    color-black: #1a1a1a,
+    color-darkergrey: #3f3f3f,
+    color-darkgrey: #58585a,
+    color-grey: #d6d6d6,
+    color-lightgrey: #e5e5e5,
+    color-lightergrey: #f3f3f3,
+    color-white: #f9f9f9,
+);
+
+//Greys:
+$color-black: map-get($grey-scale,color-black);
+$color-darkergrey: map-get($grey-scale,color-darkergrey);
+$color-darkgrey: map-get($grey-scale,color-darkgrey);
+$color-grey: map-get($grey-scale,color-grey);
+$color-lightgrey: map-get($grey-scale,color-lightgrey);
+$color-lightergrey: map-get($grey-scale,color-lightergrey);
+$color-white: map-get($grey-scale,color-white);
+
+//Colors
+$color-primary: #e66382;
+$color-primary-light:#ff95b1;
+$color-primary-dark: #b03156;
+
+$color-secondary: #5882b4;
+$color-secondary-light:#89b1e6;
+$color-secondary-dark: #245684;
+
+$font-color-black: $color-black;
+$font-color-white: $color-white;
+
+$color-sucess: #087f23;
+$color-error: #ba000d;
+$color-warning: #fdd835;
+$color-shadow: #1b1b1b;
+
+//Shadows
+$box-shadow: 5px 5px 5px $color-shadow;
+$btn-shadow: 2.5px 2.5px 2.5px $color-shadow;
+
+//Buttons
+$btn-height: 35px;
+$btn-padding: 2.5px 15px;
+$btn-font-size: 1rem;
+
+$btn-background-color: $color-secondary;
+
+$btn-disable-color: map-get($grey-scale, color-grey);

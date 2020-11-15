@@ -1,0 +1,40 @@
+.update-view-content{
+    padding: $padding-general;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+
+    form{
+        font-size: 20px;
+        background-color: $color-primary;
+        padding: $padding-general-inside;
+        margin: $margin-general;
+        border-radius: $border-radius-sm;
+
+        input{
+            justify-self: center;
+            width: 400px;
+            margin-bottom: 10px;
+            padding: $padding-general-inside;
+            margin-left: 5px;
+            border-radius: $border-radius-sm;
+            background-color: $color-white;
+            color: $font-color-black;
+            border-color: $color-white;
+            border-style: none;
+        }
+        button{
+            background-color: $color-secondary;
+            padding: $padding-general-inside;
+            color: $font-color-white;
+            width: fit-content;
+            height: 30px;
+            font-size: $font-sm;
+            border-radius: 10px;
+            border-style: none;
+            box-shadow: $btn-shadow;
+            cursor: pointer;
+        }
+    }
+}

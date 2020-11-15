@@ -1,0 +1,48 @@
+<form [formGroup] = "productForm" (ngSubmit)="onSubmit()">
+    <div class="form.group">
+        <label for="exampleInputName">Name</label>
+        <input
+            type="text"
+            class="form.control"
+            formControlName='name'
+            placeholder="Enter product name"
+        >
+    </div>
+    <div class="form.group">
+        <label for="exampleInputQuantity">Description</label>
+        <input 
+            type="text"
+            class="form.control"
+            formControlName='description'
+            placeholder="Enter product's description"
+        >
+    </div>
+    <div class="form.group">
+        <label for="exampleInputQuantity">Image URL</label>
+        <input 
+            type="text"
+            class="form.control"
+            formControlName='image'
+            placeholder="Enter product's image URL"
+        >
+    </div>
+    <div class="form.group">
+        <label for="exampleInputQuantity">Quantity</label>
+        <input 
+            type="text"
+            class="form.control"
+            formControlName='quantity'
+            placeholder="Enter quantity available"
+        >
+    </div>
+    <div class="form.group">
+        <label for="exampleInputPrice">Price</label>
+        <input 
+            type="text"
+            class="form.control"
+            formControlName ='price'
+            placeholder="Enter product's price"
+        >
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

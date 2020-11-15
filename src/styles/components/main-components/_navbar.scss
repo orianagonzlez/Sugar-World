@@ -1,0 +1,36 @@
+.navbar{
+    font-family: $font-family;
+    background-color: $color-primary-dark;
+    color: $font-color-white;
+    font-size: $font-xxlg;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: $box-shadow;
+    min-width: 100vw;
+    
+    .links{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        background-color: $color-primary;
+    }
+    li{
+        list-style-type: none;
+        padding: $padding-general;
+        font-weight: 100;
+        
+    }
+    li :hover{
+        list-style-type: none;
+        background-color: $color-secondary;
+        padding: $padding-general-inside;
+        border-radius: $border-radius-sm;
+    }
+    a{
+        text-decoration: none;
+        color: $font-color-white;
+        transition: all 0.3s ease 0s;
+    }
+}

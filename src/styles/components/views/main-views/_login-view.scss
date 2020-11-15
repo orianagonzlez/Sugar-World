@@ -1,0 +1,80 @@
+.login-view{
+    width: 100%;
+    height: 100%;
+    padding: $padding-general;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-content: center;
+    background-color: $color-white;
+
+    h1{
+        margin: $margin-x-small;
+    }
+
+    button{
+        margin: $margin-general;
+        background-color: $color-secondary;
+        padding: $padding-general-inside;
+        color: $font-color-white;
+        height: 30px;
+        font-size: $font-md;
+        border-radius: $border-radius-sm;
+        border-style: none;
+        box-shadow: $btn-shadow;
+        cursor: pointer;
+    }
+
+    .login-content{
+        display: flex;
+        flex-flow: row wrap;
+        
+        .title{
+            font-size: $font-md;
+        }
+
+        .google-container{
+            padding: $padding-general-inside;
+            margin: $margin-x-small;
+            border-radius: $border-radius-sm;
+            }
+        .credential-container{
+            padding: $padding-general-inside;
+            margin: $margin-x-small;
+            border-radius: $border-radius-sm;
+            background-color: $color-primary-light;
+        }
+
+        form{
+            margin: 0px 0px 20px 20px;
+            font-size: 20px;
+            input{
+                width: 250px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                padding: $padding-general-inside;
+                margin: $margin-x-small;
+                margin-left: 5px;
+                border-radius: $border-radius-sm;
+                background-color: $color-white;
+                color: $font-color-black;
+                border-color: $color-white;
+                border-style: none;
+            }
+        }
+    }
+    .logout-container{
+        margin: $margin-x-small;
+        text-align: center;
+
+        button{
+            background-color: $color-secondary-dark;
+            width: 100px;
+            height: 50px;
+            font-size: $font-md;
+        }
+
+    }
+    
+}
+

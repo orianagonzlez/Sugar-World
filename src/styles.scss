@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./styles/layout/fonts";
+// @import "./styles/lib/mixins";
+// @import "./styles/lib/responsive";
+@import "./styles/lib/variables";
+// @import "./styles/layout/sections";
+// @import "./styles/lib/placeholder";
+// @import "./styles/lib/title";
+
+//Components
+// @import "./styles/components/main-components/footer";
+@import "./styles/components/main-components/navbar";
+@import "./styles/components/views/main-views/home-view";
+// @import "./styles/components/views/main-views/contact-view";
+// @import "./styles/components/views/main-views/product-view";
+@import "./styles/components/views/main-views/login-view";
+// @import "./styles/components/views/main-views/register-view";
+@import "./styles/components/admin-components/_admin-navbar.scss";
+// @import "./styles/components/admin-components/_admin-footer.scss";
+// @import "./styles/components/views/admin-views/_admin-method-view.scss";
+@import "./styles/components/views/admin-views/_admin-order-view.scss";
+@import "./styles/components/views/admin-views/_admin-stock-view.scss";
+@import "./styles/components/views/admin-views/_admin-edit-view.scss";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: $font-color-black;
+    font-family: $font-family;
+}

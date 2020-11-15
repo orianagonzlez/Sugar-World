@@ -1,0 +1,34 @@
+<div class="stock-view-content">
+    <div class="admin-stock">
+        <h1>Available Stock</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Product key</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <th scope="row">{{ product.$key }}</th>
+                    <th scope="row">{{ product.name }}</th>
+                    <th scope="row">{{ product.quantity }}</th>
+                    <th scope="row">{{ product.price }}</th>
+                    <a 
+                        class="btn btn-primary" 
+                        [routerLink] = "['/admin/edit', product.$key]" 
+                        routerLinkActive = "router-link-active"
+                        >Edit Product</a>
+                    <button class="btn btn-danger" (click)= "deleteProduct(product.$key)">Delete Product</button>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="admin-products-create">
+        <h1>Register Product</h1>
+        <app-admin-stock-form></app-admin-stock-form>
+    </div>
+</div>
