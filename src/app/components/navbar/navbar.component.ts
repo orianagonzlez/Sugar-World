@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import firebase from 'firebase';
 
 @Component({
   selector: 'app-navbar',
@@ -17,4 +16,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //LOGOUT  
+  logOut(): void {
+    this.authService.logOut().then(() => {
+      this.router.navigate(['/']);
+    });
+  }
 }

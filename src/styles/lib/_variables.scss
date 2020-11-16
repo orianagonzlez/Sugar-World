@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
 
 //Reset CSS
 $no-margin: 0px;
@@ -31,7 +31,7 @@ $base-line-height: 1.5rem;
 $base-line-header: 1.25rem;
 
 //Font Family
-$font-family: 'Overpass', sans-serif;
+$font-family: 'Nunito', sans-serif;
 
 //Border Radius
 $border-radius-sm: 5px;
@@ -59,19 +59,25 @@ $color-white: map-get($grey-scale,color-white);
 
 //Colors
 $color-primary: #e66382;
-$color-primary-light:#ff95b1;
-$color-primary-dark: #b03156;
+$color-primary-light:#FFC6B8;
+$color-primary-dark: #E65635;
 
-$color-secondary: #5882b4;
-$color-secondary-light:#89b1e6;
-$color-secondary-dark: #245684;
+$color-secondary: #6D6875;
+$color-secondary-light:#C4C4C4;
+$color-secondary-dark: #355070;
 
 $font-color-black: $color-black;
 $font-color-white: $color-white;
 
-$color-sucess: #087f23;
-$color-error: #ba000d;
-$color-warning: #fdd835;
+$button-primary: #9F0E86;
+$button-primary-light: #B56576;
+$button-secondary: #6D597A;
+$button-secondary-light: #F098AD;
+
+
+$color-sucess: #6DB131;
+$color-error: #D90429;
+$color-warning: #F4A93F;
 $color-shadow: #1b1b1b;
 
 //Shadows

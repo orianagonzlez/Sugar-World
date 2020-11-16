@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import firebase from 'firebase';
+import { auth, User } from 'firebase';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -9,8 +9,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AuthService {
 
-  user: firebase.User;
-  userDataSubject$ = new BehaviorSubject<firebase.User>(null);
+  user: User;
+  userDataSubject$ = new BehaviorSubject<User>(null);
 
   constructor(public afAuth: AngularFireAuth, public router: Router) {
     this.afAuth.authState.subscribe(user => {
@@ -28,7 +28,7 @@ export class AuthService {
 
   // METHOD TO LOG IN USING GOOGLE ACCOUNT
   loginWithGoogle(): Promise<void> {
-    const googleProvider = new firebase.auth.GoogleAuthProvider;
+    const googleProvider = new auth.GoogleAuthProvider;
     return this.authLogin(googleProvider)
       .then((response) => {
         if (response) {
@@ -69,7 +69,7 @@ export class AuthService {
   }
 
   //GET CURRENT USER
-  getCurrentUser(): Observable<firebase.User> {
+  getCurrentUser(): Observable<User> {
     return this.afAuth.authState;
   }
 
@@ -84,11 +84,11 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    const user: firebase.User = JSON.parse(localStorage.getItem('user')) ?? null;
+    const user: User = JSON.parse(localStorage.getItem('user')) ?? null;
     return user !== null;
   }
 
-  private authLogin(provider: firebase.auth.GoogleAuthProvider): Promise<firebase.auth.UserCredential> {
+  private authLogin(provider: auth.GoogleAuthProvider): Promise<auth.UserCredential> {
     return this.afAuth.signInWithPopup(provider);
   }
 }

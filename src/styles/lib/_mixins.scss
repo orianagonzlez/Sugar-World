@@ -1,0 +1,23 @@
+@mixin sm-device-min {
+    @media (min-width: 576px){
+        @content;
+    }
+}
+
+@mixin md-device-min {
+    @media (min-width: 768px){
+        @content;
+    }
+}
+
+@mixin lg-device-min {
+    @media (min-width: 992px){
+        @content;
+    }
+}
+
+@mixin xl-device-min {
+    @media (min-width: 1200px){
+        @content;
+    }
+}
