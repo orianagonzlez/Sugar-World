@@ -1,31 +1,11 @@
-.admin-navbar{
-    background-color: $color-primary-dark;
-    color: $color-white;
-    font-size: 25px;
+nav{
     font-weight: 600;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    height: 150px;
-    
-    .titulo{
-        margin: 20px;
-    }
-    .links{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-    }
     li{
         list-style-type: none;
-        padding: 20px;
-        
     }
     li :hover{
-        list-style-type: none;
-        background-color: $color-secondary;
-        padding: 10px;
-        border-radius: 5px;
+        color: $color-secondary-dark;
+        transition: all 0.3s ease 0s;
     }
     a{
         text-decoration: none;

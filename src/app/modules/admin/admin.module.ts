@@ -9,6 +9,9 @@ import { AdminNavigationComponent } from './admin-navigation/admin-navigation.co
 import { AdminStockFormComponent } from './admin-components/admin-stock-form/admin-stock-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditViewComponent } from './admin-views/edit-view/edit-view.component';
+import { AdminOrderFormComponent } from './admin-components/admin-order-form/admin-order-form.component';
+import { AdminMethodFormComponent } from './admin-components/admin-method-form/admin-method-form.component';
+import { MethodViewComponent } from './admin-views/method-view/method-view.component';
 
 
 @NgModule({
@@ -17,7 +20,7 @@ import { EditViewComponent } from './admin-views/edit-view/edit-view.component';
     StockViewComponent, 
     OrderViewComponent, 
     AdminNavigationComponent, 
-    AdminStockFormComponent, EditViewComponent
+    AdminStockFormComponent, EditViewComponent, AdminOrderFormComponent, AdminMethodFormComponent, MethodViewComponent
   ],
   imports: [
     CommonModule,

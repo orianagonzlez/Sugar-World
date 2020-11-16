@@ -1,9 +1,23 @@
-<div class="navbar admin-navbar">
-    <div class="titulo">ADMIN</div>
-    <div class="links">
-        <li><a routerLink="/admin">View Orders</a></li>
-        <li><a routerLink="/admin/stock">Manage Stock</a></li>
-        <li><a routerLink="/admin/method">Manage Methods</a></li>
-        <li><a routerLink="/home">Exit Admin</a></li>
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #FFC6B8">
+    <div class="navbar-brand">ADMIN</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/admin">Ver Órdenes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/admin/stock">Manejar Inventario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/admin/method">Manejar Servicios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/home">Cerrar ADMIN</a>
+            </li>
+        </ul>
     </div>
-</div>
+</nav>

@@ -32,7 +32,9 @@ export class AdminStockFormComponent implements OnInit {
   createForm(): void {
     this.productForm = this.fb.group({
       name: [''],
+      category: [''],
       description: [''],
+      image:[''],
       quantity: [''],
       price: [''],
     });
@@ -41,6 +43,9 @@ export class AdminStockFormComponent implements OnInit {
   patchFormValues(): void {
     this.productForm.patchValue({
       name: this.editProduct.name,
+      category: this.editProduct.category,
+      description: this.editProduct.description,
+      image:[''],
       quantity: this.editProduct.quantity,
       price: this.editProduct.price,
     })
@@ -61,7 +66,9 @@ export class AdminStockFormComponent implements OnInit {
   onSubmit(): void {
     const newProduct: Product = {
       name: this.productForm.get('name').value,
+      category: this.productForm.get('category').value,
       description: this.productForm.get('description').value,
+      image: this.productForm.get('image').value,
       quantity: this.productForm.get('quantity').value,
       price: this.productForm.get('price').value,
     }
@@ -86,6 +93,9 @@ export class AdminStockFormComponent implements OnInit {
           };
           this.productForm.patchValue({
             name: this.editProduct.name,
+            category: this.editProduct.category,
+            description: this.editProduct.description,
+            image: this.editProduct.image,
             quantity: this.editProduct.quantity,
             price: this.editProduct.price
           });

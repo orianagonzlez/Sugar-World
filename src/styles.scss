@@ -7,19 +7,23 @@
 // @import "./styles/lib/title";
 
 //Components
-// @import "./styles/components/main-components/footer";
 @import "./styles/components/main-components/navbar";
+// @import "./styles/components/main-components/footer";
+@import "./styles/components/admin-components/_admin-navbar.scss";
+// @import "./styles/components/admin-components/_admin-footer.scss";
+
+//Views
 @import "./styles/components/views/main-views/home-view";
 // @import "./styles/components/views/main-views/contact-view";
 // @import "./styles/components/views/main-views/product-view";
 @import "./styles/components/views/main-views/login-view";
 // @import "./styles/components/views/main-views/register-view";
-@import "./styles/components/admin-components/_admin-navbar.scss";
-// @import "./styles/components/admin-components/_admin-footer.scss";
-// @import "./styles/components/views/admin-views/_admin-method-view.scss";
 @import "./styles/components/views/admin-views/_admin-order-view.scss";
 @import "./styles/components/views/admin-views/_admin-stock-view.scss";
 @import "./styles/components/views/admin-views/_admin-edit-view.scss";
+@import "src/styles/components/views/admin-views/_admin-method-view.scss";
+
+@import "src/styles/components/_titulo.scss";
 
 *{
     margin: 0;

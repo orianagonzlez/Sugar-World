@@ -1,0 +1,30 @@
+<form [formGroup] = "methodForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="exampleInputClient">Tipo</label>
+        <input 
+            type="text"
+            class="form-control"
+            formControlName ='type'
+            placeholder="Ingresa el tipo de método"
+            />
+    </div>
+    <div class="form-group">
+        <label for="exampleInputStatus">Nombre</label>
+        <input 
+            type="text"
+            class="form-control"
+            formControlName ='name'
+            placeholder="Ingresa el nombre del método"
+            />
+    </div>
+    <div class="form-group">
+        <label for="exampleInputStatus">Comprobante</label>
+        <input 
+            type="text"
+            class="form-control"
+            formControlName ='attachement'
+            placeholder="Ingresa si el método adjunta comprobante o no"
+            />
+    </div>
+    <button type="submit" class="btn btn-success btn-block">Submit</button>
+</form>

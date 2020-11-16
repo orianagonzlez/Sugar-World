@@ -1,0 +1,34 @@
+<div class="titulo">
+    <h1>Métodos Registrados</h1>
+</div>
+<div class="method-view">
+
+    <div class="admin-methods-create">
+        <h2>Registrar Método</h2>
+        <app-admin-method-form></app-admin-method-form>
+    </div>
+    <div class="table-responsive">
+
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Key del Método</th>
+                    <th scope="col">Tipo de Método</th>
+                    <th scope="col">Nombre del Método</th>
+                    <th scope="col">Comprobante de Pago</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let method of methods">
+                    <th scope="row">{{ method.$key }}</th>
+                    <th scope="row">{{ method.type }}</th>
+                    <th scope="row">{{ method.name }}</th>
+                    <th scope="row">{{ method.attachement }}</th>
+                    <button class="btn btn-danger" (click)="deleteMethod(method.$key)">Eliminar</button>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

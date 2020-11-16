@@ -1,0 +1,21 @@
+<form [formGroup] = "orderForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="exampleInputClient">Nombre</label>
+        <input 
+            type="text"
+            class="form-control"
+            formControlName ='client'
+            placeholder="Ingresa el nombre del cliente"
+            />
+    </div>
+    <div class="form-group">
+        <label for="exampleInputStatus">Status</label>
+        <input 
+            type="text"
+            class="form-control"
+            formControlName ='status'
+            placeholder="Ingresa el status de la órden"
+            />
+    </div>
+    <button type="submit" class="btn btn-success btn-block">Submit</button>
+</form>

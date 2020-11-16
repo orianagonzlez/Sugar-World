@@ -1,15 +1,21 @@
-<div class="stock-view-content">
-    <div class="admin-stock">
-        <h1>Available Stock</h1>
-        <table class="table">
-            <thead>
+<div class="titulo">
+    <h1>Inventario Disponible</h1>
+</div>
+<div class="stock-view">
+    <div class="admin-products-create">
+        <h2>Registrar Nuevo Producto</h2>
+        <app-admin-stock-form></app-admin-stock-form>
+    </div>
+    <div class="table-responsive">
+        
+        <table class="table table-striped">
+            <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Product key</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Actions</th>
-                </tr>
+                    <th scope="col">Key del Producto</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Acciones</th>
             </thead>
             <tbody>
                 <tr *ngFor="let product of products">
@@ -17,18 +23,13 @@
                     <th scope="row">{{ product.name }}</th>
                     <th scope="row">{{ product.quantity }}</th>
                     <th scope="row">{{ product.price }}</th>
-                    <a 
-                        class="btn btn-primary" 
-                        [routerLink] = "['/admin/edit', product.$key]" 
-                        routerLinkActive = "router-link-active"
-                        >Edit Product</a>
-                    <button class="btn btn-danger" (click)= "deleteProduct(product.$key)">Delete Product</button>
+                    <a class="btn btn-warning" [routerLink]="['/admin/edit', product.$key]"
+                        routerLinkActive="router-link-active">Editar Producto</a>
+                    <button class="btn btn-danger" (click)="deleteProduct(product.$key)">Eliminar
+                        Producto</button>
                 </tr>
             </tbody>
         </table>
     </div>
-    <div class="admin-products-create">
-        <h1>Register Product</h1>
-        <app-admin-stock-form></app-admin-stock-form>
-    </div>
+
 </div>

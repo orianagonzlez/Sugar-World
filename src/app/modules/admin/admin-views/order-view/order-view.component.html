@@ -1,1 +1,27 @@
-<p>order-view works!</p>
+<div class="titulo">
+    <h1>Órdenes Recientes</h1>
+</div>
+<div class="order-view">
+    <div class="admin-orders-create">
+        <h2>Registrar Nueva Órden</h2>
+        <app-admin-order-form></app-admin-order-form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Key de la Órden</th>
+                    <th scope="col">Nombre del Cliente</th>
+                    <th scope="col">Status de la Órden</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <th scope="row">{{ order.$key }}</th>
+                    <th scope="row">{{ order.client }}</th>
+                    <th scope="row">{{ order.status }}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
