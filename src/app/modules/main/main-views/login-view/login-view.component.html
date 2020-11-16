@@ -1,25 +1,31 @@
-<h1>Login View</h1>
-<div class="login-content">
-  <div class="google-container">
-    <div class="title">Login With Google</div>
-    <button class="btn btn-success" (click)="loginWithGoogle()">Google</button>
-  </div>
-  <div class="credential-container">
-    <div class="title">Email & Password</div>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="form.group">
-        <label for="exampleInputEmail">Enter your Email</label>
-        <input type="text" class="form.control" placeholder="Enter your Email" />
+<div class="container-fluid hero-image">
+  <div class="row login-content ">
+    <div class="col contenedor align-self-center bg-light">
+      <div class="row justify-content-center ">
+        <h2>Ingresar</h2>
       </div>
-      <div class="form.group">
-        <label for="exampleInputPassword">Enter your Password</label>
-        <input type="text" class="form.control" placeholder="Enter your password" />
+      <hr>
+      <form class="mb-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Correo</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Enter email" formControlName="email" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Contraseña</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+            formControlName="password" />
+        </div>
+      </form>
+      <div class="row justify-content-center m-2">
+        <button type="submit" class="btn btn-color mr-5">Ingresar</button>
+        <button type="submit" class="btn btn-color btn ml-5">Registrase</button>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+      <div class="row justify-content-center mt-3">
+        <button class="btn btn-success" (click)="loginWithGoogle()">
+          Inciar con Google
+        </button>
+      </div>
+    </div>
   </div>
 </div>
-<div class="logout-container">
-  <button class="btn btn-primary" (click)="logOut()">Log Out</button>
-</div>
-
