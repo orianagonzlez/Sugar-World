@@ -1,14 +1,51 @@
 nav{
-    font-weight: 600;
+    &.navbar-admin-custom {
+        background: url("../../../assets/imgNavbar/fondoNavbar-lg.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%; 
+        padding-bottom: 1rem;
+        font-size: $font-md;
+    
+        
+    }
+
+    .admin {
+        font-size: 1rem;
+        color: $color-black;
+        font-weight: 700;
+    }
     li{
         list-style-type: none;
     }
+    
     li :hover{
         color: $color-secondary-dark;
         transition: all 0.3s ease 0s;
     }
+
     a{
         text-decoration: none;
         color: $color-white;
+    }
+
+    .dropdown-divider {
+        border-top: 1px solid $color-secondary-light;
+    }
+
+    img {
+    
+        &.logo{
+            width: 10rem;
+            height: 5rem;
+        }
+    }
+
+    #navbarMenu {
+        @include md-device-max() {
+            padding: 1rem;
+            width: 100%;
+            background-color: #FFE9E3; 
+          } 
+        
     }
 }

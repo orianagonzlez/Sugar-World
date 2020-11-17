@@ -1,23 +1,34 @@
-<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #FFC6B8">
-    <div class="navbar-brand">ADMIN</div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+<nav class=" navbar-admin-custom navbar navbar-expand-lg navbar-light fixed-top p-0">
+    <div class="navbar-brand d-flex align-items-center pb-4 px-4">
+        <a href="#"><img class="logo mx-auto" src="assets/imgNavbar/logo.svg"></a>
+        <div class="admin">
+            ADMIN 
+        </div>
+   
+    </div>
+    <button class="navbar-toggler m-3" type="button" data-toggle="collapse" data-target="#navbarMenu">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarMenu">
-        <ul class="navbar-nav">
+    <div class="collapse navbar-collapse pb-4 px-4" id="navbarMenu">
+        <ul class="navbar-nav d-flex justify-content-around w-100">
+            <div class="dropdown-divider bg-secondary"></div>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/admin">Ver Órdenes</a>
             </li>
+            <div class="dropdown-divider bg-secondary"></div>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/admin/stock">Manejar Inventario</a>
             </li>
+            <div class="dropdown-divider bg-secondary"></div>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/admin/method">Manejar Servicios</a>
             </li>
+            <div class="dropdown-divider bg-secondary"></div>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/home">Cerrar ADMIN</a>
             </li>
+            <div class="dropdown-divider bg-secondary"></div>
         </ul>
     </div>
 </nav>

@@ -1,3 +1,30 @@
+// MAX WIDTH
+@mixin xm-device-max {
+    @media (max-width: 575.98px){
+        @content;
+    }
+}
+
+@mixin sm-device-max {
+    @media (max-width: 767.98px){
+        @content;
+    }
+}
+
+@mixin md-device-max {
+    @media (max-width: 991.98px){
+        @content;
+    }
+}
+
+@mixin lg-device-max {
+    @media (max-width: 1199.98px){
+        @content;
+    }
+}
+
+// MIN WIDTH
+
 @mixin sm-device-min {
     @media (min-width: 576px){
         @content;

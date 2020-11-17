@@ -2,10 +2,11 @@
 @import "./styles/lib/mixins";
 // @import "./styles/lib/responsive";
 @import "./styles/lib/variables";
-// @import "./styles/layout/sections";
+
 // @import "./styles/lib/placeholder";
 // @import "./styles/lib/title";
 
+@import "./styles/layout/sections";
 //Components
 @import "./styles/components/main-components/navbar";
 // @import "./styles/components/main-components/footer";
