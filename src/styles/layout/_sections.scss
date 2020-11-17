@@ -1,3 +1,14 @@
 .view-container {
     margin-top: $margin-top-views;
 }
+
+.button-primary {
+    color: white;
+    background-color: $button-primary;
+}
+
+.button-primary:hover {
+    font-weight: 600;
+    color: white;
+    background-color: #b8119c;
+}

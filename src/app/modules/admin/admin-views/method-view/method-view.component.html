@@ -1,8 +1,8 @@
 <div class="view-container">
-    <div class="titulo">
+    <div class="titulo mb-4">
         <h1>Métodos Registrados</h1>
     </div>
-    <div class="method-view">
+    <div class="method-view d-flex justify-content-around align-items-center flex-wrap">
 
         <div class="admin-methods-create">
             <h2>Registrar Método</h2>
@@ -10,8 +10,8 @@
         </div>
         <div class="table-responsive">
 
-            <table class="table table-striped">
-                <thead class="thead-dark">
+            <table class="table table-striped" id="tablaMetodos">
+                <thead class="table-head">
                     <tr>
                         <th scope="col">Key del Método</th>
                         <th scope="col">Tipo de Método</th>
@@ -26,7 +26,9 @@
                         <th scope="row">{{ method.type }}</th>
                         <th scope="row">{{ method.name }}</th>
                         <th scope="row">{{ method.attachement }}</th>
-                        <button class="btn btn-danger" (click)="deleteMethod(method.$key)">Eliminar</button>
+                        <th scope="row">
+                            <button class="btn btn-outline-danger" (click)="deleteMethod(method.$key)">Eliminar</button>
+                        </th>
                     </tr>
                 </tbody>
             </table>

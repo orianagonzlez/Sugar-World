@@ -1,21 +1,21 @@
 <div class="view-container">
-    <div class="titulo">
+    <div class="titulo mb-4">
         <h1>Inventario Disponible</h1>
     </div>
-    <div class="stock-view">
+    <div class="stock-view d-flex justify-content-around align-items-center flex-wrap">
         <div class="admin-products-create">
             <h2>Registrar Nuevo Producto</h2>
             <app-admin-stock-form></app-admin-stock-form>
         </div>
         <div class="table-responsive">
             
-            <table class="table table-striped">
-                <thead class="thead-dark">
+            <table class="table table-striped" id="tablaProductos">
+                <thead class="table-head">
                     <tr>
                         <th scope="col">Key del Producto</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad (g)</th>
+                        <th scope="col">Precio/50g ($)</th>
                         <th scope="col">Acciones</th>
                 </thead>
                 <tbody>
@@ -24,11 +24,13 @@
                         <th scope="row">{{ product.name }}</th>
                         <th scope="row">{{ product.quantity }}</th>
                         <th scope="row">{{ product.price }}</th>
-                        <a class="btn btn-warning" [routerLink]="['/admin/edit', product.$key]"
-                            routerLinkActive="router-link-active">Editar Producto</a>
-                        <button class="btn btn-danger" (click)="deleteProduct(product.$key)">Eliminar
-                            Producto</button>
-                    </tr>
+                        <th scope="row" class="d-flex justify-content-around flex-wrap">
+                            <button class="btn btn-outline-warning flex-grow-1" [routerLink]="['/admin/edit', product.$key]"
+                            routerLinkActive="router-link-active">Editar</button>
+                            <button class="btn btn-outline-danger flex-grow-1" (click)="deleteProduct(product.$key)">Eliminar</button>
+                   
+                        </th>
+                         </tr>
                 </tbody>
             </table>
         </div>
