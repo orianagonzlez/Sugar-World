@@ -15,11 +15,12 @@
           <label for="exampleInputPassword1">Contraseña</label>
           <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password" />
         </div>
+        <div class="row justify-content-center m-2">
+          <button type="submit" class="btn btn-color mr-5">Ingresar</button>
+          <a [routerLink]="['/home/register']" routerLinkActive="router-link-active"
+            class="btn btn-color btn ml-5">Registrarse</a>
+        </div>
       </form>
-      <div class="row justify-content-center m-2">
-        <button type="submit" class="btn btn-color mr-5">Ingresar</button>
-        <button type="submit" class="btn btn-color btn ml-5">Registrarse</button>
-      </div>
       <div class="row justify-content-center mt-3">
         <button class="btn btn-success" (click)="loginWithGoogle()">
           Iniciar con Google

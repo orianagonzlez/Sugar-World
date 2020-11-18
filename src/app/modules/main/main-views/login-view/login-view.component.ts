@@ -22,8 +22,12 @@ export class LoginViewComponent implements OnInit {
   }
 
   loginWithGoogle(){
-    this.authService.loginWithGoogle().then(response => {});
-    this.router.navigate(['/'])
+    this.authService.loginWithGoogle().then(response => {
+      this.router.navigate(['/'])
+    }).catch((err) => {
+      window.alert("Daros invalidos: "+ err)
+      console.log(err)});
+    
   }
 
   logOut(): void{
@@ -33,8 +37,13 @@ export class LoginViewComponent implements OnInit {
   }
 
   onSubmit(): void{
-    this.authService.loginWithCredientials(this.loginForm.get('email').value,this.loginForm.get('password').value);
-    this.router.navigate(['/'])
+    this.authService.loginWithCredientials(this.loginForm.get('email').value,
+    this.loginForm.get('password').value).then(response => {
+      this.router.navigate(['/'])
+    }).catch((err) => {
+      window.alert("Daros invalidos: "+ err)
+      console.log(err)});;
+
   }
 
 }
