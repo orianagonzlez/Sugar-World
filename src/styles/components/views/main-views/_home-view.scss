@@ -10,18 +10,12 @@
   filter: brightness(90%);
 }
 
-.carrusel {
-  height: 100vh;
-}
-
 .hero-text {
   font-family: $font-secondary;
   display: flex;
   position: absolute;
   z-index: 2;
   flex-direction: column;
-  width: 40em;
-  height: 18em;
   top: 0;
   left: 0;
   right: 0;
@@ -30,9 +24,8 @@
   justify-content: center;
   align-items: center;
   border-radius: 1em;
-  background-color: #C4C4C490;
+  background-color: #c4c4c490;
   h2 {
-    font-size: 3rem;
     color: $color-black;
   }
 }
@@ -46,12 +39,12 @@
 }
 
 .btn-color {
-  background-color:$color-primary; 
+  background-color: $color-primary;
   color: #ffffff;
 }
 
 .line {
-  background-color: $color-primary; 
+  background-color: $color-primary;
   padding: 2em;
   color: #ffffff;
 }
@@ -76,9 +69,66 @@
   transform: scale(1.01, 1.01);
 }
 
-@media (min-width: 576px) {
+@media (min-width: 320px) {
   .card-img-top {
     height: 50vw;
+  }
+  .carrusel-img {
+    height: 70vh;
+  }
+
+  .carrusel {
+    height: 70vh;
+  }
+
+  .hero-text {
+    width: 20em;
+    height: 10em;
+  }
+  h2 {
+    font-size: 1.8em;
+  }
+}
+
+@media (min-width: 480px) {
+  .card-img-top {
+    height: 50vw;
+  }
+  .carrusel-img {
+    height: 70vh;
+  }
+
+  .carrusel {
+    height: 70vh;
+  }
+
+  .hero-text {
+    width: 25em;
+    height: 10em;
+  }
+  h2 {
+    font-size: 1.8em;
+  }
+}
+
+@media (min-width: 550px) {
+  .card-img-top {
+    height: 50vw;
+  }
+  .carrusel-img {
+    height: 70vh;
+  }
+
+  .carrusel {
+    height: 70vh;
+  }
+
+  .hero-text {
+    width: 25em;
+    height: 10em;
+  }
+  h2 {
+    font-size: 2em;
   }
 }
 
@@ -86,16 +136,60 @@
   .card-img-top {
     height: 30vw;
   }
+  .carrusel-img {
+    height: 79vh;
+  }
+
+  .carrusel {
+    height: 79vh;
+  }
+  .hero-text {
+    width: 25em;
+    height: 9em;
+  }
+  h2 {
+    font-size: 2em;
+  }
 }
 
 @media (min-width: 992px) {
   .card-img-top {
     height: 20vw;
   }
+  .carrusel-img {
+    height: 100vh;
+  }
+
+  .carrusel {
+    height: 100vh;
+  }
+  .hero-text {
+    width: 40em;
+    height: 18em;
+  }
+
+  h2 {
+    font-size: 3em;
+  }
 }
 
 @media (min-width: 1200px) {
   .card-img-top {
     height: 20vw;
+  }
+  .carrusel-img {
+    height: 100vh;
+  }
+
+  .carrusel {
+    height: 100vh;
+  }
+
+  .hero-text {
+    width: 40em;
+    height: 18em;
+  }
+  h2 {
+    font-size: 3em;
   }
 }
