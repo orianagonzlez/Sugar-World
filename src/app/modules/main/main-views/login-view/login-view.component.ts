@@ -43,7 +43,6 @@ export class LoginViewComponent implements OnInit {
     }).catch((err) => {
       window.alert("Daros invalidos: "+ err)
       console.log(err)});;
-
   }
 
 }
