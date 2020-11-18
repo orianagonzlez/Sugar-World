@@ -8,6 +8,7 @@ import { Product } from '../models/product';
 })
 export class ProductsService {
 
+
   private productCollection: AngularFirestoreCollection<Product>;
 
   constructor(private db: AngularFirestore) { 

@@ -8,6 +8,8 @@ import { MainNavigationComponent } from './main-navigation/main-navigation.compo
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterViewComponent } from './main-views/register-view/register-view.component';
+import { ProductViewComponent } from './main-views/product-view/product-view.component';
+import { DetailViewComponent } from './main-views/detail-view/detail-view.component';
 
 
 @NgModule({
@@ -15,7 +17,7 @@ import { RegisterViewComponent } from './main-views/register-view/register-view.
     NavbarComponent,
     HomeViewComponent, 
     LoginViewComponent, 
-    MainNavigationComponent, RegisterViewComponent
+    MainNavigationComponent, RegisterViewComponent, ProductViewComponent, DetailViewComponent
   ],
   imports: [
     CommonModule,
