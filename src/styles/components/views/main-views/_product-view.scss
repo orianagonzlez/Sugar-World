@@ -1,0 +1,9 @@
+.product-view{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    .card{
+        margin: $margin-general;
+        color: $color-darkergrey;
+    }
+}

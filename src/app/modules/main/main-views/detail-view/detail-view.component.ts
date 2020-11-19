@@ -40,9 +40,6 @@ export class DetailViewComponent implements OnInit {
       };
     });
   }
-
-
-  
 }
 
 
