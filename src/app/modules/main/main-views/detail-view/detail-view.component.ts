@@ -21,21 +21,28 @@ export class DetailViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUrlParams();
+    this.getProductById();
   }
 
   getUrlParams(): void {
     this.route.paramMap.subscribe((params) => {
       this.productId = params.get('productId');
-
-      if (this.productId) {
-        this.ProductService.getProduct(this.productId).subscribe((item) => {
-          this.editProduct = {
-            $key: item.payload.id,
-            ...item.payload.data(),
-          };
-        });
-      }
     });
     console.log("ID:", this.productId);
   }
+
+
+  getProductById(): void {
+    this.ProductService.getProduct(this.productId).subscribe((item) => {
+      this.product = {
+        $key: item.payload.id,
+        ...item.payload.data(),
+      };
+    });
+  }
+
+
+  
 }
+
+
