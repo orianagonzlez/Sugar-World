@@ -5,6 +5,14 @@
     padding-bottom: 1rem;
     font-size: $font-md;
 
+    @include sm-device-max() {
+        background: url("../../../assets/imgNavbar/fondoNavbar-sm.png");
+        background-size: 100% 100%; 
+        background-repeat: no-repeat;
+        font-size: $font-sm;
+    }
+
+
     
 }
 
@@ -13,6 +21,11 @@ img {
     &.logo{
         width: 10rem;
         height: 5rem;
+
+        @include big-phone-max() {
+            width: 8rem;
+            height: 3.5rem;
+        }
     }
 
 

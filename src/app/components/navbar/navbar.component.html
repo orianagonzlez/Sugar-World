@@ -1,5 +1,5 @@
 <nav class="navbar-custom navbar navbar-expand-lg navbar-light fixed-top p-0">
-    <a class="navbar-brand pb-4 px-4" href="#"><img class="logo mx-auto" src="assets/imgNavbar/logo.svg"></a>
+    <a class="navbar-brand pb-4 px-4" routerLink="/home"><img class="logo mx-auto" src="assets/imgNavbar/logo.svg"></a>
     <button class="navbar-toggler boton-menu-colapsado m-3" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,7 +11,8 @@
             </li>
             <div class="dropdown-divider bg-secondary"></div>
             <li class="nav-item no-icono">
-                <a class="nav-link" href="#">Sobre Nosotros</a>
+                <a class="nav-link"
+                routerLink="/home/about-us">Sobre Nosotros</a>
             </li>
             <div class="dropdown-divider bg-secondary"></div>
             <li class="nav-item no-icono">
@@ -45,7 +46,6 @@
                     routerLink="/admin"
                     *ngIf="user | async">Sección de Administrador</a>
                     <a class="dropdown-item" 
-                    routerLink="/admin"
                     (click)="logOut()"
                     *ngIf="user | async">Cerrar sesión</a>
                   </div>
