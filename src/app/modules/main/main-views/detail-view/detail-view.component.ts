@@ -10,7 +10,7 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class DetailViewComponent implements OnInit {
 
-  loading: boolean;
+  loading = false;
   product: Product = null;
   editProduct: Product = null;
   productId: string;
@@ -33,16 +33,15 @@ export class DetailViewComponent implements OnInit {
 
 
   getProductById(): void {
+    this.loading = true;
     this.ProductService.getProduct(this.productId).subscribe((item) => {
       this.product = {
         $key: item.payload.id,
         ...item.payload.data(),
       };
+      this.loading = false;
     });
   }
-
-
-  
 }
 
 
