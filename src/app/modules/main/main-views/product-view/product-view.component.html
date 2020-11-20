@@ -12,14 +12,14 @@
   </div>
   <div class="row pt-5 pb-5 align-items-center justify-content-center">
     <div *ngFor="let product of products" class="col-12 col-md-6 col-lg-3 mb-4 justify-content-center">
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 18rem;" routerLink="/home/detail/{{product.$key}}">
         <img class="card-img-top" src="{{ product.image }}" alt="Product image">
         <div class="card-body">
-          <h4 class="card-title">{{ product.name }}</h4>
+          <h4 class="card-title"><img class="icono" src="assets/imgNavbar/iconoCorazon.svg">{{ product.name }}</h4>
           <h5 class="card-text">Categoria: {{product.category}}</h5>
           <div class="card-text">Precio: ${{ product.price }}</div>
           <div class="card-text">Cantidad Disponible: {{product.quantity}}</div>
-          <a routerLink="/home/detail/{{product.$key}}">Detalles</a>
+          <button style="margin-top: 10px;" type="submit" class="btn btn-color">Agregar a Favorito</button>
         </div>
       </div>
     </div>

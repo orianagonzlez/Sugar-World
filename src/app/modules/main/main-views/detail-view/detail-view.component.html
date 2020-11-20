@@ -1,17 +1,15 @@
-<div class="container" *ngIf="!loading">
-  <h1 style="margin-top: 120px">{{product.name}}</h1>
+<div class="container" *ngIf="!loading" style="margin-top: 100px;">
+  <img src="{{ product.image }}" alt="Product image">
+  <h3>Cantidad Disponible: {{product.quantity}}</h3>
+  <h2>{{product.name}}</h2>
+  <h3>Precio: ${{product.price}}</h3>
   <h3>Categoria: {{product.category}}</h3>
+  <h4>{{product.description}}</h4>
   <button type="button" routerLink="/home/product" class="btn btn-link">Return</button>
-  <div>
-    <img class="card-img-top" src="{{ product.image }}" alt="Product image">
-    <h3>Precio: ${{product.price}}</h3>
-    <h3>Cantidad Disponible: {{product.quantity}}</h3>
-    <h4>{{product.description}}</h4>
-  </div>
 </div>
 <div class="container-fluid" *ngIf="loading" style="margin-top: 75px;">
   <div class="row justify-content-center line">
     <div class="col-6 title justify-content-center">
       <div class="loader"></div>
       <h2 style="align-self: center;">Loading...</h2>
-  </div>
+    </div>

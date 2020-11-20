@@ -10,7 +10,6 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductViewComponent implements OnInit {
 
   products: Array<Product> = [];
-  loading: boolean;
   
   constructor(private ProductService: ProductsService) { }
 
@@ -29,5 +28,4 @@ export class ProductViewComponent implements OnInit {
       );
     });
   }
-
 }
