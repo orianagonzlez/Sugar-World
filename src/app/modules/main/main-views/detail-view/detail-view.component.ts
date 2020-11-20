@@ -15,7 +15,7 @@ export class DetailViewComponent implements OnInit {
   editProduct: Product = null;
   productId: string;
   products: Array<Product> = [];
-
+  value: number = 0;
 
   constructor(private ProductService: ProductsService, private router: Router, private route: ActivatedRoute,) {}
 
@@ -41,6 +41,18 @@ export class DetailViewComponent implements OnInit {
       };
       this.loading = false;
     });
+  }
+
+  plus():void{
+    if(this.value<parseInt(this.product.quantity)){
+      this.value ++;
+    }
+  }
+
+  minus():void{
+    if(this.value!=0){
+      this.value --;
+    }
   }
 }
 
