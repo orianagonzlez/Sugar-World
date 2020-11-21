@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterViewComponent } from './main-views/register-view/register-view.component';
 import { ProductViewComponent } from './main-views/product-view/product-view.component';
 import { DetailViewComponent } from './main-views/detail-view/detail-view.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 
 @NgModule({
@@ -17,7 +19,7 @@ import { DetailViewComponent } from './main-views/detail-view/detail-view.compon
     NavbarComponent,
     HomeViewComponent, 
     LoginViewComponent, 
-    MainNavigationComponent, RegisterViewComponent, ProductViewComponent, DetailViewComponent
+    MainNavigationComponent, RegisterViewComponent, ProductViewComponent, DetailViewComponent, ProductCardComponent, ProductListComponent
   ],
   imports: [
     CommonModule,

@@ -26,6 +26,7 @@ export class ProductViewComponent implements OnInit {
           $key: item.payload.doc.id,
         } as Product)
       );
-    });
+    console.log(this.products.length +"SOS ")
+  });
   }
 }

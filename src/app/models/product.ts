@@ -6,4 +6,5 @@ export interface Product {
     image?: string;
     quantity: string;
     price: string;
+    isFavorite: boolean;
 }
