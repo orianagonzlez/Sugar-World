@@ -79,6 +79,7 @@ export class AdminStockFormComponent implements OnInit {
       image: this.productForm.get('image').value,
       quantity: this.productForm.get('quantity').value,
       price: this.productForm.get('price').value,
+      isFavorite: false,
     }
 
     if (this.editProduct) {

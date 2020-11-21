@@ -1,0 +1,17 @@
+<div class="card">
+  <img routerLink="/home/detail/{{product.$key}}" class="card-img-top" src="{{ product.image }}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-text">Categoria: {{product.category}}</h5>
+    <div class="card-text">Precio: ${{ product.price }}</div>
+    <div class="card-text">Cantidad Disponible: {{product.quantity}}</div>
+    <ng-container *ngIf="!product.isFavorite">
+      <button (click)="favoriteBtn()" style="margin-top: 10px;" type="submit" class="btn btn-color">Agregar a
+        Favorito</button>
+    </ng-container>
+    <ng-container *ngIf="product.isFavorite">
+      <button (click)="favoriteBtn()" style="margin-top: 10px;" type="submit" class="btn btn-color">Eliminar de
+        favoritos</button>
+    </ng-container>
+
+  </div>
+</div>
