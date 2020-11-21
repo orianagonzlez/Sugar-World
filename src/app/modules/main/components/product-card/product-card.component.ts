@@ -26,7 +26,7 @@ export class ProductCardComponent implements OnInit {
       this.user = user;
       if (user) {
         this.wishListService.getWishList(user.uid).then((res) => {
-          // Si hay personajes
+          
           if (res.docs.length > 0) {
             this.product.isFavorite = (res.docs[0].get('favorites') as Array<
               string

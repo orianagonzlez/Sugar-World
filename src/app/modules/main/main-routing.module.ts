@@ -6,6 +6,7 @@ import { HomeViewComponent } from './main-views/home-view/home-view.component';
 import { LoginViewComponent } from './main-views/login-view/login-view.component';
 import { ProductViewComponent } from './main-views/product-view/product-view.component';
 import { RegisterViewComponent } from './main-views/register-view/register-view.component';
+import { WishListComponent } from './main-views/wish-list/wish-list.component';
 
 const routes: Routes = [
   {
@@ -30,7 +31,12 @@ const routes: Routes = [
       {
         path: 'detail/:productId',
         component: DetailViewComponent
+      },
+      {
+        path: 'wishList',
+        component: WishListComponent
       }
+      //
       // {
       //   path: 'contact',
       //   component: ContactViewComponent

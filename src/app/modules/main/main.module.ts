@@ -12,6 +12,7 @@ import { ProductViewComponent } from './main-views/product-view/product-view.com
 import { DetailViewComponent } from './main-views/detail-view/detail-view.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { WishListComponent } from './main-views/wish-list/wish-list.component';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
     NavbarComponent,
     HomeViewComponent, 
     LoginViewComponent, 
-    MainNavigationComponent, RegisterViewComponent, ProductViewComponent, DetailViewComponent, ProductCardComponent, ProductListComponent
+    MainNavigationComponent, RegisterViewComponent, ProductViewComponent, DetailViewComponent, ProductCardComponent, ProductListComponent, WishListComponent, 
   ],
   imports: [
     CommonModule,
