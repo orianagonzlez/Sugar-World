@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngIf="!loading">
   <img routerLink="/home/detail/{{product.$key}}" class="card-img-top" src="{{ product.image }}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-text">Categoria: {{product.category}}</h5>
