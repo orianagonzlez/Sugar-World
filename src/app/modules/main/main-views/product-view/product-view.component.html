@@ -1,22 +1,64 @@
-<div class="container-fluid" style="margin-top: 75px;">
-  <div class="row justify-content-center line">
-    <div class="col-6 title">
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search Product" aria-label="Serach Bar"
-          aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-secondary" type="button" id="button-addon2">Search</button>
+<div class="view-container">
+  <div class="container-fluid mt-5">
+      <div class="title d-flex flex-wrap justify-content-center">
+        <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="name" placeholder="Ingrese nombre del producto" aria-label="Search Bar"
+            aria-describedby="button-addon2">
+          <div class="input-group-append mb-3">
+            <button class="btn btn-secondary" type="button" id="button-addon2" (click)="getAllProducts(true)">Search</button>
+          </div>
+        </div>
+        <div class="d-flex flex-wrap justify-content-center">
+          <div class="dropdown btn-group ml-3 mb-3">
+            <button type="button" class="btn filter-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categoría
+            </button>
+            <div class="dropdown-menu">
+                <button
+                  class="btn dropdown-item categoria"
+                  (click)="getProductsByCategory(category.$key)"
+                  *ngFor="let category of categories"
+                > {{ category.name }}</button>
+            </div>
+          </div>
+          <div class="dropdown ml-3">
+            <button type="button" class="btn filter-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Precio
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-header p-1 d-flex flex-column justify-content-center align-items-center">
+                <div class="m-1">
+                  <label>Monto mínimo:</label>
+                  <input type="number" [(ngModel)]="min" min="0" class="form-control" placeholder="Min"> 
+                </div>
+                <div class="m-1">
+                  <label>Monto máximo:</label>
+                  <input type="number" [(ngModel)]="max" min="0" class="form-control" placeholder="Max"> 
+                </div>
+                <div class="text-danger d-flex flex-column justify-content-center align-items-center" *ngIf="wrongPrice">
+                  <small>El monto mínimo no debe exceder al máximo.</small>
+                  <small>Solo ingresa números positivos.</small>  
+                </div>
+                
+                <button type="button m-3" class="btn filter-button" (click)="getProductsByPrice()">Aplicar filtro</button>  
+              </div>
+              
+            </div>
+          </div>  
+            
+          <button type="button" class="btn btn-outline-secondary ml-3  mb-3" (click)=getAllProducts(false) *ngIf="filters">Remover filtro</button> 
+        
         </div>
       </div>
     </div>
-  </div>
 
 
 
 
 
-  <div class="container">
-    <ng-container>
-      <app-product-list [products]="products"></app-product-list>
-    </ng-container>
-  </div>
+    <div class="container" *ngIf="!loading">
+      <ng-container>
+        <app-product-list [products]="products"></app-product-list>
+      </ng-container>
+    </div>
+</div>

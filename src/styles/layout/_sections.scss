@@ -10,5 +10,20 @@
 .button-primary:hover {
     font-weight: 600;
     color: white;
-    background-color: #b8119c;
+    background-color: lighten($color: $button-primary, $amount: 5);
 }
+
+.filter-button {
+    color: white;
+    background-color: $color-primary;
+}
+
+.filter-button:hover {
+    font-weight: 600;
+    color: white;
+    //background-color: lighten($color: $color-primary, $amount: 5);
+    background-color: darken($color: $color-primary, $amount: 5);
+    
+}
+
+
