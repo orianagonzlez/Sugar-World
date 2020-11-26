@@ -1,6 +1,10 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Bag } from 'src/app/models/bag';
+import { CartProduct } from 'src/app/models/cart-product';
 import { Product } from 'src/app/models/product';
+import { BagService } from 'src/app/services/bag.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -17,11 +21,13 @@ export class DetailViewComponent implements OnInit {
   products: Array<Product> = [];
   value: number = 0;
 
-  constructor(private ProductService: ProductsService, private router: Router, private route: ActivatedRoute,) {}
+
+  constructor(private ProductService: ProductsService, private router: Router, private route: ActivatedRoute, private BagService: BagService) {}
 
   ngOnInit(): void {
     this.getUrlParams();
     this.getProductById();
+
   }
 
   getUrlParams(): void {
@@ -54,6 +60,41 @@ export class DetailViewComponent implements OnInit {
       this.value --;
     }
   }
+
+  addBag(){
+     console.log("say hello "+ this.productId);
+    
+    let cartProduct: CartProduct = {
+      productId : this.productId,
+      quantify : 100
+    }
+
+    var bag : Bag = {
+    price:5,
+    products: [cartProduct],
+    userId: "1234568",
+    weight: 100,
+    }
+
+    this.BagService.addBag("oriana",500,cartProduct)
+    .then((res)=>{
+      console.log("lo lograste")
+      })
+    .catch((err)=>
+      console.log('fail'))
+
+
+
+
+
+    /*this.BagService.createBag(bag).then((res)=>console.log("lo lograste")).catch((err)=>
+      console.log('fail'))*/
+     
+  }
+
+
+
+  
 }
 
 
