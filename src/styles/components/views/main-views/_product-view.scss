@@ -43,6 +43,16 @@
     .precio {
       color: $button-primary-light;
     }
+    .btn-color-selected{
+      border-color: $color-primary;
+      color: $color-primary;
+      background-color: $color-white;
+    }
+    .btn-color-selected:hover{
+      border-color: $color-primary;
+      color: $color-white;
+      background-color: $color-primary;
+    }
   }
   .card:hover {
     transform: scale(1.01, 1.01);
