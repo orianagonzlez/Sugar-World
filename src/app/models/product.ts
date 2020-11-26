@@ -5,5 +5,6 @@ export interface Product {
     description: string;
     image?: string;
     quantity: string;
-    price: string;
+    price: number;
+    isFavorite: boolean;
 }

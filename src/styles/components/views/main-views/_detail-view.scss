@@ -1,0 +1,118 @@
+.loader {
+    border: 10px solid $color-secondary-dark;
+    border-top: 10px solid $color-primary-light;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    margin: $margin-general;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .detail-view{
+
+    .product-image {
+      object-fit: cover;
+      
+    }
+    .product-name{
+      color: $color-secondary-dark;
+      font-size: $font-xxlg;
+      font-weight: 800;
+    }
+    .product-price{
+      color: $button-primary-light;
+      font-size: $font-xlg;
+      font-weight: 700;
+    }
+    .product-category{
+      color: $button-secondary;
+      font-size: $font-lg;
+      font-weight: 600;
+    }
+    .product-description{
+      color: $color-secondary-dark;
+      font-size: $font-md;
+      text-align: justify;
+    }
+    .btn-color{
+      border-color: $color-secondary-dark;
+      color: $color-secondary-dark;
+      background-color: $color-white;
+    }
+    .btn-color:focus{
+      border-color: $color-white;
+      color: $color-white;
+      background-color: $color-secondary-dark;
+    }
+    .btn-color:hover{
+      border-color: $color-white;
+      color: $color-white;
+      background-color: $color-secondary-dark;
+    }
+    .return {
+      text-decoration: none;
+      color: $color-secondary-dark; 
+    }
+    
+    .counter{
+      margin: $margin-general;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      .btn-color-secondary{
+        background-color: $color-primary-light;
+        color: $color-secondary-dark;
+        font-size: $font-xxlg;
+        font-weight: 900;
+      }
+      input{
+        border: none;
+        height: 50px;
+        color: $color-secondary-dark;
+        font-weight: 900;
+        font-size: $font-lg;
+        text-align: center;
+      }
+    }
+  }
+
+  @media (min-width: 320px) {
+    .product-image {
+      height: 50vw;
+    }
+  }
+  
+  @media (min-width: 480px) {
+    .product-image {
+      height: 50vw;
+    }
+  }
+  
+  @media (min-width: 550px) {
+    .product-image {
+      height: 50vw;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .product-image {
+      height: 30vw;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .product-image {
+      height: 20vw;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .product-image {
+      height: 20vw;
+    }
+  }

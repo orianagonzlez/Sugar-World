@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore, DocumentChangeAction, DocumentSnapshot, Action } from '@angular/fire/firestore';
+import { firestore } from 'firebase';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 
@@ -7,6 +8,7 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class ProductsService {
+
 
   private productCollection: AngularFirestoreCollection<Product>;
 
@@ -19,8 +21,21 @@ export class ProductsService {
   }
 
   getProduct(productId: string): Observable<Action<DocumentSnapshot<Product>>> {
+    console.log(productId)
     return this.productCollection.doc<Product>(productId).snapshotChanges();
   }
+
+  getProductsByCategory(categoryId: string): Promise<firestore.QuerySnapshot<firestore.DocumentData>> {
+    return this.productCollection.ref.where('category', '==', categoryId).get();
+  } 
+
+  getProductsByPrice(min: number, max: number): Promise<firestore.QuerySnapshot<firestore.DocumentData>> {
+    return this.productCollection.ref.where('price', '>=', min).where('price', '<=', max).get();
+  } 
+
+  /*getProductByName(name: string): Promise<firestore.QuerySnapshot<firestore.DocumentData>> {
+    return this.productCollection.ref.where('name', 'in', name).get();
+  } */
 
   createProduct(newProduct: Product): Promise<any> {
     return this.productCollection.add(newProduct);

@@ -9,6 +9,11 @@ import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterViewComponent } from './main-views/register-view/register-view.component';
 import { AboutUsViewComponent } from './main-views/about-us-view/about-us-view.component';
+import { ProductViewComponent } from './main-views/product-view/product-view.component';
+import { DetailViewComponent } from './main-views/detail-view/detail-view.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { WishListComponent } from './main-views/wish-list/wish-list.component';
 
 
 @NgModule({
@@ -16,7 +21,14 @@ import { AboutUsViewComponent } from './main-views/about-us-view/about-us-view.c
     NavbarComponent,
     HomeViewComponent, 
     LoginViewComponent, 
-    MainNavigationComponent, RegisterViewComponent, AboutUsViewComponent
+    MainNavigationComponent, 
+    RegisterViewComponent, 
+    AboutUsViewComponent,
+    ProductViewComponent, 
+    DetailViewComponent, 
+    ProductCardComponent, 
+    ProductListComponent, 
+    WishListComponent, 
   ],
   imports: [
     CommonModule,
