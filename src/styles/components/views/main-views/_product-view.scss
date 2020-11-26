@@ -28,9 +28,21 @@
   .row > div[class*="col-"] {
     display: flex;
   }
-  d
+  
   .card {
     transition: -webkit-transform 0.3s ease;
+
+    h4 {
+      color: $color-secondary-dark;
+    }
+
+    h5 {
+      color: $color-secondary;
+    }
+
+    .precio {
+      color: $button-primary-light;
+    }
   }
   .card:hover {
     transform: scale(1.01, 1.01);

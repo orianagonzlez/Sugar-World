@@ -3,7 +3,7 @@
   <div class="card-body">
     <h4 class="card-text">{{product.name}}</h4>
     <h5 class="card-text">Categoria: {{product.category}}</h5>
-    <div class="card-text">Precio: ${{ product.price }}</div>
+    <div class="card-text precio">Precio/50g: ${{ product.price }}</div>
     <div class="card-text">Cantidad Disponible: {{product.quantity}}</div>
     <ng-container *ngIf="!product.isFavorite">
       <button (click)="favoriteBtn()" style="margin-top: 10px;" type="submit" class="btn btn-color">Agregar a

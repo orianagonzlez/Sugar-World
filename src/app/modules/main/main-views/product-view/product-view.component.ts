@@ -12,6 +12,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductViewComponent implements OnInit {
 
   products: Array<Product> = [];
+  noProducts = false;
   categories: Array<Category> = [];
   filters = false;
   loading = false;
@@ -30,6 +31,7 @@ export class ProductViewComponent implements OnInit {
   getAllProducts(byName: boolean): void {
     this.loading = true;
     this.filters = false;
+    this.noProducts = false;
     this.ProductService.getAllProducts().subscribe((items) => {
       this.products = items.map (
         (item) => 
@@ -44,6 +46,9 @@ export class ProductViewComponent implements OnInit {
         this.filters = true;
       }
       
+      if (this.products.length == 0) {
+        this.noProducts = true;
+      }
       this.loading = false;
     console.log(this.products.length +"SOS ")
   });
@@ -63,6 +68,7 @@ export class ProductViewComponent implements OnInit {
   }
 
   getProductsByCategory(categoryId: string): void {
+    this.noProducts = false;
     this.ProductService.getProductsByCategory(categoryId).then((res) => {
       
       this.products = res.docs.map(item => ({
@@ -70,6 +76,11 @@ export class ProductViewComponent implements OnInit {
         $key: item.id,
       } as Product));
       console.log(this.products);
+
+      if (this.products.length == 0) {
+        this.noProducts = true;
+      }
+
       this.filters = true;
 
     }).catch(err => console.log(err));
@@ -83,10 +94,16 @@ export class ProductViewComponent implements OnInit {
     console.log(this.products);
     this.products = this.products.filter((item) => item.name.toLowerCase().includes(this.name.toLowerCase()));
     console.log(this.products);
+
+    if (this.products.length == 0) {
+      this.noProducts = true;
+    }
+
     this.loading = false;
   }
 
   getProductsByPrice(): void {
+    this.noProducts = false;
     console.log(this.min);
     console.log(this.max);
     if ((this.min <= this.max) && (this.min >= 0) && (this.max >= 0)) {
@@ -97,6 +114,11 @@ export class ProductViewComponent implements OnInit {
           $key: item.id,
         } as Product));
         console.log(this.products);
+
+        if (this.products.length == 0) {
+          this.noProducts = true;
+        }
+
         this.filters = true;
         this.wrongPrice = false;
       }).catch(err => console.log(err));

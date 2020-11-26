@@ -21,7 +21,7 @@
                 > {{ category.name }}</button>
             </div>
           </div>
-          <div class="dropdown ml-3">
+          <div class="dropdown ml-3 mb-3">
             <button type="button" class="btn filter-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Precio
             </button>
@@ -54,7 +54,11 @@
 
 
 
-
+    <div class="container d-flex flex-column align-items-center justify-content-center my-5 mx-auto" *ngIf="noProducts">
+      <div class="text-center">No se han encontrado productos. Intenta de nuevo!</div>
+      <img class="logo mx-auto" src="assets/imgNavbar/logo.svg">
+      
+    </div>
 
     <div class="container" *ngIf="!loading">
       <ng-container>
