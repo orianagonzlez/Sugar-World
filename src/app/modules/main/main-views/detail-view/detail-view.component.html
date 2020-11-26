@@ -5,7 +5,7 @@
         <img class="product-image" src="{{ product.image }}" alt="Product image" width="fit" height="350px">
         <div class="counter">
           <button (click)="minus()" class="btn btn-color-secondary" id="minus">−</button>
-          <input type="number" class="form-control" formControlName='counter' value="{{this.value}}" id="input">
+          <div class="number">{{this.value}}</div>
           <button (click)="plus()" class="btn btn-color-secondary" id="plus">+</button>
         </div>
         <button style="margin-top: 10px;" type="submit" class="btn btn-color">Agregar a Bolsa</button>

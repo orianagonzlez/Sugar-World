@@ -64,19 +64,21 @@
       text-align: center;
       display: flex;
       flex-direction: row;
+      justify-content: space-between;
       .btn-color-secondary{
         background-color: $color-primary-light;
         color: $color-secondary-dark;
         font-size: $font-xxlg;
         font-weight: 900;
       }
-      input{
+      .number{
         border: none;
-        height: 50px;
+        height: auto;
         color: $color-secondary-dark;
         font-weight: 900;
         font-size: $font-lg;
         text-align: center;
+        align-self: center;
       }
     }
   }
