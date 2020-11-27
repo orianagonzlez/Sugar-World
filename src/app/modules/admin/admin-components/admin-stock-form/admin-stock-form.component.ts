@@ -15,10 +15,9 @@ import { ProductsService } from 'src/app/services/products.service';
 export class AdminStockFormComponent implements OnInit {
 
   productForm: FormGroup = null;
-
+  image: any = null;
   editProduct: Product = null;
   productId: string;
-
   categories: Array<Category> = [];
 
   constructor(
@@ -59,19 +58,22 @@ export class AdminStockFormComponent implements OnInit {
 
   
   createProduct(newProduct: Product): void {
-    this.productService.createProduct(newProduct).then(res => {
-
-    }).catch(err => console.log(err));
+    this.productService.createProduct(newProduct, this.image)
   }
 
   updateProduct(newProduct: Product): void {
-    this.productService.updateProduct(newProduct, this.productId).then(res => {
+    if(this.image==null){
+         this.productService.updateProduct(newProduct, this.productId).then(res => {
       this.router.navigate(['/admin/stock']);
     }).catch(err => console.log(err))
+    }else{
+      this.productService.updateProduct(newProduct, this.productId, this.image).then(res => {
+      this.router.navigate(['/admin/stock']);
+    }).catch(err => console.log(err))
+    }
   }
 
   onSubmit(): void {
-    console.log(this.productForm.get('category').value)
     const newProduct: Product = {
       name: this.productForm.get('name').value,
       category: this.productForm.get('category').value,
@@ -122,7 +124,12 @@ export class AdminStockFormComponent implements OnInit {
           $key: item.payload.doc.id,
         } as Category)
       );
-      console.log(this.categories);
     });
   }
+
+    handleImage(event : any ){
+    this.image = event.target.files[0]; 
+  }
+
+
 }
