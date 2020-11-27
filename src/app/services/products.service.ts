@@ -7,7 +7,7 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class ProductsService {
-
+ 
 
   private productCollection: AngularFirestoreCollection<Product>;
 
@@ -25,7 +25,7 @@ export class ProductsService {
   }
 
 
-
+ 
 
 
   createProduct(newProduct: Product): Promise<any> {

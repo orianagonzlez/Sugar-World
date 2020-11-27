@@ -6,4 +6,5 @@ export interface Bag {
   products: CartProduct[],
   userId: string,
   weight: number,
-}
+  open: boolean,
+} 

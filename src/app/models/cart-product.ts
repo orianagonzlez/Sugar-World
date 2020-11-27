@@ -1,4 +1,4 @@
 export interface CartProduct {
   productId : string,
-  quantify : number,
+  quantity : number,
 }

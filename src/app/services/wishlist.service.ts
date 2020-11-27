@@ -42,7 +42,7 @@ export class WishlistService {
               console.log(res.id);
             });
         } else {
- 
+  
           let newFavorites = [...res.docs[0].get('favorites')];
 
           if (
