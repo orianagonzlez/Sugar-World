@@ -86,6 +86,7 @@ export class AdminStockFormComponent implements OnInit {
     }
 
     this.productForm.reset()
+    this.loadingImage = false;
 
     if (this.editProduct) {
       this.updateProduct(newProduct);
