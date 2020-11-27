@@ -41,5 +41,6 @@ export class AdminMethodFormComponent implements OnInit {
       attachement: this.methodForm.get('attachement').value,
     }
     this.createMethod(newMethod);
+    this.methodForm.reset()
   }
 }

@@ -19,6 +19,7 @@ export class AdminStockFormComponent implements OnInit {
   editProduct: Product = null;
   productId: string;
   categories: Array<Category> = [];
+  loadingImage = false;
 
   constructor(
     private productService: ProductsService,
@@ -84,6 +85,8 @@ export class AdminStockFormComponent implements OnInit {
       isFavorite: false,
     }
 
+    this.productForm.reset()
+
     if (this.editProduct) {
       this.updateProduct(newProduct);
       return;
@@ -129,6 +132,7 @@ export class AdminStockFormComponent implements OnInit {
 
     handleImage(event : any ){
     this.image = event.target.files[0]; 
+    this.loadingImage = !this.loadingImage;
   }
 
 

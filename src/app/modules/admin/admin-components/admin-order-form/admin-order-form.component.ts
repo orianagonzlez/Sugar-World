@@ -39,5 +39,6 @@ export class AdminOrderFormComponent implements OnInit {
       status: this.orderForm.get('status').value,
     }
     this.createOrder(newOrder);
+    this.orderForm.reset();
   }
 }

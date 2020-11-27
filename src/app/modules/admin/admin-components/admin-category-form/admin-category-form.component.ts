@@ -56,6 +56,7 @@ export class AdminCategoryFormComponent implements OnInit {
     const newCategory: Category = {
       name: this.categoryForm.get('name').value,
     }
+    this.categoryForm.reset()
 
     if (this.editCategory) {
       this.updateCategory(newCategory);
