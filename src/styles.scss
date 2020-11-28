@@ -9,7 +9,7 @@
 @import "./styles/layout/sections";
 //Components
 @import "./styles/components/main-components/navbar";
-// @import "./styles/components/main-components/footer";
+@import "./styles/components/main-components/footer";
 @import "./styles/components/admin-components/_admin-navbar.scss";
 // @import "./styles/components/admin-components/_admin-footer.scss";
 
@@ -30,13 +30,13 @@
 
 @import "src/styles/components/_titulo.scss";
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    color: $font-color-black;
-    font-family: $font-family;
+  color: $font-color-black;
+  font-family: $font-family;
 }

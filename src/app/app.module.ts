@@ -13,8 +13,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // 2.- Import Environment Configuration
 import { environment } from '../environments/environment';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [

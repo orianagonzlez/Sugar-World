@@ -1,0 +1,17 @@
+.footer {
+  background-color: $button-primary;
+  color: white;
+  a {
+    color: white;
+  }
+  hr {
+    border: 0.1em solid;
+    border-radius: 300px;
+
+    height: 0px;
+    color: white;
+    width: 50em;
+    margin: auto;
+    margin-bottom: 1em;
+  }
+}

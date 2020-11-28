@@ -15,10 +15,12 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { WishListComponent } from './main-views/wish-list/wish-list.component';
 import { ContactViewComponent } from './main-views/contact-view/contact-view.component';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
+    FooterComponent,
     NavbarComponent,
     HomeViewComponent, 
     LoginViewComponent, 
