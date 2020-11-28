@@ -1,24 +1,24 @@
-.method-view{
-    display: flex;
-    flex-direction: row;
-    margin: $margin-general;
-    justify-content: start;
+.method-view {
+  display: flex;
+  flex-direction: row;
+  margin: $margin-general;
+  justify-content: start;
 
-    .table-responsive{
-        padding: 20px; 
-        max-width: 900px;
-        button{
-            margin: $margin-general;
-        }
+  .table-responsive {
+    padding: 20px;
+    max-width: 850px;
+    button {
+      margin: $margin-general;
     }
-    .admin-methods-create{
-        padding: 20px;
-        color: $font-color-white;
-        background-color: $color-secondary-dark;
-        border-radius: $border-radius-sm;
-    }  
+  }
+  .admin-methods-create {
+    padding: 20px;
+    color: $font-color-white;
+    background-color: $color-secondary-dark;
+    border-radius: $border-radius-sm;
+  }
 
-    #tablaMetodos {
-        color: $color-secondary-dark;
-    }
+  #tablaMetodos {
+    color: $color-secondary-dark;
+  }
 }

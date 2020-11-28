@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 import { AboutUsViewComponent } from './main-views/about-us-view/about-us-view.component';
+import { ContactViewComponent } from './main-views/contact-view/contact-view.component';
 import { DetailViewComponent } from './main-views/detail-view/detail-view.component';
 import { HomeViewComponent } from './main-views/home-view/home-view.component';
 import { LoginViewComponent } from './main-views/login-view/login-view.component';
@@ -40,12 +41,11 @@ const routes: Routes = [
       {
         path: 'wishList',
         component: WishListComponent
-      }
-      //
-      // {
-      //   path: 'contact',
-      //   component: ContactViewComponent
-      // }
+      },
+       {
+        path: 'contact',
+        component: ContactViewComponent
+       }
     ],
     component: MainNavigationComponent
   }

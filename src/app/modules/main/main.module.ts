@@ -14,6 +14,7 @@ import { DetailViewComponent } from './main-views/detail-view/detail-view.compon
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { WishListComponent } from './main-views/wish-list/wish-list.component';
+import { ContactViewComponent } from './main-views/contact-view/contact-view.component';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { WishListComponent } from './main-views/wish-list/wish-list.component';
     DetailViewComponent, 
     ProductCardComponent, 
     ProductListComponent, 
-    WishListComponent, 
+    WishListComponent, ContactViewComponent, 
   ],
   imports: [
     CommonModule,

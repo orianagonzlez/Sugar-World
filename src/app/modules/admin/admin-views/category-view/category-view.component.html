@@ -1,35 +1,35 @@
 <div class="view-container">
-    <div class="titulo mb-4">
-      <h1>Categorías registradas</h1>
-    </div>
-    <div class="category-view d-flex justify-content-around align-items-center flex-wrap">
-      <div class="admin-categories-create">
-        <h3>Registrar Nueva Categoría</h3>
-        <app-admin-category-form></app-admin-category-form>
-      </div>
-      <div class="table-responsive">
-  
-        <table class="table table-striped" id="tablaCategorias">
-          <thead class="table-head">
-            <tr>
-              <th scope="col">Key de la Categoría</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Acciones</th>
-          </thead>
-          <tbody>
-            <tr *ngFor="let category of categories">
-              <th scope="row">{{ category.$key }}</th>
-              <th scope="row">{{ category.name }}</th>
-              <th scope="row" class="d-flex justify-content-around flex-wrap">
-                <button class="btn btn-outline-warning flex-grow-1" [routerLink]="['/admin/edit/category', category.$key]"
-                  routerLinkActive="router-link-active">Editar</button>
-                <button class="btn btn-outline-danger flex-grow-1" (click)="deleteCategory(category.$key)">Eliminar</button>
-  
-              </th>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  
-    </div>
+  <div class="titulo mb-4">
+    <h1>Categorías registradas</h1>
   </div>
+  <div class="category-view d-flex justify-content-around align-items-center flex-wrap">
+    <div class="admin-categories-create">
+      <h5>Registrar Nueva Categoría</h5>
+      <app-admin-category-form></app-admin-category-form>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped" id="tablaCategorias">
+        <thead class="table-head">
+          <tr>
+            <th scope="col">Key de la Categoría</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Acciones</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categories">
+            <th scope="row">{{ category.$key }}</th>
+            <th scope="row">{{ category.name }}</th>
+            <th scope="row" class="d-flex justify-content-around flex-wrap">
+              <button class="btn btn-outline-warning flex-grow-1" [routerLink]="['/admin/edit/category', category.$key]"
+                routerLinkActive="router-link-active">Editar</button>
+              <button class="btn btn-outline-danger flex-grow-1"
+                (click)="deleteCategory(category.$key)">Eliminar</button>
+
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

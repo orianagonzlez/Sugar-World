@@ -1,26 +1,24 @@
-.stock-view{
-    display: flex;
-    flex-direction: row;
-    margin: $margin-general;
-    justify-content: start;
-    
-    .table-responsive{
-        padding: 20px; 
-        max-width: 900px;
-        button{
-            margin: $margin-general;
-        }
-    }
-    .admin-products-create{
-        padding: 20px;
-        color: $font-color-white;
-        background-color: $color-secondary-dark;
-        border-radius: $border-radius-sm;
-    } 
-    
-    #tablaProductos {
-        color: $color-secondary-dark;
-    }
-}
-    
+.stock-view {
+  display: flex;
+  flex-direction: row;
+  margin: $margin-general;
+  justify-content: start;
 
+  .table-responsive {
+    padding: 20px;
+    max-width: 900px;
+    button {
+      margin: $margin-general;
+    }
+  }
+  .admin-products-create {
+    padding: 20px;
+    color: $font-color-white;
+    background-color: $color-secondary-dark;
+    border-radius: $border-radius-sm;
+  }
+
+  #tablaProductos {
+    color: $color-secondary-dark;
+  }
+}
