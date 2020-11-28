@@ -40,11 +40,15 @@ export class ShoppingCartViewComponent implements OnInit {
                     };
 
                     console.log(currentBag);
+                    
+                    console.log(this.bags);
                     this.bags.forEach((item) => {
                       if (item.key == currentBag.key) {
                         console.log('soy igual');
                         item = currentBag;
                         this.modificada = true;
+                        console.log(this.bags);
+                                          
                       }
                     });
 

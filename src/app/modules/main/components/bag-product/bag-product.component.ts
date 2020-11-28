@@ -71,14 +71,13 @@ export class BagProductComponent implements OnInit {
   }
 
   deleteProduct() {
-    if (this.bag.products.length > 1) {
-      this.bag.products = this.bag.products.filter((product) => product.productId != this.cartProduct.productId);
-      this.bag.items--;
-      this.bag.weight -= this.cartProduct.quantity;
-      this.bagService.updateBag(this.bag.key, this.bag);
-    } else {
+    this.bag.products = this.bag.products.filter((product) => product.productId != this.cartProduct.productId);
+    this.bag.items--;
+    this.bag.weight -= this.cartProduct.quantity;
+    this.bagService.updateBag(this.bag.key, this.bag);
+    if (this.bag.products.length == 0) {
       console.log('borrando sos ' + this.bag.key);
-      this.bagService.deleteBag(this.bag.key).then((res) => {}).catch(err => console.log(err));
+      this.bagService.deleteBag(this.bag.key).then((res) => {console.log('borre')}).catch(err => console.log(err));
     }
     
   }

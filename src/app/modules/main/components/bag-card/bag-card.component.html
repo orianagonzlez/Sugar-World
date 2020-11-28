@@ -1,7 +1,7 @@
-<div class="card my-3" *ngIf="!borrada">
+<div class="card my-3" *ngIf="!borrada ">
     <div class="card-body">
         <div class="d-flex justify-content-between"> 
-            <h5 class="card-title">Bolsa de ${{ bag.price }}</h5>
+            <h5 class="card-title">Bolsa de ${{ bag.price }}/50g</h5>
             <h5>Items Agregados ({{ bag.items }})</h5>
         </div>
         
@@ -11,8 +11,11 @@
             </ng-container>      
         </div>
 
-        <div class="d-flex justify-content-end eliminar mt-3 w-100">
-            <button class="btn" (click)="deleteBag()"><img src="assets/imagenes/eliminar.png"></button>
+        
+        <div class="d-flex flex-column align-items-end justify-content-center eliminar mt-3 w-100">
+            <div>Peso Total: {{ bag.weight }}g</div>
+            <div>Precio Total: </div>
+            <button class="btn mt-3" (click)="deleteBag()"><img src="assets/imagenes/eliminar.png"></button>
         </div>    
     </div>
   </div>

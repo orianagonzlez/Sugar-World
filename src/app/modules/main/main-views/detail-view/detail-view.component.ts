@@ -68,7 +68,7 @@ export class DetailViewComponent implements OnInit {
 
   addToBag():void {
     this.intenteAgregar = true;
-    console.log('estoy iniciando pero no se por que');
+    console.log('puede que cree bolsas que no deberia');
     this.authService.getCurrentUser().subscribe((user) => {
       this.user = user;
       if (user && this.value > 0) {
@@ -154,10 +154,6 @@ export class DetailViewComponent implements OnInit {
         }
       });    
   }
-
-
-
-
   
 }
 
