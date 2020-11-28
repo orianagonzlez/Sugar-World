@@ -10,6 +10,8 @@
         </div>
         <button (click)="addToBag()" style="margin-top: 10px;" type="submit" class="btn btn-color">Agregar a
           Bolsa</button>
+        <div *ngIf="agregado && intenteAgregar">Producto agregado exitosamente!</div>
+        <div *ngIf="!agregado && intenteAgregar">No se pudo agregar :(. No hay suficiente, bolsa se excede de 2kg o cantidad es 0 </div>
       </div>
       <div class="col-lg-8 col-sm-12" style="display: flex; flex-direction: column;">
         <div class="product-name">{{product.name}}</div>

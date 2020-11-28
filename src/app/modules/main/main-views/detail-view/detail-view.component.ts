@@ -23,6 +23,7 @@ export class DetailViewComponent implements OnInit {
   products: Array<Product> = [];
   value: number = 0;
   user: User;
+  intenteAgregar = false;
   agregado = true;
 
 
@@ -66,6 +67,7 @@ export class DetailViewComponent implements OnInit {
   }
 
   addToBag():void {
+    this.intenteAgregar = true;
     console.log('estoy iniciando pero no se por que');
     this.authService.getCurrentUser().subscribe((user) => {
       this.user = user;
@@ -82,7 +84,9 @@ export class DetailViewComponent implements OnInit {
                 userId: this.user.uid,
                 weight: this.value,
                 open: true,
+                items: 1,
               }
+              console.log('estoy creando bolsa por alguna razon');
               console.log(bag);
               this.BagService.createBag(bag).then((res) => {
                 console.log(res.id);
@@ -97,20 +101,30 @@ export class DetailViewComponent implements OnInit {
                   if(item.productId == this.product.$key) {
                     pertenece = true;
                     if (item.quantity + this.value <= parseInt(this.product.quantity)) {
-                      item.quantity += this.value; 
-                      bagWeight += this.value;
+                      if ( bagWeight + this.value <= 2000) {
+                        item.quantity += this.value; 
+                        bagWeight += this.value;
+                      } else {
+                        this.agregado = false;
+                        console.log('se excede de la bolsa 2kg');
+                      }
+                      
                     } else {
                       this.agregado = false;
-                      console.log('se excede');
+                      console.log('no hay tanto');
                     }
                   }
                 });
 
                 if (!pertenece) {
-                  currentProducts.push(cartProduct);
-                  bagWeight += this.value;
-    
-
+                  if (bagWeight + this.value <= 2000) {
+                    currentProducts.push(cartProduct);
+                    bagWeight += this.value;
+                  } else {
+                    this.agregado = false;
+                    console.log('se excede la bolsa de 2kg');
+                  }
+                  
                 }
 
                 if (this.agregado) {
@@ -120,6 +134,7 @@ export class DetailViewComponent implements OnInit {
                     userId: res.docs[0].get('userId'),
                     weight: bagWeight,
                     open: res.docs[0].get('open'),
+                    items: currentProducts.length,
                   }
     
                   console.log(bag);

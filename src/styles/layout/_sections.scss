@@ -12,3 +12,25 @@
     color: white;
     background-color: #b8119c;
 }
+
+.counter{
+    margin: $margin-general;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .btn-color-secondary{
+      background-color: $color-primary-light;
+      color: $color-secondary-dark;
+      font-size: $font-xxlg;
+      font-weight: 900;
+    }
+    input{
+      border: none;
+      height: 50px;
+      color: $color-secondary-dark;
+      font-weight: 900;
+      font-size: $font-lg;
+      text-align: center;
+    }
+  }

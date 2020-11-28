@@ -7,4 +7,5 @@ export interface Bag {
   userId: string,
   weight: number,
   open: boolean,
+  items: number,
 } 

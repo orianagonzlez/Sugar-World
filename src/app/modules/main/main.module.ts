@@ -13,6 +13,10 @@ import { DetailViewComponent } from './main-views/detail-view/detail-view.compon
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { WishListComponent } from './main-views/wish-list/wish-list.component';
+import { BagCardComponent } from './components/bag-card/bag-card.component';
+import { CurrentBagViewComponent } from './main-views/current-bag-view/current-bag-view.component';
+import { BagProductComponent } from './components/bag-product/bag-product.component';
+import { ShoppingCartViewComponent } from './main-views/shopping-cart-view/shopping-cart-view.component';
 
 
 @NgModule({
@@ -20,7 +24,7 @@ import { WishListComponent } from './main-views/wish-list/wish-list.component';
     NavbarComponent,
     HomeViewComponent, 
     LoginViewComponent, 
-    MainNavigationComponent, RegisterViewComponent, ProductViewComponent, DetailViewComponent, ProductCardComponent, ProductListComponent, WishListComponent, 
+    MainNavigationComponent, RegisterViewComponent, ProductViewComponent, DetailViewComponent, ProductCardComponent, ProductListComponent, WishListComponent, BagCardComponent, CurrentBagViewComponent, BagProductComponent, ShoppingCartViewComponent, 
   ],
   imports: [
     CommonModule,

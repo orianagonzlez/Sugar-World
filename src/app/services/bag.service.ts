@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentSnapshot, Action } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
+import { Observable } from 'rxjs';
 import { Bag } from '../models/bag';
 import { CartProduct } from '../models/cart-product';
 
@@ -15,6 +16,11 @@ export class BagService {
   constructor(private db: AngularFirestore) {
      this.bagCollection = this.db.collection<Bag>('bags')
    }
+
+   getBag(bagId: string): Observable<Action<DocumentSnapshot<Bag>>> {
+    console.log(bagId);
+    return this.bagCollection.doc<Bag>(bagId).snapshotChanges();
+  }
 
    getUserBags(userId: string): Promise<firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>> {
      return this.bagCollection.ref.where('userId', '==', userId).where('open', '==', false).get();
@@ -35,12 +41,5 @@ export class BagService {
    deleteBag(docId: string): Promise<void> {
     return this.bagCollection.doc<Bag>(docId).delete();
   }
-
-
-   addToOpenBag(product: CartProduct):Promise<any>{
-      return this.bagCollection.doc(this.openBag).update({
-        products: firebase.firestore.FieldValue.arrayUnion(product)
-      })
-   }
   
 }

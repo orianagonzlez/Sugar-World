@@ -1,0 +1,11 @@
+<div class="view-container"> 
+    <h4 class="text-center m-3">BOLSA ACTUAL </h4>
+    <div class="container" *ngIf="!loading">
+        <div class="container text-center" *ngIf="!bolsaAbierta || borrada">No tienes una bolsa abierta. Agrega un productos a la bolsa y se te creará automáticamente una bolsa de ese precio!</div>
+        <app-bag-card [bag]="currentBag" *ngIf="bolsaAbierta && !borrada"></app-bag-card>
+    </div>
+    <div class="container d-flex justify-content-end" *ngIf="!loading && bolsaAbierta && !borrada">
+        <button class="btn button-primary mt-3" (click)="addToCart()">Añadir al carrito</button>
+    </div>
+    
+</div>
