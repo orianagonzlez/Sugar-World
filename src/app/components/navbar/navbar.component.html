@@ -38,7 +38,7 @@
                     <a class="dropdown-item disabled" 
                     *ngIf="(user | async) as user">{{ user.displayName || user.email }}</a>
                     <a class="dropdown-item" 
-                    routerLink="/"
+                    routerLink="/home/profile"
                     *ngIf="user | async">Ver perfil</a>
                     <a class="dropdown-item" 
                     routerLink="/"

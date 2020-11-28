@@ -21,24 +21,23 @@ export class RegisterViewComponent implements OnInit {
     });
   }
 
-  onSubmit(): void{
-
+  onSubmit(): void {
     this.authService.singUpWithCredentials(this.registerForm.get('email').value,
-    this.registerForm.get('password').value).then(() => {
+      this.registerForm.get('password').value).then(() => {
         this.router.navigate(['/home']);
       })
       .catch((err) => {
-        window.alert("Datos invalidos: "+err)
-        console.log('error!', err)});
+        window.alert("Datos invalidos: " + err)
+        console.log('error!', err)
+      });
   }
 
-    loginWithGoogle(){
+  loginWithGoogle() {
     this.authService.loginWithGoogle().then(response => {
       this.router.navigate(['/'])
     }).catch((err) => {
-      window.alert("Daros invalidos: "+ err)
-      console.log(err)});
-    
+      window.alert("Daros invalidos: " + err)
+      console.log(err)
+    });
   }
-
 }

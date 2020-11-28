@@ -14,6 +14,8 @@ import { DetailViewComponent } from './main-views/detail-view/detail-view.compon
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { WishListComponent } from './main-views/wish-list/wish-list.component';
+import { ProfileViewComponent } from './main-views/profile-view/profile-view.component';
+import { ProfileFormComponent } from './components/profile-form/profile-form.component';
 
 
 @NgModule({
@@ -28,7 +30,7 @@ import { WishListComponent } from './main-views/wish-list/wish-list.component';
     DetailViewComponent, 
     ProductCardComponent, 
     ProductListComponent, 
-    WishListComponent, 
+    WishListComponent, ProfileViewComponent, ProfileFormComponent, 
   ],
   imports: [
     CommonModule,
