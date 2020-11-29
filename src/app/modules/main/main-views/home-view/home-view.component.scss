@@ -1,0 +1,12 @@
+.home-info {
+  text-align: justify;
+  .info-img {
+    min-height: 30rem;
+    background-size: cover;
+  }
+  @media (min-width: 768px) {
+    .info-text {
+      padding: 7rem;
+    }
+  }
+}
