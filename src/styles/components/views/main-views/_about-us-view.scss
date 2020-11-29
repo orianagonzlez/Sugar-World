@@ -1,0 +1,65 @@
+.about-us-container {
+
+    .jumbotron {
+        background-image: url(../../../../assets/imgAboutUs/fondoAboutUs.jpg);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        height: 50vh;
+
+        @include lg-device-max() {
+            height: 40vh;
+        }
+        @include sm-device-max() {
+            height: 40vh;
+            background-size: 100%;
+        }
+
+        @include xm-device-max() {
+            padding: 3rem 1.5rem;
+            height: 35vh;
+            background-size: 100% 100%;
+        }
+
+        @include big-phone-max() {
+            background-size: auto 100%;
+        }
+        
+    }
+
+    .titulo {
+        color: $font-color-black;
+        background-color: #c4c4c4c2;
+
+        h1 {
+            font-weight: 350;
+            @include sm-device-max() {
+              font-size: 2.5rem;   
+            }
+
+            @include big-phone-max() {
+                font-size: 1.5rem; 
+            }
+           
+        }
+
+        p {
+            @include sm-device-max() {
+                font-size: 1.15rem;
+            }
+
+            @include big-phone-max() {
+                font-size: 0.8rem; 
+            } 
+        }
+        
+        
+    }
+    
+    h5 {
+        color: $color-warning;
+
+    }
+    img {
+        border-radius: 5px;
+    }
+}

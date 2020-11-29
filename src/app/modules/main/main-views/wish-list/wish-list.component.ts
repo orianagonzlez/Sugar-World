@@ -14,9 +14,9 @@ import { WishlistService } from 'src/app/services/wishlist.service';
 export class WishListComponent implements OnInit {
   user: User;
   products: Array<Product> = [];
-  productsId: Array<string>;
-  myproduct: Product;
-  
+  allProducts: Array<Product> = [];
+  loading = false;
+   
 
   constructor( 
     private ProductService: ProductsService,   
@@ -24,42 +24,43 @@ export class WishListComponent implements OnInit {
     private authService: AuthService,) { }
 
   ngOnInit(): void {
-   // this.getMyFavorites()
+    this.getAllProducts();
       
   }
 
-  /*getMyFavorites():void {
+  getAllProducts(): void {
+    this.loading = true;
+    this.ProductService.getAllProducts().subscribe((items) => {
+      this.allProducts = items.map (
+        (item) => 
+        ({
+          ...item.payload.doc.data(),
+          $key: item.payload.doc.id,
+        } as Product)
+      );
+      console.log(this.allProducts);
+      this.loading = false;
+      this.getMyFavorites();
+    console.log(this.products.length +"SOS ")
+  });
+}
+
+  getMyFavorites():void {
     this.authService.getCurrentUser().subscribe((user) => {
       if (user) {
         this.user = user;
+        
         this. wishListService.getWishList(user.uid).then((res) => {
+          if (res.docs.length > 0) {
           const userWishList = res.docs[0].get('favorites') as Array<string>;
 
-            Promise.all(
-            userWishList.map((item) =>{
-             // this.getProductById(item)
-            })
-          ).then((res) => {
-            //const allProducts = res.map((item) => item.data[0]);
-            console.log(res+ ' A YUDA')
-          });
+          this.products = this.allProducts.filter((item) => userWishList.includes(item.$key));
+          }
+
         });
       }
+    
     });
   }
-
-
   
-  getProductById(productId: string) {
-    this.ProductService.getProduct(productId).subscribe((item) => {
-      this.myproduct = {
-        $key: item.payload.id,
-        ...item.payload.data(),
-      };
-    });
-  }*/
-
-
-
-
   }

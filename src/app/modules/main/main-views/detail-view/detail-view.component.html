@@ -5,7 +5,7 @@
         <img class="product-image" src="{{ product.image }}" alt="Product image" width="fit" height="350px">
         <div class="counter">
           <button (click)="minus()" class="btn btn-color-secondary" id="minus">−</button>
-          <input type="number" class="form-control" value="{{this.value}}" id="input">
+          <div class="number">{{this.value}}</div>
           <button (click)="plus()" class="btn btn-color-secondary" id="plus">+</button>
         </div>
         <button (click)="addToBag()" style="margin-top: 10px;" type="submit" class="btn btn-color">Agregar a
@@ -14,14 +14,14 @@
         <div *ngIf="!agregado && intenteAgregar">No se pudo agregar :(. No hay suficiente, bolsa se excede de 2kg o cantidad es 0 </div>
       </div>
       <div class="col-lg-8 col-sm-12" style="display: flex; flex-direction: column;">
-        <div class="product-name">{{product.name}}</div>
-        <div class="product-price">Precio: ${{product.price}}</div>
+        <div class="product-name my-3">{{product.name}}</div>
+        <div class="product-price">Precio/50g: ${{product.price}}</div>
         <div class="product-category">Categoria: {{product.category}}</div>
-        <div class="product-description">{{product.description}}</div>
+        <div class="product-description my-3">{{product.description}}</div>
       </div>
     </div>
   </div>
-  <button type="button" routerLink="/home/product" class="btn btn-link">Return</button>
+  <button type="button" routerLink="/home/product" class="btn return my-3">&#60; Return</button>
 </div>
 <div class="container-fluid" *ngIf="loading" style="margin-top: 75px;">
   <div class="row justify-content-center line">

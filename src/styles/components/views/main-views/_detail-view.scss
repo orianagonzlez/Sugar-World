@@ -25,12 +25,12 @@
       font-weight: 800;
     }
     .product-price{
-      color: $color-primary;
+      color: $button-primary-light;
       font-size: $font-xlg;
       font-weight: 700;
     }
     .product-category{
-      color: $color-primary-dark;
+      color: $button-secondary;
       font-size: $font-lg;
       font-weight: 600;
     }
@@ -49,6 +49,17 @@
       color: $color-white;
       background-color: $color-secondary-dark;
     }
+    
+    .btn-color:hover{
+      border-color: $color-white;
+      color: $color-white;
+      background-color: $color-secondary-dark;
+    }
+    .return {
+      text-decoration: none;
+      color: $color-secondary-dark; 
+    }
+    
     
   }
 

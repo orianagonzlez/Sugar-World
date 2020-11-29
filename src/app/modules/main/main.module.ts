@@ -8,6 +8,7 @@ import { MainNavigationComponent } from './main-navigation/main-navigation.compo
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterViewComponent } from './main-views/register-view/register-view.component';
+import { AboutUsViewComponent } from './main-views/about-us-view/about-us-view.component';
 import { ProductViewComponent } from './main-views/product-view/product-view.component';
 import { DetailViewComponent } from './main-views/detail-view/detail-view.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
@@ -19,12 +20,24 @@ import { BagProductComponent } from './components/bag-product/bag-product.compon
 import { ShoppingCartViewComponent } from './main-views/shopping-cart-view/shopping-cart-view.component';
 
 
+
 @NgModule({
   declarations: [
     NavbarComponent,
     HomeViewComponent, 
-    LoginViewComponent, 
-    MainNavigationComponent, RegisterViewComponent, ProductViewComponent, DetailViewComponent, ProductCardComponent, ProductListComponent, WishListComponent, BagCardComponent, CurrentBagViewComponent, BagProductComponent, ShoppingCartViewComponent, 
+    LoginViewComponent,  
+    MainNavigationComponent, 
+    RegisterViewComponent, 
+    AboutUsViewComponent,
+    ProductViewComponent, 
+    DetailViewComponent, 
+    ProductCardComponent, 
+    ProductListComponent, 
+    WishListComponent,
+    BagCardComponent, 
+    CurrentBagViewComponent, 
+    BagProductComponent, 
+    ShoppingCartViewComponent,  
   ],
   imports: [
     CommonModule,

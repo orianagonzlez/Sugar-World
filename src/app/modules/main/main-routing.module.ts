@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
+import { AboutUsViewComponent } from './main-views/about-us-view/about-us-view.component';
 import { CurrentBagViewComponent } from './main-views/current-bag-view/current-bag-view.component';
 import { DetailViewComponent } from './main-views/detail-view/detail-view.component';
 import { HomeViewComponent } from './main-views/home-view/home-view.component';
@@ -26,6 +26,10 @@ const routes: Routes = [
       {
         path: 'register',
         component: RegisterViewComponent
+      },
+      {
+        path: 'about-us', 
+        component: AboutUsViewComponent
       },
       {
         path: 'product',

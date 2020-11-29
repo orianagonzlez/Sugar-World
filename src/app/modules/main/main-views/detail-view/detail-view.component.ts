@@ -7,6 +7,7 @@ import { CartProduct } from 'src/app/models/cart-product';
 import { Product } from 'src/app/models/product';
 import { AuthService } from 'src/app/services/auth.service';
 import { BagService } from 'src/app/services/bag.service';
+import { CategoryService } from 'src/app/services/category.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -27,12 +28,11 @@ export class DetailViewComponent implements OnInit {
   agregado = true;
 
 
-  constructor(private ProductService: ProductsService, private router: Router, private route: ActivatedRoute, private BagService: BagService, private authService: AuthService) {}
+  constructor(private ProductService: ProductsService, private router: Router, private route: ActivatedRoute, private BagService: BagService, private authService: AuthService, private categoryService: CategoryService) {}
 
   ngOnInit(): void {
     this.getUrlParams();
     this.getProductById();
-
   }
 
   getUrlParams(): void {
@@ -50,6 +50,7 @@ export class DetailViewComponent implements OnInit {
         $key: item.payload.id,
         ...item.payload.data(),
       };
+      this.getCategory();
       this.loading = false;
     });
   }
@@ -155,6 +156,18 @@ export class DetailViewComponent implements OnInit {
       });    
   }
   
+  getCategory(): void {
+    this.loading = true;
+    this.categoryService.getCategory(this.product.category).subscribe((item) => {
+      let category = {
+        $key: item.payload.id,
+        ...item.payload.data(),
+      };
+      this.product.category = category.name;
+      this.loading = false;
+    });
+    
+  }
 }
 
 

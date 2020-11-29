@@ -15,7 +15,7 @@ export class BagProductComponent implements OnInit {
   @Input() cartProduct: CartProduct;
   currentProduct: Product;
   loading = true;
-  value: number;
+  value: number = 0;
 
   constructor(private productsService: ProductsService, private bagService: BagService) { }
 

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'firebase';
 import { Product } from 'src/app/models/product';
 import { AuthService } from 'src/app/services/auth.service';
+import { CategoryService } from 'src/app/services/category.service';
 import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
@@ -12,14 +13,29 @@ import { WishlistService } from 'src/app/services/wishlist.service';
 export class ProductCardComponent implements OnInit {
   @Input() product: Product;
   user: User = null;
+  loading = false;
 
-  constructor(    private wishListService: WishlistService,
+  constructor(private categoryService: CategoryService, private wishListService: WishlistService,
     private authService: AuthService) { }
 
   ngOnInit(): void {
-     this.cargarFavoritos();
+    this.getCategory();
+    this.cargarFavoritos();
   }
 
+
+  getCategory(): void {
+      this.loading = true;
+      this.categoryService.getCategory(this.product.category).subscribe((item) => {
+        let category = {
+          $key: item.payload.id,
+          ...item.payload.data(),
+        };
+        this.product.category = category.name;
+        this.loading = false;
+      });
+    
+  }
 
    cargarFavoritos(): void {
     this.authService.getCurrentUser().subscribe((user) => {

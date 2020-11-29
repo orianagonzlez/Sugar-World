@@ -2,7 +2,21 @@
     background-color: $color-primary;
     color: #ffffff;
   }
-  .card-img-top {
+
+.categoria {
+  color: $color-primary;
+}
+
+.input-group {
+  @include sm-device-min() {
+    width: 50%;
+  }
+
+  @include xm-device-max() {
+    width: 75%;
+  }
+}
+.card-img-top {
     object-fit: cover;
   }
   
@@ -17,6 +31,28 @@
   
   .card {
     transition: -webkit-transform 0.3s ease;
+
+    h4 {
+      color: $color-secondary-dark;
+    }
+
+    h5 {
+      color: $color-secondary;
+    }
+
+    .precio {
+      color: $button-primary-light;
+    }
+    .btn-color-selected{
+      border-color: $color-primary;
+      color: $color-primary;
+      background-color: $color-white;
+    }
+    .btn-color-selected:hover{
+      border-color: $color-primary;
+      color: $color-white;
+      background-color: $color-primary;
+    }
   }
   .card:hover {
     transform: scale(1.01, 1.01);

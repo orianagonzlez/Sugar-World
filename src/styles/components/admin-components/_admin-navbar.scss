@@ -5,6 +5,13 @@ nav{
         background-size: 100% 100%; 
         padding-bottom: 1rem;
         font-size: $font-md;
+
+        @include sm-device-max() {
+            background: url("../../../assets/imgNavbar/fondoNavbar-sm.png");
+            background-size: 100% 100%; 
+            background-repeat: no-repeat;
+            font-size: $font-sm;
+        }
     
         
     }
@@ -13,6 +20,10 @@ nav{
         font-size: 1rem;
         color: $color-black;
         font-weight: 700;
+
+        @include big-phone-max() {
+            font-size: 0.5rem;
+        }
     }
 
     .admin:hover {
@@ -28,10 +39,7 @@ nav{
         transition: all 0.3s ease 0s;
     }
 
-    a{
-        text-decoration: none;
-        color: $color-white;
-    }
+    
 
     .dropdown-divider {
         border-top: 1px solid $color-secondary-light;
@@ -39,9 +47,14 @@ nav{
 
     img {
     
-        &.logo{
+        &.logo-admin{
             width: 10rem;
             height: 5rem;
+
+            @include big-phone-max() {
+                width: 8rem;
+                height: 3.5rem;
+            }
         }
     }
 
