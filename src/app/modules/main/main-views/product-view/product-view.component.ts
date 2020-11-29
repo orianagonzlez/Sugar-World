@@ -4,12 +4,14 @@ import { Product } from 'src/app/models/product';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductsService } from 'src/app/services/products.service';
 
+
 @Component({
   selector: 'app-product-view',
   templateUrl: './product-view.component.html',
   styleUrls: ['./product-view.component.scss']
 })
 export class ProductViewComponent implements OnInit {
+
 
   products: Array<Product> = [];
   noProducts = false;

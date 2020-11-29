@@ -16,6 +16,11 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { WishListComponent } from './main-views/wish-list/wish-list.component';
 import { ContactViewComponent } from './main-views/contact-view/contact-view.component';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { BagCardComponent } from './components/bag-card/bag-card.component';
+import { CurrentBagViewComponent } from './main-views/current-bag-view/current-bag-view.component';
+import { BagProductComponent } from './components/bag-product/bag-product.component';
+import { ShoppingCartViewComponent } from './main-views/shopping-cart-view/shopping-cart-view.component';
+
 
 
 @NgModule({
@@ -23,7 +28,7 @@ import { FooterComponent } from 'src/app/components/footer/footer.component';
     FooterComponent,
     NavbarComponent,
     HomeViewComponent, 
-    LoginViewComponent, 
+    LoginViewComponent,  
     MainNavigationComponent, 
     RegisterViewComponent, 
     AboutUsViewComponent,
@@ -31,7 +36,12 @@ import { FooterComponent } from 'src/app/components/footer/footer.component';
     DetailViewComponent, 
     ProductCardComponent, 
     ProductListComponent, 
-    WishListComponent, ContactViewComponent, 
+   ContactViewComponent, 
+    WishListComponent,
+    BagCardComponent, 
+    CurrentBagViewComponent, 
+    BagProductComponent, 
+    ShoppingCartViewComponent,  
   ],
   imports: [
     CommonModule,

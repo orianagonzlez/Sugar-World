@@ -82,5 +82,21 @@
       text-align: center;
       align-self: center;
     }
+    background-color: $color-white;
+  }
+  .btn-color:focus {
+    border-color: $color-white;
+    color: $color-white;
+    background-color: $color-secondary-dark;
+  }
+
+  .btn-color:hover {
+    border-color: $color-white;
+    color: $color-white;
+    background-color: $color-secondary-dark;
+  }
+  .return {
+    text-decoration: none;
+    color: $color-secondary-dark;
   }
 }

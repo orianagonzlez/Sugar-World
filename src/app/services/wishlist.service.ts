@@ -16,11 +16,13 @@ export class WishlistService {
 
   getWishList(
     userId: string
-  ): Promise<
+): Promise<
     firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>
   > {
     return this.favoritesCollection.ref.where('userId', '==', userId).get();
   }
+
+
 
 
 
@@ -40,7 +42,7 @@ export class WishlistService {
               console.log(res.id);
             });
         } else {
- 
+  
           let newFavorites = [...res.docs[0].get('favorites')];
 
           if (

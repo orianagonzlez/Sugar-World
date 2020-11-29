@@ -11,7 +11,7 @@ import { Image } from '../models/image';
   providedIn: 'root'
 })
 export class ProductsService {
-
+ 
 
   private productCollection: AngularFirestoreCollection<Product>;
   private filePath: any;
@@ -43,6 +43,7 @@ export class ProductsService {
   } */
 
   /*createProduct(newProduct: Product): Promise<any> {
+  createProduct(newProduct: Product): Promise<any> {
     return this.productCollection.add(newProduct);
   }*/
 

@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 import { AboutUsViewComponent } from './main-views/about-us-view/about-us-view.component';
 import { ContactViewComponent } from './main-views/contact-view/contact-view.component';
+import { CurrentBagViewComponent } from './main-views/current-bag-view/current-bag-view.component';
 import { DetailViewComponent } from './main-views/detail-view/detail-view.component';
 import { HomeViewComponent } from './main-views/home-view/home-view.component';
 import { LoginViewComponent } from './main-views/login-view/login-view.component';
 import { ProductViewComponent } from './main-views/product-view/product-view.component';
 import { RegisterViewComponent } from './main-views/register-view/register-view.component';
+import { ShoppingCartViewComponent } from './main-views/shopping-cart-view/shopping-cart-view.component';
 import { WishListComponent } from './main-views/wish-list/wish-list.component';
 
 const routes: Routes = [
@@ -45,7 +47,20 @@ const routes: Routes = [
        {
         path: 'contact',
         component: ContactViewComponent
-       }
+       },
+      {
+        path: 'currentBag', 
+        component: CurrentBagViewComponent
+      },
+      {
+        path: 'shoppingCart',
+        component: ShoppingCartViewComponent
+      },
+      //
+      // {
+      //   path: 'contact',
+      //   component: ContactViewComponent
+      // }
     ],
     component: MainNavigationComponent
   }

@@ -13,6 +13,30 @@
     background-color: lighten($color: $button-primary, $amount: 5);
 }
 
+.counter{
+    margin: $margin-general;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .btn-color-secondary{
+      background-color: $color-primary-light;
+      color: $color-secondary-dark;
+      font-size: $font-xxlg;
+      font-weight: 900;
+    }
+    .number{
+      border: none;
+      height: auto;
+      color: $color-secondary-dark;
+      font-weight: 900;
+      font-size: $font-lg;
+      text-align: center;
+      align-self: center;
+    }
+  }
+    
+
 .filter-button {
     color: white;
     background-color: $color-primary;
