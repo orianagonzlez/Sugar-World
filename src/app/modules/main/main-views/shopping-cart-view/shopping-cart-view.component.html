@@ -1,13 +1,14 @@
 <div class="view-container">
-    <h4 class="text-center m-3">CARRO DE COMPRAS </h4>
-    <div class="container" *ngIf="!loading">
-        <div class="container text-center" *ngIf="!hayBolsas">No se ha agregado ninguna bolsa :(. Agrega un producto a la bolsa y se te creará automáticamente una bolsa de ese precio. Luego añadela al carrito!</div>
-        <ng-container *ngFor="let bag of bags">
-            <app-bag-card [bag]="bag" *ngIf="hayBolsas && (bag.items != 0)"></app-bag-card>
-        </ng-container>
-        
-    </div>
-    <div class="container d-flex justify-content-end" *ngIf="!loading && hayBolsas">
-        <button class="btn button-primary mt-3" [routerLink]="['/home']" routerLinkActive="router-link-active">PROCEDER</button>
-    </div>
+  <h4 class="text-center m-3">CARRO DE COMPRAS </h4>
+  <div class="container" *ngIf="!loading">
+    <div class="container text-center" *ngIf="!hayBolsas">No se ha agregado ninguna bolsa :(. Agrega un producto a la
+      bolsa y se te creará automáticamente una bolsa de ese precio. Luego añadela al carrito!</div>
+    <ng-container *ngFor="let bag of bags">
+      <app-bag-card [bag]="bag" *ngIf="hayBolsas && (bag.items != 0)"></app-bag-card>
+    </ng-container>
+  </div>
+  <div class="container d-flex justify-content-end" *ngIf="!loading && hayBolsas">
+    <button class="btn button-primary mt-3" [routerLink]="['/home']"
+      routerLinkActive="router-link-active">PROCEDER</button>
+  </div>
 </div>
