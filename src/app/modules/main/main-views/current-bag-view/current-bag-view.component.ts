@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'firebase';
+import { Observable } from 'rxjs';
 import { Bag } from 'src/app/models/bag';
 import { AuthService } from 'src/app/services/auth.service';
 import { BagService } from 'src/app/services/bag.service';
@@ -15,6 +16,7 @@ export class CurrentBagViewComponent implements OnInit {
   bolsaAbierta = true;
   loading = true;
   borrada = false;
+  authSubscription = null;
 
   constructor(private authService: AuthService, private bagService: BagService) { }
 
@@ -23,7 +25,7 @@ export class CurrentBagViewComponent implements OnInit {
   }
 
   getCurrentBag(): void {
-    this.authService.getCurrentUser().subscribe((user) => {
+    this.authSubscription = this.authService.getCurrentUser().subscribe((user) => {
       this.user = user;
       if (user) {
         this.bagService.getCurrentBag(this.user.uid).then((res) => {
@@ -53,5 +55,9 @@ export class CurrentBagViewComponent implements OnInit {
     this.currentBag.open = false;
     this.bagService.updateBag(this.currentBag.key, this.currentBag).catch(err => console.log(err));
     this.bolsaAbierta = false;
+  }
+
+  ngOnDestroy() {
+    this.authSubscription.unsubscribe();
   }
 }

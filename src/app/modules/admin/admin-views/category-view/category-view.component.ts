@@ -27,7 +27,6 @@ export class CategoryViewComponent implements OnInit {
           $key: item.payload.doc.id,
         } as Category)
       );
-      console.log(this.categories);
     });
   }
 
