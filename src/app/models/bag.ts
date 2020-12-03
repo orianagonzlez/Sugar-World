@@ -8,4 +8,5 @@ export interface Bag {
   weight: number,
   open: boolean,
   items: number,
+  isInCart: boolean,
 } 

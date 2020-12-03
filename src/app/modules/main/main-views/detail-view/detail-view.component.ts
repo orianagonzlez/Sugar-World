@@ -87,6 +87,7 @@ export class DetailViewComponent implements OnInit {
                 weight: this.value,
                 open: true,
                 items: 1,
+                isInCart: false,
               }
               console.log('estoy creando bolsa por alguna razon');
               console.log(bag);
@@ -137,6 +138,7 @@ export class DetailViewComponent implements OnInit {
                     weight: bagWeight,
                     open: res.docs[0].get('open'),
                     items: currentProducts.length,
+                    isInCart: false,
                   }
     
                   console.log(bag);

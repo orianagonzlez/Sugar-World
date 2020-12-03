@@ -12,7 +12,7 @@ import { BagService } from 'src/app/services/bag.service';
 export class ShoppingCartViewComponent implements OnInit {
   bags: Array<Bag> = [];
   user: User;
-  hayBolsas = true;
+  hayBolsas = false;
   loading = true;
   modificada = false;
 
@@ -28,9 +28,9 @@ export class ShoppingCartViewComponent implements OnInit {
       if (user) {
         this.bagService.getUserBags(this.user.uid).then((res) => {
             if (res.docs.length <= 0) {
-              this.hayBolsas = false;
               this.loading = false;
             } else {
+                this.hayBolsas = true;
                 console.log(res.docs.length);
                 res.docs.forEach((bag) => {
                   this.bagService.getBag(bag.id).subscribe((item) => {
@@ -39,15 +39,10 @@ export class ShoppingCartViewComponent implements OnInit {
                       ...item.payload.data(),
                     };
 
-                    console.log(currentBag);
-                    
-                    console.log(this.bags);
                     this.bags.forEach((item) => {
                       if (item.key == currentBag.key) {
-                        console.log('soy igual');
                         item = currentBag;
                         this.modificada = true;
-                        console.log(this.bags);
                                           
                       }
                     });
@@ -56,14 +51,13 @@ export class ShoppingCartViewComponent implements OnInit {
                       this.bags.push(currentBag);
                     }
                     
-                    if (this.bags.length == 0) {
+                    if (this.bags[0].items == 0) {
                       this.hayBolsas = false;
                     }
                     this.modificada = false;
                   });  
                 });
                 this.loading = false; 
-                console.log(this.bags);
               }
         }).catch(err => console.log(err));    
       }

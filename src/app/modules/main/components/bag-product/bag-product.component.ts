@@ -4,6 +4,7 @@ import { CartProduct } from 'src/app/models/cart-product';
 import { Product } from 'src/app/models/product';
 import { BagService } from 'src/app/services/bag.service';
 import { ProductsService } from 'src/app/services/products.service';
+import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
   selector: 'app-bag-product',
@@ -17,7 +18,7 @@ export class BagProductComponent implements OnInit {
   loading = true;
   value: number = 0;
 
-  constructor(private productsService: ProductsService, private bagService: BagService) { }
+  constructor(private productsService: ProductsService, private bagService: BagService, private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
     this.getProductById();
@@ -31,9 +32,30 @@ export class BagProductComponent implements OnInit {
         ...item.payload.data(),
       };
       console.log(this.currentProduct);
+      this.verificarDisponibilidad();
       this.loading = false;
     });
     
+  }
+
+  verificarDisponibilidad () {
+    if (this.cartProduct.quantity > parseInt(this.currentProduct.quantity) || this.currentProduct.price != this.bag.price) {
+      this.wishlistService.getWishList(this.bag.userId).then((res) => {
+        if (res.docs.length > 0) {
+          let favs = res.docs[0].get('favorites') as Array<string>
+
+          if (!favs.includes(this.cartProduct.productId)) {
+            this.wishlistService.addToWishList(this.bag.userId, this.cartProduct.productId).then((res) => {})
+            .catch(err => console.log(err));
+          }
+        } else {
+            this.wishlistService.addToWishList(this.bag.userId, this.cartProduct.productId).then((res) => {})
+            .catch(err => console.log(err));
+        }
+      }).catch(err => console.log(err));
+
+      this.deleteProduct();
+    }
   }
 
   plus(): void{

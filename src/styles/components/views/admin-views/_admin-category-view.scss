@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     margin: $margin-general;
-    justify-content: start;
+    justify-content: flex-start;
     
     .table-responsive{
         padding: 20px; 

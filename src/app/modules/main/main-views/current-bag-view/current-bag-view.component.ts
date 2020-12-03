@@ -17,6 +17,7 @@ export class CurrentBagViewComponent implements OnInit {
   loading = true;
   borrada = false;
   authSubscription = null;
+  bagSubscription = null;
 
   constructor(private authService: AuthService, private bagService: BagService) { }
 
@@ -33,7 +34,7 @@ export class CurrentBagViewComponent implements OnInit {
               this.bolsaAbierta = false;
               this.loading = false;
             } else {
-                this.bagService.getBag(res.docs[0].id).subscribe((item) => {
+                this.bagSubscription = this.bagService.getBag(res.docs[0].id).subscribe((item) => {
                   console.log(item);
                   this.currentBag = {
                     key: item.payload.id,
@@ -53,11 +54,21 @@ export class CurrentBagViewComponent implements OnInit {
 
   addToCart() {
     this.currentBag.open = false;
-    this.bagService.updateBag(this.currentBag.key, this.currentBag).catch(err => console.log(err));
-    this.bolsaAbierta = false;
+    this.currentBag.isInCart = true;
+    this.bagService.updateBag(this.currentBag.key, this.currentBag).then((res) => {
+      this.bolsaAbierta = false;
+    }).catch(err => console.log(err));
+    
   }
 
   ngOnDestroy() {
-    this.authSubscription.unsubscribe();
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
+    }
+    if (this.bagSubscription) {
+      this.bagSubscription.unsubscribe();
+    }
+    
+    
   }
 }
