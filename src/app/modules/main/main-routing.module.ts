@@ -61,11 +61,6 @@ const routes: Routes = [
         path: 'profile',
         component: ProfileViewComponent
       }
-      //
-      // {
-      //   path: 'contact',
-      //   component: ContactViewComponent
-      // }
     ],
     component: MainNavigationComponent
   }
