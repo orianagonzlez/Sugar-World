@@ -28,6 +28,10 @@ export class ProfileFormComponent implements OnInit {
   allProfiles: Array<Profile> = [];
   profiles: Array<Profile> = [];
 
+  profileKey: string;
+
+  showMyMessage = false;
+
   constructor(private profileService: ProfileService, private authService: AuthService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
@@ -53,19 +57,17 @@ export class ProfileFormComponent implements OnInit {
     });
   }
 
-  createProfile(newProfile: Profile): void {
-    this.profileService.createProfile(newProfile).then(res => {
+  createProfile(newProfile: Profile, userId: string): void {
+    this.profileService.createProfile(newProfile, userId).then(res => {
 
     }).catch(err => console.log(err));
   }
-  //this.profileId da NULL, hace falta darle el valor del key del perfil
-  //
-  updateProfile(newProfile: Profile): void {
-    this.profileService.updateProfile(newProfile, this.profileId).then(res => {
+
+  updateProfile(newProfile: Profile, userId: string): void {
+    this.profileService.updateProfile(newProfile, userId).then(res => {
     }).catch(err => console.log(err))
   }
-  //
-  //
+
 
   onSubmit(): void {
     this.authService.singUpWithCredentials(this.profileForm.get('email').value,
@@ -90,7 +92,7 @@ export class ProfileFormComponent implements OnInit {
           birthmonth: this.profileForm.get('birthmonth').value,
           birthyear: this.profileForm.get('birthyear').value,
         }
-        this.createProfile(newProfile);
+        this.createProfile(newProfile, this.user2.uid);
       }
     });
   }
@@ -110,9 +112,10 @@ export class ProfileFormComponent implements OnInit {
           birthyear: this.profileForm.get('birthyear').value,
         }
         this.addToEditProfile();
-        this.updateProfile(newProfile);
+        this.updateProfile(newProfile, this.user2.uid);
       }
     });
+    this.showMessage();
   }
 
   addToEditProfile(): void {
@@ -171,5 +174,13 @@ export class ProfileFormComponent implements OnInit {
       window.alert("Daros invalidos: " + err)
       console.log(err)
     });
+  }
+
+  showMessage(): void {
+    this.showMyMessage = true
+  }
+
+  hideMessage(): void {
+    this.showMyMessage = false
   }
 }

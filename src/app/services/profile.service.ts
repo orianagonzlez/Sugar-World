@@ -19,15 +19,29 @@ export class ProfileService {
     return this.profileCollection.snapshotChanges();
   }
 
+  getProfileKey(userId: string): Observable<Action<DocumentSnapshot<Profile>>> {
+    console.log(userId)
+    return this.profileCollection.doc<Profile>(userId).snapshotChanges();
+  }
+
   getProfile(userId: string): Promise<firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>> {
     return this.profileCollection.ref.where('userId', '==', userId).get();
   }
 
-  createProfile(newProfile: Profile): Promise<any> {
-    return this.profileCollection.add(newProfile);
+  createProfile(newProfile: Profile, userId: string): Promise<any> {
+    return this.profileCollection.doc(userId).set(newProfile);
   }
+
+  // createProfile(newProfile: Profile): Promise<any> {
+  //   return this.profileCollection.add(newProfile);
+  // }
+
+  // updateProfile(data: Profile, userId: string): Promise<void> {
+  //   return this.profileCollection.doc.where('userId', '==', userId).update(data);
+  // }
 
   updateProfile(data: Profile, docId: string): Promise<void> {
     return this.profileCollection.doc<Profile>(docId).update(data);
   }
+
 }

@@ -1,5 +1,17 @@
 <form class="mb-4" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <div class="row justify-content-center">
+        <div class="col">
+            <div *ngIf="showMyMessage">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Perfil Actualizado!</strong> Su perfil ha sido actualizado exitosamente.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="hideMessage()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
         <div class="col-lg-6 col-md-6">
             <div class="form-group col">
                 <label for="exampleInputName">Nombre</label>
@@ -84,14 +96,14 @@
             <div class="form-group col">
                 <label for="exampleInputName">Correo Registrado: </label>
                 <input dissable type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    formControlName="email" readonly/>
+                    formControlName="email" readonly />
             </div>
         </div>
         <div class="col-lg-6 col-md-6" *ngIf="(user | async) as user">
             <div class="form-group col">
                 <label for="exampleInputName">Clave Registrada: </label>
-                <input dissable type="text" class="form-control" id="exampleInputEmail1"
-                    aria-describedby="emailHelp" formControlName="password" readonly />
+                <input dissable type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    formControlName="password" readonly />
             </div>
         </div>
     </div>
@@ -106,11 +118,16 @@
     </div>
     <div class="row justify-content-center mt-3">
         <div class="col">
-           <button *ngIf="!(user | async) as user" type="submit" class="btn btn-primary mr-5">Submit</button> 
+            <button *ngIf="!(user | async) as user" type="submit" class="btn btn-primary mr-5">Submit</button>
         </div>
         <button *ngIf="!(user | async) as user" class="btn btn-success ml-5" (click)="loginWithGoogle()">
             Iniciar con Google
         </button>
     </div>
 </form>
-<button *ngIf="(user | async) as user" class="btn btn-outline-warning mr-5"(click)="updateOnSubmit()">Editar</button>
+<div class="row justify-content-center">
+    <div class="col-edit">
+        <button *ngIf="(user | async) as user" class="btn btn-outline-warning mr-5"
+            (click)="updateOnSubmit(); showMessage()">Actualizar Datos</button>
+    </div>
+</div>
