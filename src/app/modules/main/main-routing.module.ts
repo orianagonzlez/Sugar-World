@@ -8,6 +8,7 @@ import { DetailViewComponent } from './main-views/detail-view/detail-view.compon
 import { HomeViewComponent } from './main-views/home-view/home-view.component';
 import { LoginViewComponent } from './main-views/login-view/login-view.component';
 import { ProductViewComponent } from './main-views/product-view/product-view.component';
+import { ProfileViewComponent } from './main-views/profile-view/profile-view.component';
 import { RegisterViewComponent } from './main-views/register-view/register-view.component';
 import { ShoppingCartViewComponent } from './main-views/shopping-cart-view/shopping-cart-view.component';
 import { WishListComponent } from './main-views/wish-list/wish-list.component';
@@ -56,6 +57,10 @@ const routes: Routes = [
         path: 'shoppingCart',
         component: ShoppingCartViewComponent
       },
+      {
+        path: 'profile',
+        component: ProfileViewComponent
+      }
       //
       // {
       //   path: 'contact',

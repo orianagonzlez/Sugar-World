@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ProductListComponent implements OnInit {
   private user: User = null;
+  
   @Input() products: Array<Product> = [];
 
   
