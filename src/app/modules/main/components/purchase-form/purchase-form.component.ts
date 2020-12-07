@@ -1,21 +1,25 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from 'firebase';
-import { AuthService } from 'src/app/services/auth.service';
 import { Orden } from 'src/app/models/orden';
 import { OrdenService } from 'src/app/services/orden.service';
 
 @Component({
-  selector: 'app-purchase-view',
-  templateUrl: './purchase-view.component.html',
-  styleUrls: ['./purchase-view.component.scss']
+  selector: 'app-purchase-form',
+  templateUrl: './purchase-form.component.html',
+  styleUrls: ['./purchase-form.component.scss']
 })
-export class PurchaseViewComponent implements OnInit {
-
-  @Input() user: User 
+export class PurchaseFormComponent implements OnInit {
+  
+  @Input() user: User;
   orderForm: FormGroup = null;
-
+  paymentMethod = null;
+  mostrarComprobante = false;
+  loadingImage = false;
+  
+  
   constructor(private ordenService: OrdenService, private fb: FormBuilder) { }
+  
 
   ngOnInit(): void {
     this.createForm();
@@ -41,12 +45,28 @@ export class PurchaseViewComponent implements OnInit {
       payment: this.orderForm.get('payment').value,
       shipping: this.orderForm.get('shipping').value
     }
-    this.createOrder(newOrder);
-    this.orderForm.reset();
+    let valido = false;
+    if (newOrder.payment == null || newOrder.shipping== null){
+      window.alert("Para realizar la orden se requiere que rellene los campos de Metodo de pago y Metodo de entrega")
+    }else{
+      this.createOrder(newOrder);
+      this.orderForm.reset();
+    }
+  }
+
+  comprobante():void{
+    console.log('hola ')
+    if(this.paymentMethod == "Pago en la tienda" || this.paymentMethod==null ){
+      this.mostrarComprobante = false;
+    }else{
+       this.mostrarComprobante = true;
+    }
   }
 
 
 
- 
+
+  
+  
 
 }

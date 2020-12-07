@@ -13,13 +13,17 @@
           <tr>
             <th scope="col">Key de la Orden</th>
             <th scope="col">Nombre del Cliente</th>
+            <th scope="col">Metodo de entrega</th>
+            <th scope="col">Metodo de pago</th>
             <th scope="col">Status de la Orden</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let order of orders">
             <th scope="row">{{ order.$key }}</th>
-            <th scope="row">{{ order.client }}</th>
+            <th scope="row">{{ order.userName }}</th>
+            <th scope="row">{{ order.shipping }}</th>
+            <th scope="row">{{ order.payment }}</th>
             <th scope="row">{{ order.status }}</th>
           </tr>
         </tbody>
