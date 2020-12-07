@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { auth, User } from 'firebase';
+import { getMaxListeners } from 'process';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -87,6 +88,11 @@ export class AuthService {
   isAuthenticated(): boolean {
     const user: User = JSON.parse(localStorage.getItem('user')) ?? null;
     return user !== null;
+  }
+
+  isAdmin(): boolean {
+    const user: User = JSON.parse(localStorage.getItem('user')) ?? null;
+    return user.email == "adminog@gmail.com" || user.email == "adminls@gmail.com" || user.email == "admings@gmail.com"
   }
   
   private authLogin(provider: auth.GoogleAuthProvider): Promise<auth.UserCredential> {
