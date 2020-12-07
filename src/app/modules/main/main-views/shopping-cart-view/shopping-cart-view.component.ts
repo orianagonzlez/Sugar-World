@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from 'firebase';
 import { Bag } from 'src/app/models/bag';
 import { AuthService } from 'src/app/services/auth.service';
 import { BagService } from 'src/app/services/bag.service';
+
 
 @Component({
   selector: 'app-shopping-cart-view',
@@ -15,6 +17,10 @@ export class ShoppingCartViewComponent implements OnInit {
   hayBolsas = true;
   loading = true;
   modificada = false;
+  proceder=false;
+  subtotal= [];
+  total: number = 0;
+  orderForm: FormGroup = null;
 
   constructor(private authService: AuthService, private bagService: BagService) { }
 
@@ -69,5 +75,23 @@ export class ShoppingCartViewComponent implements OnInit {
       }
     });
   }
+
+
+  purchase(){
+    this.bags.forEach(element => {
+      
+      let sub = (element.weight*element.price)/50
+      this.subtotal.push(sub);
+      this.total = this.total+sub;
+    });
+    console.log(this.subtotal)
+    this.proceder=true;
+  }
+
+
+
+
+
+
 
 }

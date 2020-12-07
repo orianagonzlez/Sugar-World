@@ -20,6 +20,7 @@ import { BagCardComponent } from './components/bag-card/bag-card.component';
 import { CurrentBagViewComponent } from './main-views/current-bag-view/current-bag-view.component';
 import { BagProductComponent } from './components/bag-product/bag-product.component';
 import { ShoppingCartViewComponent } from './main-views/shopping-cart-view/shopping-cart-view.component';
+import { PurchaseViewComponent } from './main-views/purchase-view/purchase-view.component';
 
 
 
@@ -41,7 +42,7 @@ import { ShoppingCartViewComponent } from './main-views/shopping-cart-view/shopp
     BagCardComponent, 
     CurrentBagViewComponent, 
     BagProductComponent, 
-    ShoppingCartViewComponent,  
+    ShoppingCartViewComponent, PurchaseViewComponent,  
   ],
   imports: [
     CommonModule,
