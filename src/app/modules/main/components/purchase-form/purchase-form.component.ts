@@ -113,7 +113,6 @@ export class PurchaseFormComponent implements OnInit {
     console.log('empiezo')
     this.bags.forEach(bags => {
       bags.products.forEach( product => {
-        
         console.log('me subscribo')
         this.productService.getProductOnce(product.productId).subscribe((item) => {
           let myProduct = ({
