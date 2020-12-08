@@ -1,14 +1,42 @@
-<div class="view-container">
-  <h4 class="text-center m-3">CARRO DE COMPRAS </h4>
-  <div class="container" *ngIf="!loading">
-    <div class="container text-center" *ngIf="!hayBolsas">No se ha agregado ninguna bolsa :(. Agrega un producto a la
-      bolsa y se te creará automáticamente una bolsa de ese precio. Luego añadela al carrito!</div>
-    <ng-container *ngFor="let bag of bags">
-      <app-bag-card [bag]="bag" *ngIf="hayBolsas && (bag.items != 0)"></app-bag-card>
-    </ng-container>
+<ng-container *ngIf="!proceder">
+  <div class="view-container">
+    <h4 class="text-center m-3">CARRO DE COMPRAS </h4>
+    <div class="container" *ngIf="!loading">
+      <div class="container text-center" *ngIf="!hayBolsas">No se ha agregado ninguna bolsa :(. Agrega un producto a la
+        bolsa y se te creará automáticamente una bolsa de ese precio. Luego añadela al carrito!</div>
+      <ng-container *ngFor="let bag of bags">
+        <app-bag-card [bag]="bag" *ngIf="hayBolsas && (bag.items != 0)"></app-bag-card>
+      </ng-container>
+    </div>
+    <div class="container d-flex justify-content-end" *ngIf="!loading && hayBolsas">
+      <button class="btn button-primary mt-3" (click)="purchase()">PROCEDER</button>
+    </div>
   </div>
-  <div class="container d-flex justify-content-end" *ngIf="!loading && hayBolsas">
-    <button class="btn button-primary mt-3" [routerLink]="['/home']"
-      routerLinkActive="router-link-active">PROCEDER</button>
+</ng-container>
+<ng-container *ngIf="proceder">
+  <div class="view-container">
+    <h4 class="text-center m-3">DETALLES DE LA COMPRA</h4>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col my-2">
+          <div class="card">
+            <div class="card-body cuenta">
+              <div *ngFor="let item of subtotal; let i = index;">
+                <div class="d-flex justify-content-between py-3">
+                  <h5>Bolsa {{i+1}}</h5>
+                  <h5>{{item}}$</h5>
+                </div>
+              </div>
+              <hr>
+              <div class="d-flex justify-content-between py-3">
+                <h5>Total:</h5>
+                <h5>{{total}}$</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <app-purchase-form [total]="total" [bags]="bags" [user]="user"></app-purchase-form>
+      </div>
+    </div>
   </div>
-</div>
+</ng-container>

@@ -12,6 +12,7 @@ import { ProfileViewComponent } from './main-views/profile-view/profile-view.com
 import { RegisterViewComponent } from './main-views/register-view/register-view.component';
 import { ShoppingCartViewComponent } from './main-views/shopping-cart-view/shopping-cart-view.component';
 import { WishListComponent } from './main-views/wish-list/wish-list.component';
+import { UserOrdersViewComponent } from './main-views/user-orders-view/user-orders-view.component';
 
 const routes: Routes = [
   {
@@ -60,7 +61,13 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileViewComponent
+      },
+      {
+        path: 'userOrders',
+        component: UserOrdersViewComponent 
       }
+      
+
     ],
     component: MainNavigationComponent
   }

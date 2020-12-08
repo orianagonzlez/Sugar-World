@@ -1,0 +1,25 @@
+<div class="container">
+  <h4 class="text-center m-3">Historial de pedidos </h4>
+  <div class="table-responsive">
+    <table class="table table-striped" id="tablaOrdenes">
+      <thead class="table-head">
+        <tr>
+          <th scope="col">Key de la Orden</th>
+          <th scope="col">Metodo de entrega</th>
+          <th scope="col">Metodo de pago</th>
+          <th scope="col">Status de la Orden</th>
+          <th scope="col">Total de la orden</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <th scope="row">{{ order.key }}</th>
+          <th scope="row">{{ order.shipping }}</th>
+          <th scope="row">{{ order.payment }}</th>
+          <th scope="row">{{ order.status }}</th>
+          <th scope="row">{{ order.total }}$</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
