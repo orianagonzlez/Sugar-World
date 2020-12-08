@@ -17,6 +17,7 @@ export class BagProductComponent implements OnInit {
   currentProduct: Product;
   loading = true;
   value: number = 0;
+  productSubscription = null;
 
   constructor(private productsService: ProductsService, private bagService: BagService, private wishlistService: WishlistService) { }
 
@@ -26,7 +27,7 @@ export class BagProductComponent implements OnInit {
   }
 
   getProductById(): void {
-    this.productsService.getProduct(this.cartProduct.productId).subscribe((item) => {
+    this.productSubscription = this.productsService.getProduct(this.cartProduct.productId).subscribe((item) => {
       this.currentProduct = {
         $key: item.payload.id,
         ...item.payload.data(),
@@ -102,5 +103,9 @@ export class BagProductComponent implements OnInit {
       this.bagService.deleteBag(this.bag.key).then((res) => {console.log('borre')}).catch(err => console.log(err));
     }
     
+  }
+
+  ngOnDestroy() {
+    this.productSubscription.unsubscribe();
   }
 }

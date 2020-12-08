@@ -30,6 +30,10 @@ export class ProductsService {
     return this.productCollection.doc<Product>(productId).snapshotChanges();
   }
 
+  getProductOnce(productId: string) {
+    return this.productCollection.doc<Product>(productId).get();
+  }
+
   getProductsByCategory(categoryId: string): Promise<firestore.QuerySnapshot<firestore.DocumentData>> {
     return this.productCollection.ref.where('category', '==', categoryId).get();
   } 
