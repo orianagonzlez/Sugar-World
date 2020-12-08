@@ -20,7 +20,7 @@
 @import "src/styles/components/views/main-views/_product-view.scss";
 @import "./styles/components/views/main-views/login-view";
 @import "./styles/components/views/main-views/bag-view";
-// @import "./styles/components/views/main-views/register-view";
+@import "./styles/components/views/main-views/register-view";
 @import "./styles/components/views/admin-views/_admin-order-view.scss";
 @import "./styles/components/views/admin-views/_admin-stock-view.scss";
 @import "./styles/components/views/admin-views/_admin-edit-view.scss";
@@ -28,6 +28,7 @@
 @import "./styles/components/views/admin-views/admin-category-view";
 @import "./styles/components/views/admin-views/admin-edit-category-view";
 @import "src/styles/components/views/main-views/_detail-view.scss";
+@import "src/styles/components/views/main-views/_profile-view.scss";
 
 @import "src/styles/components/_titulo.scss";
 

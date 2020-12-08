@@ -23,7 +23,7 @@ export class BagService {
   }
 
    getUserBags(userId: string): Promise<firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>> {
-     return this.bagCollection.ref.where('userId', '==', userId).where('open', '==', false).get();
+     return this.bagCollection.ref.where('userId', '==', userId).where('isInCart', '==', true).get();
    }
 
    getCurrentBag(userId: string): Promise<firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>> {

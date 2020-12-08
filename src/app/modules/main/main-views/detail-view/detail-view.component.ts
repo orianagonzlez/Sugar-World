@@ -26,6 +26,7 @@ export class DetailViewComponent implements OnInit {
   user: User;
   intenteAgregar = false;
   agregado = true;
+  authSubscription = null;
 
 
   constructor(private ProductService: ProductsService, private router: Router, private route: ActivatedRoute, private BagService: BagService, private authService: AuthService, private categoryService: CategoryService) {}
@@ -70,7 +71,7 @@ export class DetailViewComponent implements OnInit {
   addToBag():void {
     this.intenteAgregar = true;
     console.log('puede que cree bolsas que no deberia');
-    this.authService.getCurrentUser().subscribe((user) => {
+    this.authSubscription = this.authService.getCurrentUser().subscribe((user) => {
       this.user = user;
       if (user && this.value > 0) {
         let cartProduct: CartProduct = {
@@ -86,6 +87,7 @@ export class DetailViewComponent implements OnInit {
                 weight: this.value,
                 open: true,
                 items: 1,
+                isInCart: false,
               }
               console.log('estoy creando bolsa por alguna razon');
               console.log(bag);
@@ -136,6 +138,7 @@ export class DetailViewComponent implements OnInit {
                     weight: bagWeight,
                     open: res.docs[0].get('open'),
                     items: currentProducts.length,
+                    isInCart: false,
                   }
     
                   console.log(bag);
@@ -167,6 +170,10 @@ export class DetailViewComponent implements OnInit {
       this.loading = false;
     });
     
+  }
+
+  ngOnDestroy() {
+    this.authSubscription.unsubscribe();
   }
 }
 

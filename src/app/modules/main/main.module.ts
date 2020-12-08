@@ -22,6 +22,9 @@ import { BagProductComponent } from './components/bag-product/bag-product.compon
 import { ShoppingCartViewComponent } from './main-views/shopping-cart-view/shopping-cart-view.component';
 import { PurchaseFormComponent } from './components/purchase-form/purchase-form.component';
 
+import { ProfileViewComponent } from './main-views/profile-view/profile-view.component';
+import { ProfileFormComponent } from './components/profile-form/profile-form.component';
+import { UserOrdersViewComponent } from './main-views/user-orders-view/user-orders-view.component';
 
 
 @NgModule({
@@ -42,8 +45,11 @@ import { PurchaseFormComponent } from './components/purchase-form/purchase-form.
     BagCardComponent, 
     CurrentBagViewComponent, 
     BagProductComponent, 
-    ShoppingCartViewComponent, 
     PurchaseFormComponent,  
+    ShoppingCartViewComponent,  
+    WishListComponent, 
+    ProfileViewComponent, 
+    ProfileFormComponent, UserOrdersViewComponent, 
   ],
   imports: [
     CommonModule,

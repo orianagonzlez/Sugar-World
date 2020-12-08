@@ -33,8 +33,8 @@
             <a class="dropdown-item" routerLink="/home/register" *ngIf="!(user | async)">Registrarse</a>
             <a class="dropdown-item" routerLink="/home/login" *ngIf="!(user | async)">Iniciar sesión</a>
             <a class="dropdown-item disabled" *ngIf="(user | async) as user">{{ user.displayName || user.email }}</a>
-            <a class="dropdown-item" routerLink="/" *ngIf="user | async">Ver perfil</a>
-            <a class="dropdown-item" routerLink="/" *ngIf="user | async">Ver pedidos</a>
+            <a class="dropdown-item" routerLink="/home/profile" *ngIf="user | async">Ver perfil</a>
+            <a class="dropdown-item" routerLink="/home/userOrders" *ngIf="user | async">Ver pedidos</a>
             <a class="dropdown-item" routerLink="/admin" *ngIf="user | async">Sección de Administrador</a>
             <a class="dropdown-item" (click)="logOut()" *ngIf="user | async">Cerrar sesión</a>
           </div>

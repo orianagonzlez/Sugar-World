@@ -5,4 +5,5 @@ export interface Orden {
   status: string,
   payment: string,
   shipping: string,
+  total: number
 }

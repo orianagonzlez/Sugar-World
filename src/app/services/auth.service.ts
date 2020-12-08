@@ -88,7 +88,7 @@ export class AuthService {
     const user: User = JSON.parse(localStorage.getItem('user')) ?? null;
     return user !== null;
   }
-
+  
   private authLogin(provider: auth.GoogleAuthProvider): Promise<auth.UserCredential> {
     return this.afAuth.signInWithPopup(provider);
   }

@@ -35,4 +35,9 @@ export class OrdenService {
   deleteOrder(docId: string): Promise<void>{
     return this.ordenCollection.doc<Orden>(docId).delete();
   }
+
+
+getUserOrders(userId: string): Promise<firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>> {
+    return this.ordenCollection.ref.where('userId', '==', userId).get();
+  }
 }

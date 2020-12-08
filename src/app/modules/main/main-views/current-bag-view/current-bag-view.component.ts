@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'firebase';
+import { Observable } from 'rxjs';
 import { Bag } from 'src/app/models/bag';
 import { AuthService } from 'src/app/services/auth.service';
 import { BagService } from 'src/app/services/bag.service';
@@ -15,6 +16,8 @@ export class CurrentBagViewComponent implements OnInit {
   bolsaAbierta = true;
   loading = true;
   borrada = false;
+  authSubscription = null;
+  bagSubscription = null;
 
   constructor(private authService: AuthService, private bagService: BagService) { }
 
@@ -23,7 +26,7 @@ export class CurrentBagViewComponent implements OnInit {
   }
 
   getCurrentBag(): void {
-    this.authService.getCurrentUser().subscribe((user) => {
+    this.authSubscription = this.authService.getCurrentUser().subscribe((user) => {
       this.user = user;
       if (user) {
         this.bagService.getCurrentBag(this.user.uid).then((res) => {
@@ -31,7 +34,7 @@ export class CurrentBagViewComponent implements OnInit {
               this.bolsaAbierta = false;
               this.loading = false;
             } else {
-                this.bagService.getBag(res.docs[0].id).subscribe((item) => {
+                this.bagSubscription = this.bagService.getBag(res.docs[0].id).subscribe((item) => {
                   console.log(item);
                   this.currentBag = {
                     key: item.payload.id,
@@ -51,7 +54,21 @@ export class CurrentBagViewComponent implements OnInit {
 
   addToCart() {
     this.currentBag.open = false;
-    this.bagService.updateBag(this.currentBag.key, this.currentBag).catch(err => console.log(err));
-    this.bolsaAbierta = false;
+    this.currentBag.isInCart = true;
+    this.bagService.updateBag(this.currentBag.key, this.currentBag).then((res) => {
+      this.bolsaAbierta = false;
+    }).catch(err => console.log(err));
+    
+  }
+
+  ngOnDestroy() {
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
+    }
+    if (this.bagSubscription) {
+      this.bagSubscription.unsubscribe();
+    }
+    
+    
   }
 }

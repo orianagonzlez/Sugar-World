@@ -1,0 +1,49 @@
+.container{
+    margin-top: 120px;
+
+    .user-image {
+        object-fit: cover;
+        align-self: center;
+      }
+
+    .edit {
+      justify-content: center;
+    }
+}
+
+@media (min-width: 320px) {
+    .user-image {
+      height: 50vw;
+    }
+  }
+  
+  @media (min-width: 480px) {
+    .user-image {
+      height: 50vw;
+    }
+  }
+  
+  @media (min-width: 550px) {
+    .user-image {
+      height: 50vw;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .user-image {
+      height: 30vw;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .user-image {
+      height: 20vw;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .user-image {
+      height: 20vw;
+    }
+  }
+
