@@ -60,10 +60,6 @@ export class PurchaseFormComponent implements OnInit {
     });
   }
 
-
-
-
- 
   createForm(): void{
     this.orderForm = this.fb.group({
       payment: [''],
@@ -121,8 +117,8 @@ export class PurchaseFormComponent implements OnInit {
         ...item.payload.data(),
         }as Product);
         console.log(myProduct)
-        //let newStock = parseInt(myProduct.quantity) - product.quantity
-        //myProduct.quantity = newStock.toString()
+        let newStock = parseInt(myProduct.quantity) - product.quantity
+        myProduct.quantity = newStock.toString()
         //this.productService.updateProduct(myProduct,myProduct.$key)
       });
     });
