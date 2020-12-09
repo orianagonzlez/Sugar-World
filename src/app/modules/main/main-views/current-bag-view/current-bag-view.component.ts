@@ -53,10 +53,10 @@ export class CurrentBagViewComponent implements OnInit {
   }
 
   addToCart() {
+    this.bolsaAbierta = false;
     this.currentBag.open = false;
     this.currentBag.isInCart = true;
     this.bagService.updateBag(this.currentBag.key, this.currentBag).then((res) => {
-      this.bolsaAbierta = false;
     }).catch(err => console.log(err));
     
   }

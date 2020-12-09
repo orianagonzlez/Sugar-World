@@ -50,4 +50,15 @@
     
 }
 
+.esta-vacio {
+  margin-top: 3rem;
+  padding: 1rem;
+  color: $color-secondary-dark;
+  border: 0.1rem solid $color-primary;
+  border-radius: $border-radius-sm;
 
+  @include sm-device-min() {
+    padding: 2rem;
+    width: 75%;
+  }
+}

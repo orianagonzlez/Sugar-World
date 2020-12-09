@@ -11,11 +11,13 @@ export class BagCardComponent implements OnInit {
   @Input() bag: Bag;
   loading = false;
   borrada = false;
+  price = 0;
 
   constructor(private bagService: BagService) { }
 
   ngOnInit(): void {
     console.log(this.bag);
+    this.price = (this.bag.price * this.bag.weight) / 50
   }
 
   deleteBag(): void {

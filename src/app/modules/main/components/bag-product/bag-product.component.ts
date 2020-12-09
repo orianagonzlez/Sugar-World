@@ -106,6 +106,9 @@ export class BagProductComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.productSubscription.unsubscribe();
+    if (this.productSubscription) {
+      this.productSubscription.unsubscribe();
+    }
+    
   }
 }
