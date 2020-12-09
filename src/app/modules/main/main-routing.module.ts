@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 import { AboutUsViewComponent } from './main-views/about-us-view/about-us-view.component';
 import { ContactViewComponent } from './main-views/contact-view/contact-view.component';
@@ -13,6 +13,7 @@ import { RegisterViewComponent } from './main-views/register-view/register-view.
 import { ShoppingCartViewComponent } from './main-views/shopping-cart-view/shopping-cart-view.component';
 import { UserOrdersViewComponent } from './main-views/user-orders-view/user-orders-view.component';
 import { WishListComponent } from './main-views/wish-list/wish-list.component';
+
 
 const routes: Routes = [
   {
@@ -75,6 +76,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
+  
   exports: [RouterModule]
 })
 export class MainRoutingModule { }
