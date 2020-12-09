@@ -1,3 +1,11 @@
 .card {
   min-width: 25vw;
 }
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(../../../../../assets/imagenes/graciasPorSuCompra.jpg);
+}
+.contenedor {
+  min-height: 28em;
+}

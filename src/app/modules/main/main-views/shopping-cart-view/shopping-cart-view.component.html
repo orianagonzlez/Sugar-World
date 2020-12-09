@@ -14,29 +14,5 @@
   </div>
 </ng-container>
 <ng-container *ngIf="proceder">
-  <div class="view-container">
-    <h4 class="text-center m-3">DETALLES DE LA COMPRA</h4>
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col my-2">
-          <div class="card">
-            <div class="card-body cuenta">
-              <div *ngFor="let item of subtotal; let i = index;">
-                <div class="d-flex justify-content-between py-3">
-                  <h5>Bolsa {{i+1}}</h5>
-                  <h5>{{item}}$</h5>
-                </div>
-              </div>
-              <hr>
-              <div class="d-flex justify-content-between py-3">
-                <h5>Total:</h5>
-                <h5>{{total}}$</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <app-purchase-form [total]="total" [bags]="bags" [user]="user"></app-purchase-form>
-      </div>
-    </div>
-  </div>
+  <app-purchase-form [subtotal]="subtotal" [total]="total" [bags]="bags" [user]="user"></app-purchase-form>
 </ng-container>
