@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Action, AngularFirestore, AngularFirestoreCollection, DocumentChangeAction, DocumentSnapshot } from '@angular/fire/firestore';
+import { Action, AngularFirestore, AngularFirestoreCollection, DocumentChangeAction, DocumentReference, DocumentSnapshot } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Orden } from '../models/orden';
 
@@ -21,7 +21,7 @@ export class OrdenService {
     return this.ordenCollection.doc<Orden>(orderId).snapshotChanges();
   }
 
-  createOrder(newOrder: Orden): Promise<any> {
+  createOrder(newOrder: Orden): Promise<DocumentReference> {
     return this.ordenCollection.add(newOrder);
   }
     // @param data

@@ -34,6 +34,7 @@ export class PurchaseFormComponent implements OnInit {
   pagado = false
   showSuccess: boolean= false;
   data: any;
+  ordenId: string;
   
   constructor(
     private ordenService: OrdenService, 
@@ -74,9 +75,11 @@ export class PurchaseFormComponent implements OnInit {
     });
   }
   createOrder(newOrder: Orden): void {
-    this.ordenService.createOrder(newOrder).then(res => {
+    this.ordenService.createOrder(newOrder).then((res)=> {
+      this.ordenId = res.id
+      console.log(this.ordenId)
+   })
 
-    }).catch(err => console.log(err));
   }
 
   onSubmit(): void {
