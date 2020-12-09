@@ -1,12 +1,10 @@
 <form [formGroup] = "methodForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="exampleInputClient">Tipo</label>
-        <input 
-            type="text"
-            class="form-control"
-            formControlName ='type'
-            placeholder="Ingresa el tipo de método"
-            />
+        <select class="form-control" formControlName="type" id="FormControlSelect1">
+            <option  value="Pago">Pago</option>
+            <option  value="Retiro">Retiro</option>
+        </select>
     </div>
     <div class="form-group">
         <label for="exampleInputStatus">Nombre</label>
@@ -19,12 +17,10 @@
     </div>
     <div class="form-group">
         <label for="exampleInputStatus">Comprobante</label>
-        <input 
-            type="text"
-            class="form-control"
-            formControlName ='attachement'
-            placeholder="Ingresa si el método adjunta comprobante o no"
-            />
+        <select class="form-control" formControlName="attachement" id="FormControlSelect2">
+            <option  value="No">No</option>
+            <option  value="Si">Si</option>
+        </select>
     </div>
     <button type="submit" class="btn button-primary btn-block">SUBMIT</button>
 </form>

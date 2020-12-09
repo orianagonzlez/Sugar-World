@@ -45,25 +45,18 @@ export class AdminMethodFormComponent implements OnInit {
       attachement: this.methodForm.get('attachement').value,
     }
 
-    console.log(this.methodForm.valid)
     if (this.methodForm.valid) {
       if (newMethod.type.toLowerCase() == 'pago') {
         if (newMethod.attachement == "" || !newMethod.attachement) {
           this.valid = false;
-          console.log(newMethod.attachement)
-          console.log('no andi')
         } else {
-          console.log(newMethod.attachement)
           this.valid = true;
-          newMethod.type = newMethod.type = 'Pago';
           this.createMethod(newMethod);
           this.methodForm.reset();
         }
       } else if (newMethod.type.toLowerCase() == 'retiro') {
         this.valid = true;
-        console.log('aqui')
         newMethod.attachement = "-";
-        newMethod.type = newMethod.type = 'Retiro';
         this.createMethod(newMethod);
         this.methodForm.reset();
       } else {

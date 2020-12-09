@@ -13,7 +13,7 @@
                 <div *ngIf="isNewGoogle()">
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Ingresaste con tu correo Google!</strong> Por favor, verifica que tus datos esten
-                        correctos y precione Actualizar.
+                        correctos y presione Actualizar.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"
                             (click)="hideMessageUpdate()">
                             <span aria-hidden="true">&times;</span>
@@ -137,7 +137,7 @@
 <div class="row justify-content-center">
     <div class="col">
         <button *ngIf="!(user | async) as user" class="btn btn-success ml-5" (click)="registerWithGoogle()">
-            Registrase con Google
+            Registrarse con Google
         </button>
     </div>
 </div>
@@ -147,3 +147,4 @@
             (click)="updateOnSubmit(); showMessage()">Actualizar Datos</button>
     </div>
 </div>
+<div class="text-center text-danger mt-2" *ngIf="!valid">Debes rellenar todos los campos.</div> 

@@ -1,6 +1,6 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'firebase';
 import { Bag } from 'src/app/models/bag';
 import { Method } from 'src/app/models/method';
@@ -35,6 +35,7 @@ export class PurchaseFormComponent implements OnInit {
   showSuccess: boolean= false;
   data: any;
   ordenId: string;
+  necesitoComprobante = true;
   
   constructor(
     private ordenService: OrdenService, 
@@ -74,6 +75,7 @@ export class PurchaseFormComponent implements OnInit {
       shipping: ['']
     });
   }
+
   createOrder(newOrder: Orden): void {
     this.ordenService.createOrder(newOrder).then((res)=> {
       this.ordenId = res.id
@@ -94,9 +96,16 @@ export class PurchaseFormComponent implements OnInit {
     }
     let valido = false;
   
-    if (newOrder.payment == null || newOrder.shipping == "" || this.showSuccess == false){
-      window.alert("Para realizar la orden se requiere que rellene los campos de Metodo de pago y Metodo de entrega")
-    }else{
+    if (newOrder.payment && newOrder.shipping && !this.necesitoComprobante) {
+      this.createOrder(newOrder);
+      this.eliminarDelcarrito();
+      this.actualizarInventario();
+      this.orderForm.reset();
+      this.pagado=true
+    }
+     else if (!newOrder.payment || !newOrder.shipping || this.showSuccess == false) {
+      window.alert("Para realizar la orden debe escoger un método de pago y un método de entrega.\n\nTambién debe terminar el proceso de pago.")
+    } else{
       this.createOrder(newOrder);
       this.eliminarDelcarrito();
       this.actualizarInventario();
@@ -113,8 +122,16 @@ export class PurchaseFormComponent implements OnInit {
   }
 
   comprobante():void{
-   
-    if(this.paymentMethod == "Pago en la tienda" || this.paymentMethod==null || this.paymentMethod=="PayPal" ){
+    if (this.pago) {
+      this.pago.forEach((item) => {
+      if (item.name == this.paymentMethod) {
+        this.necesitoComprobante = item.attachement == 'Si'
+      }
+    });
+    }
+    
+
+    if(!this.necesitoComprobante || this.paymentMethod==null || this.paymentMethod=="PayPal" ){
       this.mostrarComprobante = false;
       this.mostrarPaypal=false
     }else{
@@ -144,7 +161,7 @@ export class PurchaseFormComponent implements OnInit {
           myProduct.quantity = newStock;
           console.log(myProduct);
           this.productService.updateProduct(myProduct, myProduct.$key).then(res => {
-            console.log(res);
+            
           }).catch(err => console.log(err));
         });
         
