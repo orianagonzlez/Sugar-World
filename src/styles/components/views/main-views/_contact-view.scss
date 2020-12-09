@@ -1,3 +1,15 @@
+.info-container {
+  .jumbotron {
+    background-image: url(../../../../assets/ImgContact/contact-image.jpg);
+    //background-size: 100%;
+    background-repeat: no-repeat;
+
+    @include big-phone-max() {
+      background-size: 100% 100%;
+    }
+  }
+} 
+ 
 .contacto {
     a {
         color: $color-secondary-dark;
@@ -11,5 +23,6 @@
         width: 50em;
         margin: auto;
         margin-bottom: 1em;
+
       }
-}
+} 

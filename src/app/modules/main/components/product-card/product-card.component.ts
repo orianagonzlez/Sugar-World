@@ -14,6 +14,7 @@ export class ProductCardComponent implements OnInit {
   @Input() product: Product;
   user: User = null;
   loading = false;
+  mostrar = false;
 
   constructor(private categoryService: CategoryService, private wishListService: WishlistService,
     private authService: AuthService) { }
@@ -41,6 +42,7 @@ export class ProductCardComponent implements OnInit {
     this.authService.getCurrentUser().subscribe((user) => {
       this.user = user;
       if (user) {
+        this.mostrar = true;
         this.wishListService.getWishList(user.uid).then((res) => {
           
           if (res.docs.length > 0) {
@@ -50,6 +52,7 @@ export class ProductCardComponent implements OnInit {
           }
         });
       } else {
+        this.mostrar = false;
         this.product.isFavorite = false;
       }
     });

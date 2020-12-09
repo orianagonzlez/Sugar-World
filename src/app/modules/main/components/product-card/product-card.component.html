@@ -5,11 +5,11 @@
     <h5 class="card-text">Categoria: {{product.category}}</h5>
     <div class="card-text precio">Precio/50g: ${{ product.price }}</div>
     <div class="card-text">Cantidad Disponible: {{product.quantity}}</div>
-    <ng-container *ngIf="!product.isFavorite">
-      <button (click)="favoriteBtn()" style="margin-top: 10px;" type="submit" class="btn btn-color">Agregar a Lista de Favoritos</button>
+    <ng-container *ngIf="!product.isFavorite && mostrar">
+      <button (click)="favoriteBtn()" type="submit" class="btn btn-color mt-2">Agregar a Lista de Favoritos</button>
     </ng-container>
-    <ng-container *ngIf="product.isFavorite">
-      <button (click)="favoriteBtn()" style="margin-top: 10px;" type="submit" class="btn btn-color-selected">Eliminar de Lista de Favoritos</button>
+    <ng-container *ngIf="product.isFavorite && mostrar">
+      <button (click)="favoriteBtn()" type="submit" class="btn btn-color-selected mt-2">Eliminar de Lista de Favoritos</button>
     </ng-container>
 
   </div>

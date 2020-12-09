@@ -128,14 +128,14 @@
         <label for="exampleInputPassword1">Contraseña</label>
         <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password" />
     </div>
-    <div class="row justify-content-center mt-3">
-        <div class="col">
+    <div class="row justify-content-center mt-3 w-100">
+        <div class="col d-flex justify-content-center">
             <button *ngIf="!(user | async) as user" type="submit" class="btn btn-color btn ml-5">Registrarse</button>
         </div>
     </div>
 </form>
-<div class="row justify-content-center">
-    <div class="col">
+<div class="row justify-content-center w-100">
+    <div class="col d-flex justify-content-center">
         <button *ngIf="!(user | async) as user" class="btn btn-success ml-5" (click)="registerWithGoogle()">
             Registrarse con Google
         </button>
