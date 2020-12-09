@@ -21,10 +21,11 @@ import { CurrentBagViewComponent } from './main-views/current-bag-view/current-b
 import { BagProductComponent } from './components/bag-product/bag-product.component';
 import { ShoppingCartViewComponent } from './main-views/shopping-cart-view/shopping-cart-view.component';
 import { PurchaseFormComponent } from './components/purchase-form/purchase-form.component';
-
 import { ProfileViewComponent } from './main-views/profile-view/profile-view.component';
 import { ProfileFormComponent } from './components/profile-form/profile-form.component';
 import { UserOrdersViewComponent } from './main-views/user-orders-view/user-orders-view.component';
+import { PaypalComponent } from './components/paypal/paypal.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 
 @NgModule({
@@ -49,13 +50,14 @@ import { UserOrdersViewComponent } from './main-views/user-orders-view/user-orde
     ShoppingCartViewComponent,  
     WishListComponent, 
     ProfileViewComponent, 
-    ProfileFormComponent, UserOrdersViewComponent, 
+    ProfileFormComponent, UserOrdersViewComponent, PaypalComponent, 
   ],
   imports: [
     CommonModule,
     MainRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPayPalModule,
   ]
 })
 export class MainModule { }

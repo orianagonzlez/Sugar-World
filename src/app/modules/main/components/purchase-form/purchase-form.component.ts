@@ -10,6 +10,7 @@ import { BagService } from 'src/app/services/bag.service';
 import { MethodsService } from 'src/app/services/method.service';
 import { OrdenService } from 'src/app/services/orden.service';
 import { ProductsService } from 'src/app/services/products.service';
+import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 
 @Component({
   selector: 'app-purchase-form',
@@ -17,32 +18,36 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./purchase-form.component.scss']
 }) 
 export class PurchaseFormComponent implements OnInit {
+  
   @Input() bags: Array<Bag>;
   @Input() user: User;
   @Input() total: number
   @Input() subtotal
+  public payPalConfig?: IPayPalConfig;
   orderForm: FormGroup = null;
   paymentMethod = null;
   mostrarComprobante = false;
-  loadingImage = false;
+  mostrarPaypal = false;
   methods: Array<Method>
   retiro: Array<Method>
   pago: Array<Method>
   pagado = false
-  
+  showSuccess: boolean= false;
+  data: any;
   
   constructor(
     private ordenService: OrdenService, 
-    private  MethodService: MethodsService,
+    private MethodService: MethodsService,
     private fb: FormBuilder, 
     private bagService : BagService,
-    private productService: ProductsService
+    private productService: ProductsService,
     ) { }
   
 
   ngOnInit(): void {
     this.createForm();
-    this.getAllMethods()
+    this.getAllMethods();
+     this.initConfig();
     
   }
 
@@ -104,10 +109,16 @@ export class PurchaseFormComponent implements OnInit {
   }
 
   comprobante():void{
-    if(this.paymentMethod == "Pago en la tienda" || this.paymentMethod==null ){
+   
+    if(this.paymentMethod == "Pago en la tienda" || this.paymentMethod==null || this.paymentMethod=="PayPal" ){
       this.mostrarComprobante = false;
+      this.mostrarPaypal=false
     }else{
        this.mostrarComprobante = true;
+       this.mostrarPaypal=false
+    }
+    if(this.paymentMethod=="PayPal"){
+        this.mostrarPaypal=true
     }
   }
  
@@ -138,6 +149,73 @@ export class PurchaseFormComponent implements OnInit {
     }); 
 
    
+  }
+
+  private initConfig(): void {
+      this.payPalConfig = {
+      currency: 'EUR',
+      clientId: 'sb',
+      createOrderOnClient: (data) => <ICreateOrderRequest>{
+        intent: 'CAPTURE',
+        purchase_units: [
+          {
+            amount: {
+              currency_code: 'EUR',
+              value: '9.99',
+              breakdown: {
+                item_total: {
+                  currency_code: 'EUR',
+                  value: '9.99'
+                }
+              }
+            },
+            items: [
+              {
+                name: 'Enterprise Subscription',
+                quantity: '1',
+                category: 'DIGITAL_GOODS',
+                unit_amount: {
+                  currency_code: 'EUR',
+                  value: '9.99',
+                },
+              }
+            ]
+          }
+        ]
+      },
+      advanced: {
+        commit: 'true'
+      },
+      style: {
+        label: 'paypal',
+        layout: 'vertical'
+      },
+      onApprove: (data, actions) => {
+        console.log('onApprove - transaction was approved, but not authorized', data, actions);
+        actions.order.get().then(details => {
+          console.log('onApprove - you can get full order details inside onApprove: ', details);
+        });
+      },
+      onClientAuthorization: (data) => {
+        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        this.showSuccess = true;
+        this.mostrarPaypal  = false;
+      },
+      onCancel: (data, actions) => {
+        console.log('OnCancel', data, actions);
+      },
+      onError: err => {
+        console.log('OnError', err);
+      },
+      onClick: (data, actions) => {
+        console.log('onClick', data, actions);
+      },
+    };
+    }
+
+    handleImage(event : any ){
+    let image = event.target.files[0]; 
+    this.showSuccess = !this.showSuccess;
   }
 
 
