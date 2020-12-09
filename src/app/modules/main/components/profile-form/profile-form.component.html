@@ -5,9 +5,21 @@
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>Perfil Actualizado!</strong> Su perfil ha sido actualizado exitosamente.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="hideMessage()">
-                      <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
-                  </div>
+                </div>
+            </div>
+            <div class="form-group col" *ngIf="(user | async) as user">
+                <div *ngIf="isNewGoogle()">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Ingresaste con tu correo Google!</strong> Por favor, verifica que tus datos esten
+                        correctos y precione Actualizar.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                            (click)="hideMessageUpdate()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -118,13 +130,17 @@
     </div>
     <div class="row justify-content-center mt-3">
         <div class="col">
-            <button *ngIf="!(user | async) as user" type="submit" class="btn btn-primary mr-5">Submit</button>
+            <button *ngIf="!(user | async) as user" type="submit" class="btn btn-color btn ml-5">Registrarse</button>
         </div>
-        <button *ngIf="!(user | async) as user" class="btn btn-success ml-5" (click)="loginWithGoogle()">
-            Iniciar con Google
-        </button>
     </div>
 </form>
+<div class="row justify-content-center">
+    <div class="col">
+        <button *ngIf="!(user | async) as user" class="btn btn-success ml-5" (click)="registerWithGoogle()">
+            Registrase con Google
+        </button>
+    </div>
+</div>
 <div class="row justify-content-center">
     <div class="col-edit">
         <button *ngIf="(user | async) as user" class="btn btn-outline-warning mr-5"
