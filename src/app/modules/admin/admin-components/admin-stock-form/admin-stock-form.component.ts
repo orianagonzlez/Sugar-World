@@ -1,6 +1,6 @@
 import { isNgTemplate } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/models/category';
 import { Product } from 'src/app/models/product';
@@ -20,6 +20,8 @@ export class AdminStockFormComponent implements OnInit {
   productId: string;
   categories: Array<Category> = [];
   loadingImage = false;
+  valid = true;
+  negativo = false;
 
   constructor(
     private productService: ProductsService,
@@ -37,16 +39,17 @@ export class AdminStockFormComponent implements OnInit {
 
   createForm(): void {
     this.productForm = this.fb.group({
-      name: [''],
-      category: [''],
-      description: [''],
+      name: ['', Validators.required],
+      category: ['', Validators.required],
+      description: ['', Validators.required],
       image:[''],
-      quantity: [''],
-      price: [''],
+      quantity: ['', Validators.required],
+      price: ['', Validators.required],
     });
   }
 
   patchFormValues(): void {
+    console.log(this.editProduct.image);
     this.productForm.patchValue({
       name: this.editProduct.name,
       category: this.editProduct.category,
@@ -84,16 +87,39 @@ export class AdminStockFormComponent implements OnInit {
       price: this.productForm.get('price').value,
       isFavorite: false,
     }
+ 
+    console.log(this.productForm.valid)
+    
+    if (this.productForm.valid) {
+      this.valid = true;
+      if (newProduct.price > 0 && newProduct.quantity > 0) {
+        
+        this.negativo = false;
+        if (this.editProduct) {
+          this.productForm.reset()
+          this.loadingImage = false;
+          this.updateProduct(newProduct);
+          this.valid = true;
+          return;
+        }
 
-    this.productForm.reset()
-    this.loadingImage = false;
-
-    if (this.editProduct) {
-      this.updateProduct(newProduct);
-      return;
+        if (this.loadingImage) {
+          this.createProduct(newProduct);
+          this.valid = true;
+          this.productForm.reset()
+          this.loadingImage = false;
+        } else {
+          this.valid = false;
+        }
+        
+      } else {
+        this.negativo = true;
+      }
+      
+    } else {
+        this.valid = false;
     }
-
-    this.createProduct(newProduct);
+    
   }
 
   getUrlParams(): void {

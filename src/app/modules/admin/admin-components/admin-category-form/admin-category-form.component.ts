@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
@@ -14,6 +14,7 @@ export class AdminCategoryFormComponent implements OnInit {
   categoryForm: FormGroup = null;
   editCategory: Category = null;
   categoryId: string;
+  valid = true;
 
   constructor(
     private categoryService: CategoryService,
@@ -29,7 +30,7 @@ export class AdminCategoryFormComponent implements OnInit {
 
   createForm(): void {
     this.categoryForm = this.fb.group({
-      name: [''],
+      name: ['', Validators.required],
     });
   }
 
@@ -56,14 +57,22 @@ export class AdminCategoryFormComponent implements OnInit {
     const newCategory: Category = {
       name: this.categoryForm.get('name').value,
     }
-    this.categoryForm.reset()
 
-    if (this.editCategory) {
-      this.updateCategory(newCategory);
-      return;
+    if (this.categoryForm.valid) {
+      this.valid = true;
+      
+      this.categoryForm.reset()
+
+      if (this.editCategory) {
+        this.updateCategory(newCategory);
+        return;
+      }
+
+      this.createCategory(newCategory);
+    } else {
+      this.valid = false;
     }
-
-    this.createCategory(newCategory);
+    
   }
 
   getUrlParams(): void {

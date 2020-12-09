@@ -60,7 +60,7 @@ export class DetailViewComponent implements OnInit {
   }
 
   plus():void{
-    if(this.value + 50 <= parseInt(this.product.quantity) && this.value + 50 <=2000){
+    if(this.value + 50 <= this.product.quantity && this.value + 50 <=2000){
       this.value += 50;
     }
   }
@@ -108,7 +108,7 @@ export class DetailViewComponent implements OnInit {
                 currentProducts.map(item => {
                   if(item.productId == this.product.$key) {
                     pertenece = true;
-                    if (item.quantity + this.value <= parseInt(this.product.quantity)) {
+                    if (item.quantity + this.value <= this.product.quantity) {
                       if ( bagWeight + this.value <= 2000) {
                         item.quantity += this.value; 
                         bagWeight += this.value;

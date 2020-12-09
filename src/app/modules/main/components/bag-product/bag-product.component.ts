@@ -40,7 +40,7 @@ export class BagProductComponent implements OnInit {
   }
 
   verificarDisponibilidad () {
-    if (this.cartProduct.quantity > parseInt(this.currentProduct.quantity) || this.currentProduct.price != this.bag.price) {
+    if (this.cartProduct.quantity > this.currentProduct.quantity || this.currentProduct.price != this.bag.price) {
       this.wishlistService.getWishList(this.bag.userId).then((res) => {
         if (res.docs.length > 0) {
           let favs = res.docs[0].get('favorites') as Array<string>
@@ -60,7 +60,7 @@ export class BagProductComponent implements OnInit {
   }
 
   plus(): void{
-    if (this.value + 50 <= parseInt(this.currentProduct.quantity) && this.value <=2000) {
+    if (this.value + 50 <= this.currentProduct.quantity && this.value <=2000) {
           this.value += 50;
           if (this.bag.weight + 50 <= 2000) {
             this.bag.weight += 50;

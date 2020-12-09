@@ -28,3 +28,5 @@
     </div>
     <button type="submit" class="btn button-primary btn-block">SUBMIT</button>
 </form>
+<div class="text-center text-danger mt-2 bg-light rounded" *ngIf="!valid">Debe completar todos los campos.</div> 
+<div class="text-center text-danger mt-2 bg-light rounded" *ngIf="!metodoCorrecto">El tipo de método es 'Pago' o 'Retiro'.</div> 

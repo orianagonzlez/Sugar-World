@@ -121,9 +121,9 @@ export class PurchaseFormComponent implements OnInit {
           }as Product);
           console.log('aqui voy otra vez');
           console.log(myProduct);
-          let newStock = parseInt(myProduct.quantity) - product.quantity;
+          let newStock = myProduct.quantity - product.quantity;
           console.log(newStock)
-          myProduct.quantity = newStock.toString();
+          myProduct.quantity = newStock;
           console.log(myProduct);
           this.productService.updateProduct(myProduct, myProduct.$key).then(res => {
             console.log(res);
