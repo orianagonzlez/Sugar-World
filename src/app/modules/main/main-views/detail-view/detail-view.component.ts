@@ -25,8 +25,12 @@ export class DetailViewComponent implements OnInit {
   value: number = 0;
   user: User;
   intenteAgregar = false;
-  agregado = true;
+  agregado = false;
   authSubscription = null;
+  masDe0 = true;
+  wrongPrice = false;
+  excedente = false;
+  seAcabo = false;
 
 
   constructor(private ProductService: ProductsService, private router: Router, private route: ActivatedRoute, private BagService: BagService, private authService: AuthService, private categoryService: CategoryService) {}
@@ -40,7 +44,6 @@ export class DetailViewComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.productId = params.get('productId');
     });
-    console.log("ID:", this.productId);
   }
 
  
@@ -57,7 +60,7 @@ export class DetailViewComponent implements OnInit {
   }
 
   plus():void{
-    if(this.value + 50 <= parseInt(this.product.quantity) && this.value <=2000){
+    if(this.value + 50 <= parseInt(this.product.quantity) && this.value + 50 <=2000){
       this.value += 50;
     }
   }
@@ -69,8 +72,12 @@ export class DetailViewComponent implements OnInit {
   }
 
   addToBag():void {
+    this.masDe0 = true;
+    this.wrongPrice = false;
+    this.excedente = false;
+    this.agregado = false;
+    this.seAcabo = false;
     this.intenteAgregar = true;
-    console.log('puede que cree bolsas que no deberia');
     this.authSubscription = this.authService.getCurrentUser().subscribe((user) => {
       this.user = user;
       if (user && this.value > 0) {
@@ -89,10 +96,8 @@ export class DetailViewComponent implements OnInit {
                 items: 1,
                 isInCart: false,
               }
-              console.log('estoy creando bolsa por alguna razon');
-              console.log(bag);
               this.BagService.createBag(bag).then((res) => {
-                console.log(res.id);
+                this.agregado = true;
               }).catch(err => console.log(err));
             } else {
               if (res.docs[0].get('price') == this.product.price) {
@@ -107,14 +112,15 @@ export class DetailViewComponent implements OnInit {
                       if ( bagWeight + this.value <= 2000) {
                         item.quantity += this.value; 
                         bagWeight += this.value;
+                        this.agregado = true;
                       } else {
                         this.agregado = false;
-                        console.log('se excede de la bolsa 2kg');
+                        this.excedente = true;
                       }
                       
                     } else {
+                      this.seAcabo = true;
                       this.agregado = false;
-                      console.log('no hay tanto');
                     }
                   }
                 });
@@ -125,10 +131,10 @@ export class DetailViewComponent implements OnInit {
                     bagWeight += this.value;
                   } else {
                     this.agregado = false;
-                    console.log('se excede la bolsa de 2kg');
+                    this.excedente = true;
                   }
                   
-                }
+                } 
 
                 if (this.agregado) {
                   let bag: Bag = {
@@ -140,21 +146,20 @@ export class DetailViewComponent implements OnInit {
                     items: currentProducts.length,
                     isInCart: false,
                   }
-    
-                  console.log(bag);
+                  this.BagService.updateBag(res.docs[0].id, bag).then(res => {this.agregado = true;})
+                  .catch(err => console.log(err));
                   
-                  this.BagService.updateBag(res.docs[0].id, bag);
                 }
               } else {
                 this.agregado = false;
-                console.log('wrong price');
+                this.wrongPrice = true;
               }
               
             }
           }).catch(err => console.log(err));  
         }   else {
           this.agregado = false;
-          console.log('mas de 0 porfa');
+          this.masDe0 = false;
         }
       });    
   }
@@ -173,8 +178,8 @@ export class DetailViewComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.authSubscription.unsubscribe();
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
+    }
   }
 }
-
-

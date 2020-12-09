@@ -16,7 +16,7 @@ export class WishListComponent implements OnInit {
   products: Array<Product> = [];
   allProducts: Array<Product> = [];
   loading = false;
-
+  hayProductos = false;
 
   constructor(
     private ProductService: ProductsService,
@@ -51,9 +51,14 @@ export class WishListComponent implements OnInit {
 
         this.wishListService.getWishList(user.uid).then((res) => {
           if (res.docs.length > 0) {
+            this.hayProductos = true;
             const userWishList = res.docs[0].get('favorites') as Array<string>;
-
+            if (userWishList.length == 0) {
+              this.hayProductos = false;
+            }
             this.products = this.allProducts.filter((item) => userWishList.includes(item.$key));
+          } else {
+            this.hayProductos = false;
           }
 
         });

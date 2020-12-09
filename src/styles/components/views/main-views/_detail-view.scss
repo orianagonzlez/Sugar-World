@@ -99,4 +99,8 @@
     text-decoration: none;
     color: $color-secondary-dark;
   }
+
+  @include sm-device-min() {
+    width: 80%;
+  }
 }

@@ -1,13 +1,15 @@
-
-<div *ngIf="!loading" class="ml-3 d-flex justify-content-between align-items-center">
-    <p class="card-text"> {{ currentProduct.name }} </p>
-    <div class="counter w-50 justify-content-around">
-        <div class="d-flex justify-content-between flex-grow-1">
-            <button (click)="minus()" class="btn btn-color-secondary" id="minus">−</button>
-            <div class="number">{{this.value}}</div>
-            <button (click)="plus()" class="btn btn-color-secondary" id="plus">+</button>
+<div class="bag-product">
+    <div *ngIf="!loading" class="ml-3 d-flex justify-content-between align-items-center product">
+        <p class="card-text nombre"> {{ currentProduct.name }} </p>
+        <div class="counter w-50">
+            <div class="d-flex justify-content-between align-items-center flex-grow-1">
+                <button (click)="minus()" class="btn btn-color-secondary" id="minus">−</button>
+                <div class="number">{{this.value}}</div>
+                <button (click)="plus()" class="btn btn-color-secondary mas" id="plus">+</button>
+            </div>
+            <button class="btn ml-3 borrar" (click)=deleteProduct()>X</button>
         </div>
-        <button class="btn ml-3" (click)=deleteProduct()>X</button>
-    </div>
+    </div>    
 </div>
+
 

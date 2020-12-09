@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ɵELEMENT_PROBE_PROVIDERS } from '@angular/platform-browser';
 import { User } from 'firebase';
 import { Orden } from 'src/app/models/orden';
-import { Order } from 'src/app/models/order';
 import { AuthService } from 'src/app/services/auth.service';
 import { OrdenService } from 'src/app/services/orden.service';
 

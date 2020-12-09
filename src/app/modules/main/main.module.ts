@@ -28,6 +28,7 @@ import { PaypalComponent } from './components/paypal/paypal.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 
 
+
 @NgModule({
   declarations: [
     FooterComponent,
@@ -41,16 +42,18 @@ import { NgxPayPalModule } from 'ngx-paypal';
     DetailViewComponent, 
     ProductCardComponent, 
     ProductListComponent, 
-   ContactViewComponent, 
+    ContactViewComponent, 
     WishListComponent,
     BagCardComponent, 
     CurrentBagViewComponent, 
-    BagProductComponent, 
+    BagProductComponent,
     PurchaseFormComponent,  
     ShoppingCartViewComponent,  
     WishListComponent, 
     ProfileViewComponent, 
-    ProfileFormComponent, UserOrdersViewComponent, PaypalComponent, 
+    ProfileFormComponent, 
+    UserOrdersViewComponent, 
+    PaypalComponent, 
   ],
   imports: [
     CommonModule,
