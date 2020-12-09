@@ -32,6 +32,8 @@ export class ProfileFormComponent implements OnInit {
 
   showMyMessage = false;
 
+  showUpdate = false;
+
   constructor(private profileService: ProfileService, private authService: AuthService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
@@ -167,7 +169,7 @@ export class ProfileFormComponent implements OnInit {
     });
   }
 
-  loginWithGoogle() {
+  loginWithGoogle(): void {
     this.authService.loginWithGoogle().then(response => {
       this.router.navigate(['/'])
     }).catch((err) => {
@@ -176,11 +178,55 @@ export class ProfileFormComponent implements OnInit {
     });
   }
 
+  registerWithGoogle(): void {
+    this.loginWithGoogle();
+    this.authService.getCurrentUser().subscribe((user2) => {
+      if (user2) {
+        this.user2 = user2;
+        const newProfile: Profile = {
+          userId: this.user2.uid,
+          name: this.user2.displayName,
+          lastname: "Google Account",
+          email: this.user2.email,
+          password: "********",
+          birthday: " ",
+          birthmonth: " ",
+          birthyear: " ",
+        }
+        this.createProfile(newProfile, this.user2.uid);
+      }
+    });
+  }
+
   showMessage(): void {
     this.showMyMessage = true
   }
 
+  showMessageUpdate(): void {
+    this.showUpdate = true
+  }
+
   hideMessage(): void {
     this.showMyMessage = false
+  }
+
+  hideMessageUpdate(): void {
+    this.showUpdate = false
+  }
+
+  isNewGoogle(): boolean {
+    if (this.profileForm.get('lastname').value == "Google Account") {
+      return true
+    }
+    return false;
+  }
+
+  isGoogle(): boolean {
+    if (this.authService.isGoogle() == true) {
+      this.showMessageUpdate();
+      return true;
+    }
+    this.hideMessageUpdate();
+    return false;
   }
 }

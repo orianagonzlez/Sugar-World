@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'firebase';
 import { AuthService } from 'src/app/services/auth.service';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-login-view',
@@ -12,7 +14,7 @@ export class LoginViewComponent implements OnInit {
 
   loginForm: FormGroup = null;
 
-  constructor(private authService: AuthService, private router: Router, private fb: FormBuilder) { }
+  constructor(private authService: AuthService, private router: Router, private fb: FormBuilder, private profileService: ProfileService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({

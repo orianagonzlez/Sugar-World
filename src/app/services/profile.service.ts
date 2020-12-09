@@ -32,14 +32,6 @@ export class ProfileService {
     return this.profileCollection.doc(userId).set(newProfile);
   }
 
-  // createProfile(newProfile: Profile): Promise<any> {
-  //   return this.profileCollection.add(newProfile);
-  // }
-
-  // updateProfile(data: Profile, userId: string): Promise<void> {
-  //   return this.profileCollection.doc.where('userId', '==', userId).update(data);
-  // }
-
   updateProfile(data: Profile, docId: string): Promise<void> {
     return this.profileCollection.doc<Profile>(docId).update(data);
   }
