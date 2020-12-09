@@ -16,32 +16,35 @@ export class UserOrdersViewComponent implements OnInit {
   constructor(private ordenService: OrdenService,  private authService: AuthService) { }
 
   orders: Array<Orden>
+  hayProductos = false
 
   ngOnInit(): void {
     this.getMyOrders()
-    console.log(this.orders)
-  }
 
+    
+    
+
+  }
   getMyOrders(){
     this.authService.getCurrentUser().subscribe((user) => {
       if (user) {
         this.user = user;
-
         this.ordenService.getUserOrders(user.uid).then((res) => {
           if (res.docs.length > 0) {
-                    this.orders = res.docs.map(item => ({
+          this.hayProductos = true;
+          this.orders = res.docs.map(item => ({
           ...item.data(),
           key: item.id,
         } as Orden));
           }
-
         });
       }
-
     });
 
 
   }
+
+
 
 
   
