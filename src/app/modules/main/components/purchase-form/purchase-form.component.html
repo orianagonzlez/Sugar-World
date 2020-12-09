@@ -67,22 +67,20 @@
 
 
 <ng-container *ngIf="pagado">
-  <div class="info-container my-5">
-    <div class="jumbotron jumbotron-fluid d-flex justify-content-center">
-      <div class="container h-100 d-flex flex-column justify-content-center align-items-center titulo">
-        <h1 class="display-4">Gracias por su compra</h1>
-        <p class="lead">Hacemos tus dulces sueños realidad.</p>
-      </div>
-    </div>
-  </div>
-  <div class="container pt-0 mt-0 ">
-    <div class="row  align-items-top justify-content-md-center text-justify">
-      <img class="col-lg-6 h-50 mb-3" src="assets/imgAboutUs/tienda.jpg" alt="foto-tienda-caramelos">
-      <div class="col-lg-6 flex-column">
-        <h2 class="text-center">¡Esperamos conocerte pronto!</h2>
-        <h3>Siempre seras bienvenido a nuestra tienda! luego de que todo esto pase te estaremos esperando para que
-          disfrutes de la mejor experiencia </h3>
-        <h4>Para que puedas ver el status de tu orden el codigo es: </h4>
+  <div class="container-fluid hero-image">
+    <div class="row login-content ">
+      <div class="col contenedor align-self-center bg-light">
+        <div class="row justify-content-center ">
+          <h3>Gracias por tu compra</h3>
+          <hr>
+          <h4 class="text-justify p-2 my-2">Esperamos conocerte pronto, cuando la pandemia haya acabado porque nuestra
+            tienda es
+            tu
+            hogar!</h4>
+          <hr class="my-2">
+          <h4 class="text-justify p-2 my-2 ">Para hacer seguimiento a tu orden ve al historial de compras</h4>
+          <button class="btn btn-color" routerLink="/home/userOrders"> Historial de compras</button>
+        </div>
       </div>
     </div>
   </div>

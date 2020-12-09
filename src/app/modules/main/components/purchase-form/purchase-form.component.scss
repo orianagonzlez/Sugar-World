@@ -2,8 +2,7 @@
   min-width: 25vw;
 }
 
-.info-container {
-  .jumbotron {
-    background-image: url(../../../../../assets/imagenes/graciasPorSuCompra.jpg);
-  }
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(../../../../../assets/imagenes/graciasPorSuCompra.jpg);
 }
