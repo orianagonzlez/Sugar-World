@@ -16,12 +16,10 @@ export class BagCardComponent implements OnInit {
   constructor(private bagService: BagService) { }
 
   ngOnInit(): void {
-    console.log(this.bag);
     this.price = (this.bag.price * this.bag.weight) / 50
   }
 
   deleteBag(): void {
-    console.log('borrando' + this.bag.key);
     this.bagService.deleteBag(this.bag.key).then((res) => {this.borrada = true}).catch(err => console.log(err));
   }
 

@@ -37,10 +37,8 @@ export class WishListComponent implements OnInit {
             $key: item.payload.doc.id,
           } as Product)
       );
-      console.log(this.allProducts);
       this.loading = false;
       this.getMyFavorites();
-      console.log(this.products.length + "SOS ")
     });
   }
 

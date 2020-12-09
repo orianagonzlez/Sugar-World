@@ -79,13 +79,12 @@ export class PurchaseFormComponent implements OnInit {
   createOrder(newOrder: Orden): void {
     this.ordenService.createOrder(newOrder).then((res)=> {
       this.ordenId = res.id
-      console.log(this.ordenId)
+
    })
 
   }
 
   onSubmit(): void {
-    console.log('submit')
     const newOrder: Orden = {
       userId: this.user.uid,
       userName: this.user.displayName,
@@ -145,21 +144,15 @@ export class PurchaseFormComponent implements OnInit {
  
 
   actualizarInventario():void{
-    console.log('empiezo')
     this.bags.forEach(bags => {
       bags.products.forEach( product => {
-        console.log('me subscribo')
         this.productService.getProductOnce(product.productId).subscribe((item) => {
           let myProduct = ({
           $key: item.id,
           ...item.data(),
           }as Product);
-          console.log('aqui voy otra vez');
-          console.log(myProduct);
           let newStock = myProduct.quantity - product.quantity;
-          console.log(newStock)
           myProduct.quantity = newStock;
-          console.log(myProduct);
           this.productService.updateProduct(myProduct, myProduct.$key).then(res => {
             
           }).catch(err => console.log(err));

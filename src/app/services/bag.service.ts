@@ -18,7 +18,6 @@ export class BagService {
    }
 
    getBag(bagId: string): Observable<Action<DocumentSnapshot<Bag>>> {
-    console.log(bagId);
     return this.bagCollection.doc<Bag>(bagId).snapshotChanges();
   }
 

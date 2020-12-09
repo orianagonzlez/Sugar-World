@@ -78,20 +78,15 @@ export class DetailViewComponent implements OnInit {
     this.agregado = false;
     this.seAcabo = false;
     this.intenteAgregar = true;
-    console.log('quiero agregar')
     this.authSubscription = this.authService.getCurrentUser().subscribe((user) => {
       this.user = user;
-      console.log('busque user')
       if (user && this.value > 0) {
-        console.log('tengo user')
         let cartProduct: CartProduct = {
           productId: this.product.$key,
           quantity: this.value,
         } 
         this.BagService.getCurrentBag(this.user.uid).then((res) => {
-          console.log('busque bolsa')
             if (res.docs.length <= 0) {
-              console.log('no tengo bolsa')
               let bag: Bag = {
                 price: this.product.price,
                 products: [cartProduct],
@@ -105,50 +100,39 @@ export class DetailViewComponent implements OnInit {
                 this.agregado = true;
               }).catch(err => console.log(err));
             } else {
-              console.log('tengo bolsa')
               if (res.docs[0].get('price') == this.product.price) {
-                console.log('mismo precio')
                 let currentProducts = res.docs[0].get('products') as Array<CartProduct>;
                 let pertenece = false;
                 let bagWeight = res.docs[0].get('weight');
 
                 currentProducts.map(item => {
                   if(item.productId == this.product.$key) {
-                    console.log('ya esta')
                     pertenece = true;
                     if (item.quantity + this.value <= this.product.quantity) {
-                      console.log('hay cantidad')
                       if ( bagWeight + this.value <= 2000) {
-                        console.log('hay cantidad en bolsa')
                         item.quantity += this.value; 
                         bagWeight += this.value;
                         this.agregado = true;
-                        console.log('agregue')
                       } else {
                         this.agregado = false;
                         this.excedente = true;
-                        console.log('no agregue')
                       }
                       
                     } else {
                       this.seAcabo = true;
                       this.agregado = false;
-                      console.log('no agregue')
                     }
                   }
                 });
 
                 if (!pertenece) {
-                  console.log('no esta')
                   if (bagWeight + this.value <= 2000) {
-                    console.log('hay cantidad')
                     currentProducts.push(cartProduct);
                     bagWeight += this.value;
                     this.agregado = true;
                   } else {
                     this.agregado = false;
                     this.excedente = true;
-                    console.log('no agregue')
                   }
                   
                 } 
@@ -170,13 +154,11 @@ export class DetailViewComponent implements OnInit {
               } else {
                 this.agregado = false;
                 this.wrongPrice = true;
-                console.log('no agregue')
               }
               
             }
           }).catch(err => console.log(err));  
         }   else {
-          console.log('no agregue')
           this.agregado = false;
           this.masDe0 = false;
         }

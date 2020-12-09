@@ -32,7 +32,6 @@ export class BagProductComponent implements OnInit {
         $key: item.payload.id,
         ...item.payload.data(),
       };
-      console.log(this.currentProduct);
       this.verificarDisponibilidad();
       this.loading = false;
     });
@@ -99,7 +98,6 @@ export class BagProductComponent implements OnInit {
     this.bag.weight -= this.cartProduct.quantity;
     this.bagService.updateBag(this.bag.key, this.bag);
     if (this.bag.products.length == 0) {
-      console.log('borrando sos ' + this.bag.key);
       this.bagService.deleteBag(this.bag.key).then((res) => {console.log('borre')}).catch(err => console.log(err));
     }
     

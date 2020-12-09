@@ -1,3 +1,6 @@
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
@@ -23,7 +26,6 @@ export class NavbarComponent implements OnInit {
     this.authService.getCurrentUser().subscribe((value) => {
       if (value) {
         this.isAdmin = this.authService.isAdmin();
-      console.log(this.isAdmin)
       }
     });
   }
