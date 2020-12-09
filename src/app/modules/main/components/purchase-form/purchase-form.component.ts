@@ -91,7 +91,7 @@ export class PurchaseFormComponent implements OnInit {
     }
     let valido = false;
   
-    if (newOrder.payment == null || newOrder.shipping == ""){
+    if (newOrder.payment == null || newOrder.shipping == "" || this.showSuccess == false){
       window.alert("Para realizar la orden se requiere que rellene los campos de Metodo de pago y Metodo de entrega")
     }else{
       this.createOrder(newOrder);
