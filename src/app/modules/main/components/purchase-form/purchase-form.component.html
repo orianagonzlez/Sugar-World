@@ -1,34 +1,85 @@
-<form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
-  <div class="col-12 my-2">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="text-center my-2 ">Metodos de pago</h5>
-        <select [(ngModel)]="paymentMethod" (ngModelChange)="comprobante()" formControlName="payment"
-          class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-          <option *ngFor="let method of pago" value="{{method.name}}">{{method.name}}</option>
-
-        </select>
-        <ng-container *ngIf="mostrarComprobante">
-          <h5 class="text-center  ">Anexe comprobante de pago</h5>
-          <ng-container *ngIf="!loadingImage">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-              <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+<ng-container *ngIf="pagado">
+  <div class="view-container">
+    <h4 class="text-center m-3">DETALLES DE LA COMPRA</h4>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col my-2">
+          <div class="card">
+            <div class="card-body cuenta">
+              <div *ngFor="let item of subtotal; let i = index;">
+                <div class="d-flex justify-content-between py-3">
+                  <h5>Bolsa {{i+1}}</h5>
+                  <h5>{{item}}$</h5>
+                </div>
+              </div>
+              <hr>
+              <div class="d-flex justify-content-between py-3">
+                <h5>Total:</h5>
+                <h5>{{total}}$</h5>
+              </div>
             </div>
-          </ng-container>
-          <ng-container *ngIf="loadingImage">
-            <div class="custom-file">
-              <span class="badge badge-success mt-1 p-2">Success</span>
+          </div>
+        </div>
+        <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+          <div class="col-12 my-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="text-center my-2 ">Metodos de pago</h5>
+                <select [(ngModel)]="paymentMethod" (ngModelChange)="comprobante()" formControlName="payment"
+                  class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                  <option *ngFor="let method of pago" value="{{method.name}}">{{method.name}}</option>
+                </select>
+                <ng-container *ngIf="mostrarComprobante">
+                  <h5 class="text-center  ">Anexe comprobante de pago</h5>
+                  <ng-container *ngIf="!loadingImage">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                      <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="loadingImage">
+                    <div class="custom-file">
+                      <span class="badge badge-success mt-1 p-2">Success</span>
+                    </div>
+                  </ng-container>
+                </ng-container>
+                <h5 class="text-center ">Metodos de entrega</h5>
+                <select formControlName="shipping" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                  <option *ngFor="let method of retiro" value="{{method.name}}">{{method.name}}</option>
+                </select>
+                <button type="submit" class="btn button-primary btn-block my-2">SUBMIT</button>
+              </div>
             </div>
-          </ng-container>
-        </ng-container>
-        <h5 class="text-center ">Metodos de entrega</h5>
-        <select formControlName="shipping" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-          <option *ngFor="let method of retiro" value="{{method.name}}">{{method.name}}</option>
-
-        </select>
-        <button type="submit" class="btn button-primary btn-block my-2">SUBMIT</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-</form>
+</ng-container>
+<ng-container *ngIf="!pagado">
+  <div class="info-container my-5">
+    <div class="jumbotron jumbotron-fluid d-flex justify-content-center">
+      <div class="container h-100 d-flex flex-column justify-content-center align-items-center titulo">
+        <h1 class="display-4">Gracias por su compra</h1>
+        <p class="lead">Hacemos tus dulces sueños realidad.</p>
+      </div>
+    </div>
+  </div>
+  <div class="container pt-0 mt-0 ">
+    <div class="row  align-items-top justify-content-md-center text-justify">
+      <img class="col-lg-6 h-50 mb-3" src="assets/imgAboutUs/tienda.jpg" alt="foto-tienda-caramelos">
+      <div class="col-lg-6 flex-column">
+        <h2 class="text-center">¡Esperamos conocerte pronto!</h2>
+        <h3>Siempre seras bienvenido a nuestra tienda! luego de que todo esto pase te estaremos esperando para que
+          disfrutes de la mejor experiencia </h3>
+        <h4>Para que puedas ver el status de tu orden el codigo es: </h4>
+
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+</ng-container>

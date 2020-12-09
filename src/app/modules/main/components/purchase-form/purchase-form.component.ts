@@ -20,6 +20,7 @@ export class PurchaseFormComponent implements OnInit {
   @Input() bags: Array<Bag>;
   @Input() user: User;
   @Input() total: number
+  @Input() subtotal
   orderForm: FormGroup = null;
   paymentMethod = null;
   mostrarComprobante = false;
@@ -27,6 +28,7 @@ export class PurchaseFormComponent implements OnInit {
   methods: Array<Method>
   retiro: Array<Method>
   pago: Array<Method>
+  pagado = false
   
   
   constructor(
@@ -90,6 +92,7 @@ export class PurchaseFormComponent implements OnInit {
       this.eliminarDelcarrito();
       this.actualizarInventario();
       this.orderForm.reset();
+      this.pagado=true
     }
   }
 
