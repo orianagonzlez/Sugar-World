@@ -12,32 +12,19 @@
             <th scope="col">Metodo de entrega</th>
             <th scope="col">Metodo de pago</th>
             <th scope="col">Status de la Orden</th>
-<<<<<<< HEAD
             <th scope="col">Editar</th>
-=======
-            <th scope="col">Status de la Orden</th>
->>>>>>> f213c3874471a48dba92d528304d09ec37be02e9
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let order of orders">
-            <th scope="row">{{ order.key }}</th>
+            <th scope="row">{{ order.$key }}</th>
             <th scope="row">{{ order.userId }}</th>
             <th scope="row">{{ order.shipping }}</th>
             <th scope="row">{{ order.payment }}</th>
-<<<<<<< HEAD
             <th scope="row">{{ order.status }}</th>
             <th scope="row">
             <button class="btn btn-outline-warning flex-grow-1" [routerLink]="['/admin/edit/category', order.key]"
             routerLinkActive="router-link-active">Editar</button></th>
-=======
-            <select class="custom-select" id="inputGroupSelect01">
-              <option selected>{{ order.status }}</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
->>>>>>> f213c3874471a48dba92d528304d09ec37be02e9
           </tr>
         </tbody>
       </table>
