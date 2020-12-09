@@ -35,10 +35,6 @@
                   <label>Monto máximo:</label>
                   <input type="number" [(ngModel)]="max" min="0" class="form-control" placeholder="Max"> 
                 </div>
-                <div class="text-danger d-flex flex-column justify-content-center align-items-center" *ngIf="wrongPrice">
-                  <small>El monto mínimo no debe exceder al máximo.</small>
-                  <small>Solo ingresa números positivos.</small>  
-                </div>
                 
                 <button type="button m-3" class="btn filter-button" (click)="getProductsByPrice()">Aplicar filtro</button>  
               </div>
@@ -49,12 +45,17 @@
           <button type="button" class="btn btn-outline-secondary ml-3  mb-3" (click)=getAllProducts(false) *ngIf="filters">Remover filtro</button> 
         
         </div>
+        
       </div>
+      <div class="text-danger text-center" *ngIf="empty">Debe ingresar el producto que desea buscar.</div>
+        <div class="text-danger text-center" *ngIf="wrongPrice">
+          El monto mínimo no debe exceder al máximo y solo debes ingresar números positivos.
+        </div>
     </div>
 
 
 
-    <div class="container d-flex flex-column align-items-center justify-content-center my-5 mx-auto" *ngIf="noProducts">
+    <div class="container d-flex flex-column align-items-center justify-content-center w-75 esta-vacio" *ngIf="noProducts">
       <div class="text-center">No se han encontrado productos. Intenta de nuevo!</div>
       <img class="logo mx-auto" src="assets/imgNavbar/logo.svg">
       

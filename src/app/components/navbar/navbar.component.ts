@@ -10,10 +10,15 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   isAuthenticated = false;
   user = this.authService.userDataSubject$;
+  isAdmin = false;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    if (this.authService.isAuthenticated()) {
+      this.isAdmin = this.authService.isAdmin();
+    }
+    
   }
 
   //LOGOUT  
