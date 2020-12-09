@@ -14,6 +14,8 @@ export class OrderViewComponent implements OnInit {
 
   orders: Array<Orden> = [];
   loading: boolean;
+  orden: Orden;
+
 
   constructor(private OrdenService: OrdenService) { }
 
@@ -33,8 +35,7 @@ export class OrderViewComponent implements OnInit {
       this.loading = false;
     });
   }*/
-
-
+  
   getAllOrders(): void{
     this.OrdenService.getAllOrders().subscribe((items) => {
       this.orders = items.map (
@@ -47,7 +48,5 @@ export class OrderViewComponent implements OnInit {
       this.loading = false;
     })
   }
-
-
 
 }

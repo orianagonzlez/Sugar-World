@@ -15,6 +15,8 @@ import { MethodViewComponent } from './admin-views/method-view/method-view.compo
 import { AdminCategoryFormComponent } from './admin-components/admin-category-form/admin-category-form.component';
 import { CategoryViewComponent } from './admin-views/category-view/category-view.component';
 import { EditCategoryViewComponent } from './admin-views/edit-category-view/edit-category-view.component';
+import { EditOrderViewComponent } from './admin-views/edit-order-view/edit-order-view.component';
+import { EditOrderFormComponent } from './admin-components/edit-order-form/edit-order-form.component';
 
 
 @NgModule({
@@ -23,7 +25,7 @@ import { EditCategoryViewComponent } from './admin-views/edit-category-view/edit
     StockViewComponent, 
     OrderViewComponent, 
     AdminNavigationComponent, 
-    AdminStockFormComponent, EditViewComponent, AdminOrderFormComponent, AdminMethodFormComponent, MethodViewComponent, AdminCategoryFormComponent, CategoryViewComponent, EditCategoryViewComponent
+    AdminStockFormComponent, EditViewComponent, AdminOrderFormComponent, AdminMethodFormComponent, MethodViewComponent, AdminCategoryFormComponent, CategoryViewComponent, EditCategoryViewComponent, EditOrderViewComponent, EditOrderFormComponent
   ],
   imports: [
     CommonModule,

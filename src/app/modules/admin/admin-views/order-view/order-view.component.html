@@ -12,7 +12,7 @@
             <th scope="col">Metodo de entrega</th>
             <th scope="col">Metodo de pago</th>
             <th scope="col">Status de la Orden</th>
-            <th scope="col">Editar</th>
+            <th scope="col">Cambiar Status</th>
           </tr>
         </thead>
         <tbody>
@@ -23,8 +23,9 @@
             <th scope="row">{{ order.payment }}</th>
             <th scope="row">{{ order.status }}</th>
             <th scope="row">
-            <button class="btn btn-outline-warning flex-grow-1" [routerLink]="['/admin/edit/category', order.key]"
-            routerLinkActive="router-link-active">Editar</button></th>
+              <button class="btn btn-outline-warning flex-grow-1" [routerLink]="['/admin/order', order.$key]"
+                routerLinkActive="router-link-active">Editar</button>
+            </th>
           </tr>
         </tbody>
       </table>

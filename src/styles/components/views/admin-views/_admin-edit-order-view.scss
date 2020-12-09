@@ -1,0 +1,16 @@
+.update-view-content{
+    margin: $margin-general;
+    width: 75%;
+    padding: 20px;
+    color: $font-color-white;
+    background-color: $color-secondary-dark;
+    border-radius: $border-radius-sm;
+    min-height: 100vh;
+    .btn-outline-light{
+        margin-bottom: $margin-general;
+    }
+    .readonly{
+        background-color: $color-secondary-light;
+        color: $color-secondary;
+    }
+}
