@@ -26,13 +26,13 @@
     </ng-container>
     <ng-container *ngIf="loadingImage">
       <div class="custom-file">
-        <span class="badge badge-success mt-1 p-2">Success</span>
+        <span class="badge badge-success mt-1 p-2">La imagen se ha cargado!</span>
       </div>
     </ng-container>
   </div>
   <div class="form-group">
     <label for="exampleInputQuantity">Cantidad en gramos</label>
-    <input class="form-control" type="text" formControlName='quantity'
+    <input class="form-control" type="number" min="0" formControlName='quantity'
       placeholder="Ingresa la cantidad disponible del producto">
   </div>
   <div class="form-group">
@@ -41,4 +41,6 @@
       placeholder="Ingrese el precio del producto">
   </div>
   <button type="submit" class="btn button-primary btn-block">SUBMIT</button>
-</form>
+</form> 
+<div class="text-center text-danger mt-2 bg-light rounded" *ngIf="!valid">Debe completar todos los campos.</div> 
+<div class="text-center text-danger mt-2 bg-light rounded" *ngIf="negativo">El precio y la cantidad deben ser numeros positivos.</div>

@@ -42,9 +42,6 @@ export class ProductsService {
     return this.productCollection.ref.where('price', '>=', min).where('price', '<=', max).get();
   } 
 
-  /*getProductByName(name: string): Promise<firestore.QuerySnapshot<firestore.DocumentData>> {
-    return this.productCollection.ref.where('name', 'in', name).get();
-  } */
 
   /*createProduct(newProduct: Product): Promise<any> {
   createProduct(newProduct: Product): Promise<any> {

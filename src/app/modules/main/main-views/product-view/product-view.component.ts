@@ -19,6 +19,7 @@ export class ProductViewComponent implements OnInit {
   filters = false;
   loading = false;
   wrongPrice = false;
+  empty = false;
   min = 0;
   max = 0;
   name = ''
@@ -33,7 +34,9 @@ export class ProductViewComponent implements OnInit {
   getAllProducts(byName: boolean): void {
     this.loading = true;
     this.filters = false;
+    this.empty = false;
     this.noProducts = false;
+    this.wrongPrice = false;
     this.ProductService.getAllProducts().subscribe((items) => {
       this.products = items.map (
         (item) => 
@@ -43,9 +46,15 @@ export class ProductViewComponent implements OnInit {
         } as Product)
       );
       if (byName) {
-        this.products = this.products.filter((item) => item.name.toLowerCase().includes(this.name.toLowerCase()));
-        console.log(this.products);
-        this.filters = true;
+        if (this.name == '') {
+          this.empty = true;
+        } else {
+          this.products = this.products.filter((item) => item.name.toLowerCase().includes(this.name.toLowerCase()));
+          console.log(this.products);
+          this.filters = true;
+        } 
+      } else {
+        this.name = '';
       }
       
       if (this.products.length == 0) {
@@ -70,7 +79,10 @@ export class ProductViewComponent implements OnInit {
   }
 
   getProductsByCategory(categoryId: string): void {
+    this.empty = false;
     this.noProducts = false;
+    this.wrongPrice = false;
+    this.name = '';
     this.ProductService.getProductsByCategory(categoryId).then((res) => {
       
       this.products = res.docs.map(item => ({
@@ -87,25 +99,11 @@ export class ProductViewComponent implements OnInit {
 
     }).catch(err => console.log(err));
   }
-
-  getProductByName(): void {
-    console.log(this.name);
-    this.loading = true;
-    this.getAllProducts(true);
-    console.log('busque productos');
-    console.log(this.products);
-    this.products = this.products.filter((item) => item.name.toLowerCase().includes(this.name.toLowerCase()));
-    console.log(this.products);
-
-    if (this.products.length == 0) {
-      this.noProducts = true;
-    }
-
-    this.loading = false;
-  }
-
+    
   getProductsByPrice(): void {
     this.noProducts = false;
+    this.empty = false;
+    this.name = '';
     console.log(this.min);
     console.log(this.max);
     if ((this.min <= this.max) && (this.min >= 0) && (this.max >= 0)) {

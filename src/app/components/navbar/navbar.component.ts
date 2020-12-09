@@ -10,12 +10,23 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   isAuthenticated = false;
   user = this.authService.userDataSubject$;
+  isAdmin = false;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getCurrentUser();
+    
   }
 
+  getCurrentUser(): void {
+    this.authService.getCurrentUser().subscribe((value) => {
+      if (value) {
+        this.isAdmin = this.authService.isAdmin();
+      console.log(this.isAdmin)
+      }
+    });
+  }
   //LOGOUT  
   logOut(): void {
     this.authService.logOut().then(() => {

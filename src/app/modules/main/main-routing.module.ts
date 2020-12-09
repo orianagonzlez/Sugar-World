@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserGuardGuard } from 'src/app/guards/user-guard.guard';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 import { AboutUsViewComponent } from './main-views/about-us-view/about-us-view.component';
 import { ContactViewComponent } from './main-views/contact-view/contact-view.component';
@@ -44,6 +45,7 @@ const routes: Routes = [
       },
       {
         path: 'wishList',
+        canActivate: [UserGuardGuard],
         component: WishListComponent
       },
        {
@@ -52,18 +54,22 @@ const routes: Routes = [
        },
       {
         path: 'currentBag', 
+        canActivate: [UserGuardGuard],
         component: CurrentBagViewComponent
       },
       {
         path: 'shoppingCart',
+        canActivate: [UserGuardGuard],
         component: ShoppingCartViewComponent
       },
       {
         path: 'profile',
+        canActivate: [UserGuardGuard],
         component: ProfileViewComponent
       },
       {
         path: 'userOrders',
+        canActivate: [UserGuardGuard],
         component: UserOrdersViewComponent
       }
       

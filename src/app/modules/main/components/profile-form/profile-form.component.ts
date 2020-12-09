@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Profile } from 'src/app/models/profile';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -15,7 +15,7 @@ import { async } from 'rxjs';
 export class ProfileFormComponent implements OnInit {
 
   profileForm: FormGroup = null;
-
+  valid = true;
   editProfile: Profile = null;
   profileId: string;
 
@@ -43,13 +43,13 @@ export class ProfileFormComponent implements OnInit {
 
   createForm(): void {
     this.profileForm = this.fb.group({
-      name: [''],
-      lastname: [''],
-      email: [''],
-      password: [''],
-      birthday: [''],
-      birthmonth: [''],
-      birthyear: [''],
+      name: ['', Validators.required],
+      lastname: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      birthday: ['', Validators.required],
+      birthmonth: ['', Validators.required],
+      birthyear: ['', Validators.required],
     });
   }
 
@@ -72,8 +72,10 @@ export class ProfileFormComponent implements OnInit {
 
 
   onSubmit(): void {
-    this.authService.singUpWithCredentials(this.profileForm.get('email').value,
+    if (this.profileForm.valid) {
+      this.authService.singUpWithCredentials(this.profileForm.get('email').value,
       this.profileForm.get('password').value).then(() => {
+        this.valid = true;
         this.router.navigate(['/home']);
       })
       .catch((err) => {
@@ -97,13 +99,18 @@ export class ProfileFormComponent implements OnInit {
         this.createProfile(newProfile, this.user2.uid);
       }
     });
+    } else {
+      this.valid = false;
+    }
+    
   }
 
   updateOnSubmit(): void {
     this.authService.getCurrentUser().subscribe((user2) => {
       if (user2) {
-        this.user2 = user2;
-        const newProfile: Profile = {
+        if (this.profileForm.valid) {
+          this.user2 = user2;
+          const newProfile: Profile = {
           userId: this.user2.uid,
           name: this.profileForm.get('name').value,
           lastname: this.profileForm.get('lastname').value,
@@ -115,9 +122,16 @@ export class ProfileFormComponent implements OnInit {
         }
         this.addToEditProfile();
         this.updateProfile(newProfile, this.user2.uid);
+        this.valid = true;
+        this.showMessage();
+        } else {
+          this.showMyMessage = false;
+          this.valid = false;
+        }
+        
       }
     });
-    this.showMessage();
+    
   }
 
   addToEditProfile(): void {
@@ -173,7 +187,7 @@ export class ProfileFormComponent implements OnInit {
     this.authService.loginWithGoogle().then(response => {
       this.router.navigate(['/'])
     }).catch((err) => {
-      window.alert("Daros invalidos: " + err)
+      window.alert("Datos invalidos: " + err)
       console.log(err)
     });
   }
@@ -189,9 +203,9 @@ export class ProfileFormComponent implements OnInit {
           lastname: "Google Account",
           email: this.user2.email,
           password: "********",
-          birthday: " ",
-          birthmonth: " ",
-          birthyear: " ",
+          birthday: "",
+          birthmonth: "",
+          birthyear: "",
         }
         this.createProfile(newProfile, this.user2.uid);
       }

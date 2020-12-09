@@ -10,7 +10,7 @@
         </div>
         <button (click)="addToBag()" style="margin-top: 10px;" type="submit" class="btn btn-color">Agregar a
           Bolsa</button>
-        <div class="my-3" *ngIf="agregado && intenteAgregar">Producto agregado exitosamente!</div>
+        <div class="my-3 text-success" *ngIf="agregado && intenteAgregar">Producto agregado exitosamente!</div>
         <div class="text-danger my-3" *ngIf="excedente && !agregado && intenteAgregar">No se pudo agregar :(. Su bolsa actual se excedería de 2kg.</div>
         <div class="text-danger my-3" *ngIf="!masDe0 && !agregado && intenteAgregar">Debe agregar una cantidad mayor a 0.</div>
         <div class="text-danger my-3" *ngIf="wrongPrice && !agregado && intenteAgregar">No se pudo agregar :(. Su bolsa actual no es de este precio.</div>
