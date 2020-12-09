@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Orden } from 'src/app/models/orden';
 import { Order } from 'src/app/models/order';
 import { OrdenService } from 'src/app/services/orden.service';
