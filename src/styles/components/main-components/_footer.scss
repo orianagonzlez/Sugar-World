@@ -14,4 +14,10 @@
     margin: auto;
     margin-bottom: 1em;
   }
+
+  @include sm-device-max() {
+    .icono {
+      margin: 0rem 0.8rem;
+    }
+  }
 }

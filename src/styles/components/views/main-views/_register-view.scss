@@ -1,8 +1,20 @@
 .reg-contenedor {
-  margin-top: 50px;
-  min-height: 35em;
-  min-width: 30em;
+  margin-top: 60px;
+  
+  width: 40rem;
   padding: 2em;
+
+  @include sm-device-max() {
+    width: 30rem;
+  }
+
+  @include xm-device-max() {
+    width: 25rem;
+  }
+
+  @include big-phone-max() {
+    width: 18rem;
+  }
 }
 
 hr {
@@ -10,7 +22,7 @@ hr {
   border-radius: 300px;
   height: 0px;
   color: #e66382;
-  width: 20em;
+  width: 40%;
   margin: auto;
   margin-bottom: 1em;
 }
@@ -32,20 +44,30 @@ hr {
   color: #ffffff;
 }
 
-@media (min-width: 320px) {
+@media (max-width: 320px) {
   .reg-contenedor {
-    margin-top: 110px;
-    height: 40em;
+    margin-top: 80px;
+    height: 50rem;
+    width: 15rem;
   }
   .hero-image {
-    height: 130vh;
+    height: 170vh;
+  }
+}
+@media (min-width: 320px) {
+  .reg-contenedor {
+    margin-top: 100px;
+    height: 50rem;
+  }
+  .hero-image {
+    height: 165vh;
   }
 }
 
 @media (min-width: 480px) {
   .reg-contenedor {
-    margin-top: 110px;
-    height: 40em;
+    margin-top: 60px;
+    height: 43rem;
   }
   .hero-image {
     height: 130vh;
@@ -54,8 +76,8 @@ hr {
 
 @media (min-width: 550px) {
   .reg-contenedor {
-    margin-top: 110px;
-    height: 40em;
+    margin-top: 70px;
+    height: 43rem;
   }
   .hero-image {
     height: 120vh;
@@ -64,8 +86,8 @@ hr {
 
 @media (min-width: 768px) {
   .reg-contenedor {
-    margin-top: 50px;
-    height: 35em;
+    margin-top: 80px;
+    height: 38rem;
   }
   .hero-image {
     height: 110vh;
@@ -74,10 +96,10 @@ hr {
 
 @media (min-width: 992px) {
   .reg-contenedor {
-    margin-top: 50px;
-    height: 35em;
+    margin-top: 120px;
+    height: 38rem;
   }
   .hero-image {
-    height: 110vh;
+    height: 120vh;
   }
 }

@@ -14,7 +14,7 @@ hr {
   margin-bottom: 1em;
 }
 
-.hero-image {
+.hero-image-login {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -29,4 +29,24 @@ hr {
 .btn-color-primary {
   background-color: $color-primary;
   color: #ffffff;
+}
+
+.login-content {
+  @include sm-device-max() {
+    width: 30rem;
+
+    .btn-color {
+      margin: 0;
+      flex-wrap: wrap;
+    }
+  }
+
+  @include xm-device-max() {
+    width: 25rem;
+  }
+
+  @include big-phone-max() {
+    width: 18rem;
+
+  }
 }
