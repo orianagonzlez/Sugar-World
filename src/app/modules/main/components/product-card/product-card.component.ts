@@ -66,7 +66,6 @@ export class ProductCardComponent implements OnInit {
           this.product.isFavorite = !this.product.isFavorite;
         });
     }
-    console.log(this.product.name +" "+ this.product.isFavorite)
   }
 
 

@@ -37,7 +37,6 @@ export class ShoppingCartViewComponent implements OnInit {
               this.loading = false;
             } else {
                 this.hayBolsas = true;
-                console.log(res.docs.length);
                 res.docs.forEach((bag) => {
                   this.bagService.getBag(bag.id).subscribe((item) => {
                     let currentBag = {
@@ -77,7 +76,6 @@ export class ShoppingCartViewComponent implements OnInit {
       this.subtotal.push(sub);
       this.total = this.total+sub;
     });
-    console.log(this.subtotal)
     this.proceder=true;
   }
 

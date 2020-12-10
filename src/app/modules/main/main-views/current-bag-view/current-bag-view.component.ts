@@ -35,12 +35,10 @@ export class CurrentBagViewComponent implements OnInit {
               this.loading = false;
             } else {
                 this.bagSubscription = this.bagService.getBag(res.docs[0].id).subscribe((item) => {
-                  console.log(item);
                   this.currentBag = {
                     key: item.payload.id,
                     ...item.payload.data(),
                   };
-                  console.log(this.currentBag);
                   if (this.currentBag.price == undefined) {
                     this.borrada = true;
                   }

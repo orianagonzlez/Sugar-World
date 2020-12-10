@@ -50,7 +50,6 @@ export class ProductViewComponent implements OnInit {
           this.empty = true;
         } else {
           this.products = this.products.filter((item) => item.name.toLowerCase().includes(this.name.toLowerCase()));
-          console.log(this.products);
           this.filters = true;
         } 
       } else {
@@ -61,7 +60,6 @@ export class ProductViewComponent implements OnInit {
         this.noProducts = true;
       }
       this.loading = false;
-    console.log(this.products.length +"SOS ")
   });
   }
 
@@ -74,7 +72,6 @@ export class ProductViewComponent implements OnInit {
           $key: item.payload.doc.id,
         } as Category)
       );
-      console.log(this.categories);
     });
   }
 
@@ -89,7 +86,6 @@ export class ProductViewComponent implements OnInit {
         ...item.data(),
         $key: item.id,
       } as Product));
-      console.log(this.products);
 
       if (this.products.length == 0) {
         this.noProducts = true;
@@ -104,8 +100,7 @@ export class ProductViewComponent implements OnInit {
     this.noProducts = false;
     this.empty = false;
     this.name = '';
-    console.log(this.min);
-    console.log(this.max);
+
     if ((this.min <= this.max) && (this.min >= 0) && (this.max >= 0)) {
       this.ProductService.getProductsByPrice(this.min, this.max).then((res) => {
       
@@ -113,7 +108,7 @@ export class ProductViewComponent implements OnInit {
           ...item.data(),
           $key: item.id,
         } as Product));
-        console.log(this.products);
+
 
         if (this.products.length == 0) {
           this.noProducts = true;

@@ -26,7 +26,6 @@ export class ProductsService {
   }
 
   getProduct(productId: string): Observable<Action<DocumentSnapshot<Product>>> {
-    console.log(productId)
     return this.productCollection.doc<Product>(productId).snapshotChanges();
   }
 

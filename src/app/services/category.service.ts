@@ -19,7 +19,6 @@ export class CategoryService {
   }
 
   getCategory(categoryId: string): Observable<Action<DocumentSnapshot<Category>>> {
-    console.log(categoryId);
     return this.categoriesCollection.doc<Category>(categoryId).snapshotChanges();
   }
 
