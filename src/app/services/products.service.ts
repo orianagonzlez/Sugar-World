@@ -56,7 +56,6 @@ export class ProductsService {
       finalize(()=>{
         fileRef.getDownloadURL().subscribe(urlImage=>{
           newProduct.image=urlImage;
-          console.log(newProduct.image);
           return this.productCollection.add(newProduct);
         })
       })
@@ -105,7 +104,6 @@ export class ProductsService {
       finalize(()=>{
         fileRef.getDownloadURL().subscribe(urlImage=>{
           this.url =urlImage;
-          console.log(this.url);
           
 
         })

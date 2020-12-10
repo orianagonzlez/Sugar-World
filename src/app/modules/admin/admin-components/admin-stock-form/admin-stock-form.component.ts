@@ -49,7 +49,6 @@ export class AdminStockFormComponent implements OnInit {
   }
 
   patchFormValues(): void {
-    console.log(this.editProduct.image);
     this.productForm.patchValue({
       name: this.editProduct.name,
       category: this.editProduct.category,
@@ -88,7 +87,6 @@ export class AdminStockFormComponent implements OnInit {
       isFavorite: false,
     }
  
-    console.log(this.productForm.valid)
     
     if (this.productForm.valid) {
       this.valid = true;

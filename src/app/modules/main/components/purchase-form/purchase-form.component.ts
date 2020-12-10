@@ -87,7 +87,7 @@ export class PurchaseFormComponent implements OnInit {
     const newOrder: Orden = {
       userId: this.user.uid,
       userName: this.user.displayName,
-      status: "pendiente",
+      status: "Pendiente",
       payment: this.orderForm.get('payment').value,
       shipping: this.orderForm.get('shipping').value,
       total: this.total

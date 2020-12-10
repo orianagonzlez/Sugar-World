@@ -39,7 +39,6 @@ export class WishlistService {
               favorites: [productId],
             })
             .then((res) => {
-              console.log(res.id);
             });
         } else {
   

@@ -69,9 +69,7 @@ export class BagProductComponent implements OnInit {
                 this.bagService.updateBag(this.bag.key, this.bag);
               }
             });
-          } else {
-            console.log('la bolsa se excede');
-          }
+          } 
           
     }
   }
