@@ -1,6 +1,6 @@
 <div class="view-container">
   <div class="container">
-    <h4 class="text-center">LISTA DE DESEOS</h4>
+    <h4 class="text-center">LISTA DE FAVORITOS</h4>
     <div class="container text-center esta-vacio" *ngIf="!hayProductos">No has guardado ningun producto :(. Dirígete a la página de productos y guarda los que más te gusten! Cuando estés listo para comprar, aquí te esperarán!</div>
     <ng-container *ngIf="hayProductos">
       <app-product-list [products]="products"></app-product-list>

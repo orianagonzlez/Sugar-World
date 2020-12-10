@@ -32,7 +32,7 @@ export class EditOrderFormComponent implements OnInit {
     this.statusForm = this.fb.group({
       key: ['', Validators.required],
       userId: ['', Validators.required],
-      userName: ['', Validators.required],
+      userName: [''],
       status: ['', Validators.required],
       payment: ['', Validators.required],
       shipping: ['', Validators.required],
@@ -72,10 +72,13 @@ export class EditOrderFormComponent implements OnInit {
       shipping: this.statusForm.get('shipping').value,
       total: this.statusForm.get('total').value,
     }
-    if (this.editOrder) {
+    
+    if (this.statusForm.valid) {
       this.statusForm.reset()
       this.updateOrder(newOrder);
-      return;
+      this.valid = true;
+    } else {
+      this.valid = false;
     }
   }
 

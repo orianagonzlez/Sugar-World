@@ -20,7 +20,6 @@ export class ProfileService {
   }
 
   getProfileKey(userId: string): Observable<Action<DocumentSnapshot<Profile>>> {
-    console.log(userId)
     return this.profileCollection.doc<Profile>(userId).snapshotChanges();
   }
 

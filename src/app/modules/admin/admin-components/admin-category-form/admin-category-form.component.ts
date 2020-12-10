@@ -53,7 +53,6 @@ export class AdminCategoryFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.categoryForm.get('name').value);
     const newCategory: Category = {
       name: this.categoryForm.get('name').value,
     }
