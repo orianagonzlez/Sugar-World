@@ -159,8 +159,13 @@ export class DetailViewComponent implements OnInit {
             }
           }).catch(err => console.log(err));  
         }   else {
-          this.agregado = false;
-          this.masDe0 = false;
+          if (!user) {
+            this.router.navigate(['/home/login']);
+          } else {
+            this.agregado = false;
+            this.masDe0 = false;
+          }
+          
         }
       });    
   }
