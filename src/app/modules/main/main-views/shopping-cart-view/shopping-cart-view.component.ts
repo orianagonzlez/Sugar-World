@@ -80,6 +80,11 @@ export class ShoppingCartViewComponent implements OnInit {
   }
 
 
+  volver(){
+    this.proceder=false
+  }
+
+
 
 
 
