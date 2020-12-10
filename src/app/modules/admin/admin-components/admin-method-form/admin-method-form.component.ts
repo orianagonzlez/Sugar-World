@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Method } from 'src/app/models/method';
 import { MethodsService } from 'src/app/services/method.service';
 
@@ -11,6 +11,8 @@ import { MethodsService } from 'src/app/services/method.service';
 export class AdminMethodFormComponent implements OnInit {
 
   methodForm: FormGroup = null;
+  valid = true;
+  metodoCorrecto = true;
 
   @Input() editMethod: Method = null;
 
@@ -22,8 +24,8 @@ export class AdminMethodFormComponent implements OnInit {
 
   createForm(): void{
     this.methodForm = this.fb.group({
-      type: [''],
-      name: [''],
+      type: ['', Validators.required],
+      name: ['', Validators.required],
       attachement: ['']
     });
   }
@@ -35,11 +37,35 @@ export class AdminMethodFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.metodoCorrecto = true;
+    this.valid = true;
     const newMethod: Method = {
       type:this.methodForm.get('type').value,
       name:this.methodForm.get('name').value,
       attachement: this.methodForm.get('attachement').value,
     }
-    this.createMethod(newMethod);
+
+    if (this.methodForm.valid) {
+      if (newMethod.type.toLowerCase() == 'pago') {
+        if (newMethod.attachement == "" || !newMethod.attachement) {
+          this.valid = false;
+        } else {
+          this.valid = true;
+          this.createMethod(newMethod);
+          this.methodForm.reset();
+        }
+      } else if (newMethod.type.toLowerCase() == 'retiro') {
+        this.valid = true;
+        newMethod.attachement = "-";
+        this.createMethod(newMethod);
+        this.methodForm.reset();
+      } else {
+        this.metodoCorrecto = false;
+      }
+      
+    } else {
+      this.valid = false;
+    }
+    
   }
 }

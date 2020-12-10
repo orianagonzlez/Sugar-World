@@ -1,0 +1,37 @@
+<div class="container" *ngIf="!loading" style="margin-top: 200px;">
+  <div class="detail-view mx-auto">
+    <div class="row">
+      <div class="col-lg-4 col-sm-12" style="display: flex; flex-direction: column;">
+        <img class="product-image" src="{{ product.image }}" alt="Product image" width="fit" height="350px">
+        <div class="counter">
+          <button (click)="minus()" class="btn btn-color-secondary" id="minus">−</button>
+          <div class="number">{{this.value}}</div>
+          <button (click)="plus()" class="btn btn-color-secondary" id="plus">+</button>
+        </div>
+        <button (click)="addToBag()" style="margin-top: 10px;" type="submit" class="btn btn-color">Agregar a
+          Bolsa</button>
+        <div class="my-3 text-success" *ngIf="agregado && intenteAgregar">Producto agregado exitosamente!</div>
+        <div class="text-danger my-3" *ngIf="excedente && !agregado && intenteAgregar">No se pudo agregar :(. Su bolsa actual se excedería de 2kg.</div>
+        <div class="text-danger my-3" *ngIf="!masDe0 && !agregado && intenteAgregar">Debe agregar una cantidad mayor a 0.</div>
+        <div class="text-danger my-3" *ngIf="wrongPrice && !agregado && intenteAgregar">No se pudo agregar :(. Su bolsa actual no es de este precio.</div>
+        <div class="text-danger my-3" *ngIf="seAcabo && !agregado && intenteAgregar">No se pudo agregar :(. No hay suficiente cantidad disponible.</div>
+      </div>
+      <div class="col-lg-8 col-sm-12" style="display: flex; flex-direction: column;">
+        <div class="product-name my-3">{{product.name}}</div>
+        <div class="product-price">Precio/50g: ${{product.price}}</div>
+        <div class="product-category">Categoria: {{product.category}}</div>
+        <div class="product-description my-3">{{product.description}}</div>
+      </div>
+    </div>
+    <button type="button" routerLink="/home/product" class="btn return my-3">&#60; Return</button>
+  </div>
+  
+</div>
+<div class="container-fluid" *ngIf="loading" style="margin-top: 75px;">
+  <div class="row justify-content-center line">
+    <div class="col-6 title justify-content-center">
+      <div class="loader"></div>
+      <h2 style="align-self: center;">Loading...</h2>
+    </div>
+  </div>
+</div>

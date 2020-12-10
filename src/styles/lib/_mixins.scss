@@ -1,4 +1,10 @@
 // MAX WIDTH
+@mixin big-phone-max {
+    @media (max-width: 480px){
+        @content;
+    }
+}
+
 @mixin xm-device-max {
     @media (max-width: 575.98px){
         @content;

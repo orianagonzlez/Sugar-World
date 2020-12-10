@@ -1,56 +1,63 @@
-nav{
-    &.navbar-admin-custom {
-        background: url("../../../assets/imgNavbar/fondoNavbar-lg.png");
-        background-repeat: no-repeat;
-        background-size: 100% 100%; 
-        padding-bottom: 1rem;
-        font-size: $font-md;
-    
-        
-    }
+nav {
+  &.navbar-admin-custom {
+    background: url("../../../assets/imgNavbar/fondoNavbar-lg.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-bottom: 1rem;
+    font-size: $font-md;
 
-    .admin {
-        font-size: 1rem;
-        color: $color-black;
-        font-weight: 700;
+    @include sm-device-max() {
+      background: url("../../../assets/imgNavbar/fondoNavbar-sm.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      font-size: $font-sm;
     }
+  }
 
-    .admin:hover {
-        cursor: default;
-    }
-    
-    li{
-        list-style-type: none;
-    }
-    
-    li :hover{
-        color: $color-secondary-dark;
-        transition: all 0.3s ease 0s;
-    }
+  .admin {
+    font-size: 1rem;
+    color: $color-black;
+    font-weight: 700;
 
-    a{
-        text-decoration: none;
-        color: $color-white;
+    @include big-phone-max() {
+      font-size: 0.5rem;
     }
+  }
 
-    .dropdown-divider {
-        border-top: 1px solid $color-secondary-light;
-    }
+  .admin:hover {
+    cursor: default;
+  }
 
-    img {
-    
-        &.logo{
-            width: 10rem;
-            height: 5rem;
-        }
-    }
+  li {
+    list-style-type: none;
+  }
 
-    #navbarMenu {
-        @include md-device-max() {
-            padding: 1rem;
-            width: 100%;
-            background-color: #FFE9E3; 
-          } 
-        
+  li :hover {
+    color: $color-secondary-dark;
+    transition: all 0.3s ease 0s;
+  }
+
+  .dropdown-divider {
+    border-top: 1px solid $color-secondary-light;
+  }
+
+  img {
+    &.logo-admin {
+      width: 10rem;
+      height: 5rem;
+
+      @include big-phone-max() {
+        width: 8rem;
+        height: 3.5rem;
+      }
     }
+  }
+
+  #navbarMenu {
+    @include md-device-max() {
+      padding: 1rem;
+      width: 100%;
+      background-color: #ffe9e3;
+    }
+  }
 }

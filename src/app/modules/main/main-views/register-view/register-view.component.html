@@ -1,30 +1,11 @@
 <div class="container-fluid hero-image">
-  <div class="row login-content ">
-    <div class="col contenedor align-self-center bg-light">
+  <div class="row login-content">
+    <div class="col reg-contenedor align-self-center bg-light">
       <div class="row justify-content-center ">
         <h2>Registrarse</h2>
       </div>
       <hr>
-      <form class="mb-4" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Correo</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-            formControlName="email" />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Contraseña</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password" />
-        </div>
-        <div class="row justify-content-center mt-3">
-          <button type="submit" class="btn btn-primary mr-5">Submit</button>
-          <button class="btn btn-success ml-5" (click)="loginWithGoogle()">
-            Iniciar con Google
-          </button>
-
-        </div>
-
-      </form>
-
+      <app-profile-form></app-profile-form>
     </div>
   </div>
 </div>

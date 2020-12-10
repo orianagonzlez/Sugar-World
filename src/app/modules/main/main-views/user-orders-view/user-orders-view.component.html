@@ -1,0 +1,31 @@
+<div class="container view-container">
+  <h4 class="text-center m-3">HISTORIAL DE PEDIDOS</h4>
+  <ng-container *ngIf="hayProductos">
+    <div class="table-responsive">
+      <table class="table table-striped" id="tablaOrdenes">
+        <thead class="table-head">
+          <tr>
+            <th scope="col">Key de la Orden</th>
+            <th scope="col">Metodo de entrega</th>
+            <th scope="col">Metodo de pago</th>
+            <th scope="col">Status de la Orden</th>
+            <th scope="col">Total de la orden</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <th scope="row">{{ order.key }}</th>
+            <th scope="row">{{ order.shipping }}</th>
+            <th scope="row">{{ order.payment }}</th>
+            <th scope="row">{{ order.status }}</th>
+            <th scope="row">{{ order.total }}$</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+  <div class="container text-center esta-vacio" *ngIf="!hayProductos">No has realizado ningun pedido :(. Dirígete a la
+    página de productos y guarda los que más te gusten! Una vez compres aqui podras hacerle seguimiento al estatus de
+    tus pedidos!</div>
+
+</div>

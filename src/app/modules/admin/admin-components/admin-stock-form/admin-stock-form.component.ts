@@ -1,8 +1,10 @@
 import { isNgTemplate } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Category } from 'src/app/models/category';
 import { Product } from 'src/app/models/product';
+import { CategoryService } from 'src/app/services/category.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -13,30 +15,36 @@ import { ProductsService } from 'src/app/services/products.service';
 export class AdminStockFormComponent implements OnInit {
 
   productForm: FormGroup = null;
-
+  image: any = null;
   editProduct: Product = null;
   productId: string;
+  categories: Array<Category> = [];
+  loadingImage = false;
+  valid = true;
+  negativo = false;
 
   constructor(
     private productService: ProductsService,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
+    private categoryService: CategoryService
   ) { }
 
   ngOnInit(): void {
     this.createForm();
     this.getUrlParams();
+    this.getAllCategories();
   }
 
   createForm(): void {
     this.productForm = this.fb.group({
-      name: [''],
-      category: [''],
-      description: [''],
+      name: ['', Validators.required],
+      category: ['', Validators.required],
+      description: ['', Validators.required],
       image:[''],
-      quantity: [''],
-      price: [''],
+      quantity: ['', Validators.required],
+      price: ['', Validators.required],
     });
   }
 
@@ -51,16 +59,21 @@ export class AdminStockFormComponent implements OnInit {
     })
   }
 
+  
   createProduct(newProduct: Product): void {
-    this.productService.createProduct(newProduct).then(res => {
-
-    }).catch(err => console.log(err));
+    this.productService.createProduct(newProduct, this.image)
   }
 
   updateProduct(newProduct: Product): void {
-    this.productService.updateProduct(newProduct, this.productId).then(res => {
+    if(this.image==null){
+         this.productService.updateProduct(newProduct, this.productId).then(res => {
       this.router.navigate(['/admin/stock']);
     }).catch(err => console.log(err))
+    }else{
+      this.productService.updateProduct(newProduct, this.productId, this.image).then(res => {
+      this.router.navigate(['/admin/stock']);
+    }).catch(err => console.log(err))
+    }
   }
 
   onSubmit(): void {
@@ -71,14 +84,40 @@ export class AdminStockFormComponent implements OnInit {
       image: this.productForm.get('image').value,
       quantity: this.productForm.get('quantity').value,
       price: this.productForm.get('price').value,
+      isFavorite: false,
     }
+ 
+    
+    if (this.productForm.valid) {
+      this.valid = true;
+      if (newProduct.price > 0 && newProduct.quantity > 0) {
+        
+        this.negativo = false;
+        if (this.editProduct) {
+          this.productForm.reset()
+          this.loadingImage = false;
+          this.updateProduct(newProduct);
+          this.valid = true;
+          return;
+        }
 
-    if (this.editProduct) {
-      this.updateProduct(newProduct);
-      return;
+        if (this.loadingImage) {
+          this.createProduct(newProduct);
+          this.valid = true;
+          this.productForm.reset()
+          this.loadingImage = false;
+        } else {
+          this.valid = false;
+        }
+        
+      } else {
+        this.negativo = true;
+      }
+      
+    } else {
+        this.valid = false;
     }
-
-    this.createProduct(newProduct);
+    
   }
 
   getUrlParams(): void {
@@ -103,5 +142,23 @@ export class AdminStockFormComponent implements OnInit {
       }
     });
   }
+
+  getAllCategories(): void {
+    this.categoryService.getAllCategories().subscribe((items) => {
+      this.categories = items.map (
+        (item) => 
+        ({
+          ...item.payload.doc.data(),
+          $key: item.payload.doc.id,
+        } as Category)
+      );
+    });
+  }
+
+    handleImage(event : any ){
+    this.image = event.target.files[0]; 
+    this.loadingImage = !this.loadingImage;
+  }
+
 
 }

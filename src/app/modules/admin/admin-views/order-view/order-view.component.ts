@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Orden } from 'src/app/models/orden';
 import { Order } from 'src/app/models/order';
+import { OrdenService } from 'src/app/services/orden.service';
 import { OrdersService } from 'src/app/services/orders.service';
 
 @Component({
@@ -9,16 +12,18 @@ import { OrdersService } from 'src/app/services/orders.service';
 })
 export class OrderViewComponent implements OnInit {
 
-  orders: Array<Order> = [];
+  orders: Array<Orden> = [];
   loading: boolean;
+  orden: Orden;
 
-  constructor(private OrderService: OrdersService) { }
+
+  constructor(private OrdenService: OrdenService) { }
 
   ngOnInit(): void {
     this.getAllOrders();
   }
 
-  getAllOrders(): void {
+  /*getAllOrders(): void {
     this.OrderService.getAllOrders().subscribe((items) => {
       this.orders = items.map (
         (items) => 
@@ -29,5 +34,19 @@ export class OrderViewComponent implements OnInit {
       );
       this.loading = false;
     });
+  }*/
+  
+  getAllOrders(): void{
+    this.OrdenService.getAllOrders().subscribe((items) => {
+      this.orders = items.map (
+        (items) => 
+        ({
+          ...items.payload.doc.data(),
+          $key: items.payload.doc.id,
+        } as Orden)
+      );
+      this.loading = false;
+    })
   }
+
 }

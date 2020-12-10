@@ -25,7 +25,7 @@
   align-items: center;
   border-radius: 1em;
   background-color: #c4c4c490;
-  h2 {
+  .home-title {
     color: $color-black;
   }
 }
@@ -69,7 +69,7 @@
   transform: scale(1.01, 1.01);
 }
 
-@media (min-width: 320px) {
+@include xm-device-max() {
   .card-img-top {
     height: 50vw;
   }
@@ -82,15 +82,15 @@
   }
 
   .hero-text {
-    width: 20em;
+    width: 15em;
     height: 10em;
   }
-  h2 {
-    font-size: 1.8em;
+  .home-title {
+    font-size: 1.5em;
   }
 }
 
-@media (min-width: 480px) {
+@include sm-device-min() {
   .card-img-top {
     height: 50vw;
   }
@@ -106,33 +106,12 @@
     width: 25em;
     height: 10em;
   }
-  h2 {
-    font-size: 1.8em;
-  }
-}
-
-@media (min-width: 550px) {
-  .card-img-top {
-    height: 50vw;
-  }
-  .carrusel-img {
-    height: 70vh;
-  }
-
-  .carrusel {
-    height: 70vh;
-  }
-
-  .hero-text {
-    width: 25em;
-    height: 10em;
-  }
-  h2 {
+  .home-title {
     font-size: 2em;
   }
 }
 
-@media (min-width: 768px) {
+@include md-device-min() {
   .card-img-top {
     height: 30vw;
   }
@@ -147,12 +126,12 @@
     width: 25em;
     height: 9em;
   }
-  h2 {
+  .home-title {
     font-size: 2em;
   }
 }
 
-@media (min-width: 992px) {
+@include lg-device-min() {
   .card-img-top {
     height: 20vw;
   }
@@ -168,12 +147,12 @@
     height: 18em;
   }
 
-  h2 {
+  .home-title {
     font-size: 3em;
   }
 }
 
-@media (min-width: 1200px) {
+@include xl-device-min {
   .card-img-top {
     height: 20vw;
   }
@@ -189,7 +168,7 @@
     width: 40em;
     height: 18em;
   }
-  h2 {
+  .home-title {
     font-size: 3em;
   }
 }

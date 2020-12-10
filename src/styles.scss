@@ -9,30 +9,37 @@
 @import "./styles/layout/sections";
 //Components
 @import "./styles/components/main-components/navbar";
-// @import "./styles/components/main-components/footer";
+@import "./styles/components/main-components/footer";
 @import "./styles/components/admin-components/_admin-navbar.scss";
 // @import "./styles/components/admin-components/_admin-footer.scss";
 
 //Views
 @import "./styles/components/views/main-views/home-view";
-// @import "./styles/components/views/main-views/contact-view";
-// @import "./styles/components/views/main-views/product-view";
+@import "./styles/components/views/main-views/about-us-view";
+@import "./styles/components/views/main-views/contact-view";
+@import "src/styles/components/views/main-views/_product-view.scss";
 @import "./styles/components/views/main-views/login-view";
-// @import "./styles/components/views/main-views/register-view";
+@import "./styles/components/views/main-views/bag-view";
+@import "./styles/components/views/main-views/register-view";
 @import "./styles/components/views/admin-views/_admin-order-view.scss";
 @import "./styles/components/views/admin-views/_admin-stock-view.scss";
 @import "./styles/components/views/admin-views/_admin-edit-view.scss";
+@import "./styles/components/views/admin-views/_admin-edit-order-view.scss";
 @import "src/styles/components/views/admin-views/_admin-method-view.scss";
+@import "./styles/components/views/admin-views/admin-category-view";
+@import "./styles/components/views/admin-views/admin-edit-category-view";
+@import "src/styles/components/views/main-views/_detail-view.scss";
+@import "src/styles/components/views/main-views/_profile-view.scss";
 
 @import "src/styles/components/_titulo.scss";
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    color: $font-color-black;
-    font-family: $font-family;
+  color: $font-color-black;
+  font-family: $font-family;
 }

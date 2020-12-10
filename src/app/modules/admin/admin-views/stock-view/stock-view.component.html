@@ -1,39 +1,38 @@
 <div class="view-container">
-    <div class="titulo mb-4">
-        <h1>Inventario Disponible</h1>
+  <div class="titulo mb-4">
+    <h1>Inventario Disponible</h1>
+  </div>
+  <div class="stock-view d-flex justify-content-around align-items-center flex-wrap">
+    <div class="admin-products-create">
+      <h3>Registrar Nuevo Producto</h3>
+      <app-admin-stock-form></app-admin-stock-form>
     </div>
-    <div class="stock-view d-flex justify-content-around align-items-center flex-wrap">
-        <div class="admin-products-create">
-            <h3>Registrar Nuevo Producto</h3>
-            <app-admin-stock-form></app-admin-stock-form>
-        </div>
-        <div class="table-responsive">
-            
-            <table class="table table-striped" id="tablaProductos">
-                <thead class="table-head">
-                    <tr>
-                        <th scope="col">Key del Producto</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Cantidad (g)</th>
-                        <th scope="col">Precio/50g ($)</th>
-                        <th scope="col">Acciones</th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let product of products">
-                        <th scope="row">{{ product.$key }}</th>
-                        <th scope="row">{{ product.name }}</th>
-                        <th scope="row">{{ product.quantity }}</th>
-                        <th scope="row">{{ product.price }}</th>
-                        <th scope="row" class="d-flex justify-content-around flex-wrap">
-                            <button class="btn btn-outline-warning flex-grow-1" [routerLink]="['/admin/edit', product.$key]"
-                            routerLinkActive="router-link-active">Editar</button>
-                            <button class="btn btn-outline-danger flex-grow-1" (click)="deleteProduct(product.$key)">Eliminar</button>
-                   
-                        </th>
-                         </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="table-responsive">
+      <table class="table table-striped" id="tablaProductos">
+        <thead class="table-head">
+          <tr>
+            <th scope="col">Key del Producto</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Cantidad (g)</th>
+            <th scope="col">Precio/50g ($)</th>
+            <th scope="col">Acciones</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <th scope="row">{{ product.$key }}</th>
+            <th scope="row">{{ product.name }}</th>
+            <th scope="row">{{ product.quantity }}</th>
+            <th scope="row">{{ product.price }}</th>
+            <th scope="row" class="d-flex justify-content-around flex-wrap">
+              <button class="btn btn-outline-warning flex-grow-1" [routerLink]="['/admin/edit', product.$key]"
+                routerLinkActive="router-link-active">Editar</button>
+              <button class="btn btn-outline-danger flex-grow-1" (click)="deleteProduct(product.$key)">Eliminar</button>
 
+            </th>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
+  </div>
 </div>

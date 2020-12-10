@@ -1,0 +1,37 @@
+.eliminar {
+    img {
+        width: 2.5rem;
+        height: 2rem;
+    }
+    
+}
+
+.bag-card {
+    @include big-phone-max() {
+        .header {
+            flex-wrap: wrap;
+        }
+    }
+}
+
+.bag-product {
+    .nombre {
+        font-size: 1rem;
+    }
+
+    .counter {
+        justify-content: space-around;
+    }
+
+    @include big-phone-max() {
+        .btn-color-secondary {
+            
+            padding: 0rem 0.4rem;
+        }
+        .number {
+            font-size: 1rem;
+            padding: 0rem 0.4rem;
+        }
+        
+    }
+}

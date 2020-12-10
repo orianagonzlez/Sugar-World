@@ -1,57 +1,46 @@
-<form [formGroup] = "productForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="exampleInputName">Nombre</label>
-        <input
-            type="text"
-            class="form-control"
-            formControlName='name'
-            placeholder="Ingresa el nombre del producto"
-        >
-    </div>
-    <div class="form-group">
-        <label for="exampleInputQuantity">Categoria</label>
-        <input 
-            class="form-control"
-            type="text"
-            formControlName='category'
-            placeholder="Ingresa la categoria a la que pertenece el producto"
-        >
-    </div>
-    <div class="form-group">
-        <label for="exampleInputQuantity">Descripción</label>
-        <input 
-            class="form-control"
-            type="text"
-            formControlName='description'
-            placeholder="Ingresa la descripción del producto"
-        >
-    </div>
-    <div class="form-group">
-        <label for="exampleInputQuantity">URL de Imagen</label>
-        <input 
-            class="form-control"
-            type="text"
-            formControlName='image'
-            placeholder="Ingresa el URL de la imagen del producto"
-        >
-    </div>
-    <div class="form-group">
-        <label for="exampleInputQuantity">Cantidad en gramos</label>
-        <input 
-            class="form-control"
-            type="text"
-            formControlName='quantity'
-            placeholder="Ingresa la cantidad disponible del producto"
-        >
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPrice">Precio por 50 gramos ($)</label>
-        <input 
-            class="form-control"
-            type="text"
-            formControlName ='price'
-            placeholder="Ingrese el precio del producto"
-        >
-    </div>
-    <button type="submit" class="btn button-primary btn-block">SUBMIT</button>
-</form>
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="exampleInputName">Nombre</label>
+    <input type="text" class="form-control" formControlName='name' placeholder="Ingresa el nombre del producto">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Categoria</label>
+    <select class="form-control" formControlName="category" id="FormControlSelect1">
+      <option *ngFor="let category of categories" value="{{ category.$key }}">{{ category.name }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputQuantity">Descripción</label>
+    <input class="form-control" type="text" formControlName='description'
+      placeholder="Ingresa la descripción del producto">
+  </div>
+  <div class="form-group">
+
+    <label for="exampleInputQuantity">Imagen del producto</label>
+    <ng-container *ngIf="!loadingImage">
+      <div class="custom-file">
+        <input (change)="handleImage($event)" type="file" class="custom-file-input" id="customFile">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="loadingImage">
+      <div class="custom-file">
+        <span class="badge badge-success mt-1 p-2">La imagen se ha cargado!</span>
+      </div>
+    </ng-container>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputQuantity">Cantidad en gramos</label>
+    <input class="form-control" type="number" min="0" formControlName='quantity'
+      placeholder="Ingresa la cantidad disponible del producto">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPrice">Precio por 50 gramos ($)</label>
+    <input class="form-control" type="number" min="0" formControlName='price'
+      placeholder="Ingrese el precio del producto">
+  </div>
+  <button type="submit" class="btn button-primary btn-block">SUBMIT</button>
+</form> 
+<div class="text-center text-danger mt-2 bg-light rounded" *ngIf="!valid">Debe completar todos los campos.</div> 
+<div class="text-center text-danger mt-2 bg-light rounded" *ngIf="negativo">El precio y la cantidad deben ser numeros positivos.</div>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { auth, User } from 'firebase';
+import { getMaxListeners } from 'process';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -15,7 +16,6 @@ export class AuthService {
 
   constructor(public afAuth: AngularFireAuth, public router: Router) {
     this.afAuth.authState.subscribe(user => {
-      console.log(user);
       if (user) {
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
@@ -89,6 +89,16 @@ export class AuthService {
     return user !== null;
   }
 
+  isGoogle(): boolean {
+    const user: User = JSON.parse(localStorage.getItem('user')) ?? null;
+    return user.emailVerified == true;
+  }
+
+  isAdmin(): boolean {
+    const user: User = JSON.parse(localStorage.getItem('user')) ?? null;
+    return user.email == "adminog@gmail.com" || user.email == "adminls@gmail.com" || user.email == "admings@gmail.com"
+  }
+  
   private authLogin(provider: auth.GoogleAuthProvider): Promise<auth.UserCredential> {
     return this.afAuth.signInWithPopup(provider);
   }

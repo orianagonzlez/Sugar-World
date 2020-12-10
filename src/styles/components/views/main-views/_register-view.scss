@@ -1,0 +1,105 @@
+.reg-contenedor {
+  margin-top: 60px;
+  
+  width: 40rem;
+  padding: 2em;
+
+  @include sm-device-max() {
+    width: 30rem;
+  }
+
+  @include xm-device-max() {
+    width: 25rem;
+  }
+
+  @include big-phone-max() {
+    width: 18rem;
+  }
+}
+
+hr {
+  border: 0.1em solid;
+  border-radius: 300px;
+  height: 0px;
+  color: #e66382;
+  width: 40%;
+  margin: auto;
+  margin-bottom: 1em;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 110vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(../../../../assets/imagenes/login.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.btn-color-primary {
+  background-color: $color-primary;
+  color: #ffffff;
+}
+
+@media (max-width: 320px) {
+  .reg-contenedor {
+    margin-top: 80px;
+    height: 50rem;
+    width: 15rem;
+  }
+  .hero-image {
+    height: 170vh;
+  }
+}
+@media (min-width: 320px) {
+  .reg-contenedor {
+    margin-top: 100px;
+    height: 50rem;
+  }
+  .hero-image {
+    height: 165vh;
+  }
+}
+
+@media (min-width: 480px) {
+  .reg-contenedor {
+    margin-top: 60px;
+    height: 43rem;
+  }
+  .hero-image {
+    height: 130vh;
+  }
+}
+
+@media (min-width: 550px) {
+  .reg-contenedor {
+    margin-top: 70px;
+    height: 43rem;
+  }
+  .hero-image {
+    height: 120vh;
+  }
+}
+
+@media (min-width: 768px) {
+  .reg-contenedor {
+    margin-top: 80px;
+    height: 38rem;
+  }
+  .hero-image {
+    height: 110vh;
+  }
+}
+
+@media (min-width: 992px) {
+  .reg-contenedor {
+    margin-top: 120px;
+    height: 38rem;
+  }
+  .hero-image {
+    height: 120vh;
+  }
+}

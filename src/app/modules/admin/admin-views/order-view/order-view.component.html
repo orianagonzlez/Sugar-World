@@ -1,29 +1,34 @@
 <div class="view-container">
-    <div class="titulo mb-4">
-        <h1>Órdenes Recientes</h1>
+  <div class="titulo mb-4">
+    <h1>Órdenes Recientes</h1>
+  </div>
+  <div class="container-fluid d-flex justify-content-around align-items-center flex-wrap">
+    <div class="table-responsive container-fluid">
+      <table class="table table-striped" id="tablaOrdenes">
+        <thead class="table-head">
+          <tr>
+            <th scope="col">Key de la Orden</th>
+            <th scope="col">Id del cliente</th>
+            <th scope="col">Metodo de entrega</th>
+            <th scope="col">Metodo de pago</th>
+            <th scope="col">Status de la Orden</th>
+            <th scope="col">Cambiar Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <th scope="row">{{ order.$key }}</th>
+            <th scope="row">{{ order.userId }}</th>
+            <th scope="row">{{ order.shipping }}</th>
+            <th scope="row">{{ order.payment }}</th>
+            <th scope="row">{{ order.status }}</th>
+            <th scope="row">
+              <button class="btn btn-outline-warning flex-grow-1" [routerLink]="['/admin/order', order.$key]"
+                routerLinkActive="router-link-active">Editar</button>
+            </th>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="order-view d-flex justify-content-around align-items-center flex-wrap">
-        <div class="admin-orders-create">
-            <h3>Registrar Nueva Orden</h3>
-            <app-admin-order-form></app-admin-order-form>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-striped" id="tablaOrdenes">
-                <thead class="table-head">
-                    <tr>
-                        <th scope="col">Key de la Orden</th>
-                        <th scope="col">Nombre del Cliente</th>
-                        <th scope="col">Status de la Orden</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let order of orders">
-                        <th scope="row">{{ order.$key }}</th>
-                        <th scope="row">{{ order.client }}</th>
-                        <th scope="row">{{ order.status }}</th>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+  </div>
 </div>
