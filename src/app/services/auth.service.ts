@@ -95,8 +95,13 @@ export class AuthService {
   }
 
   isAdmin(): boolean {
+
     const user: User = JSON.parse(localStorage.getItem('user')) ?? null;
-    return user.email == "adminog@gmail.com" || user.email == "adminls@gmail.com" || user.email == "admings@gmail.com"
+    if (user) {
+      return user.email == "adminog@gmail.com" || user.email == "adminls@gmail.com" || user.email == "admings@gmail.com"
+    }
+    return user !== null;
+    
   }
   
   private authLogin(provider: auth.GoogleAuthProvider): Promise<auth.UserCredential> {
